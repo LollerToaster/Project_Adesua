@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.project.adrianangub.project_adesua.LoginPage">
 
-    <!-- Background Picture XD haha-->
+    <!-- Background Picture XD haha XD XD-->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
