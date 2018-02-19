@@ -2,6 +2,8 @@ package com.project.adrianangub.project_adesua;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -28,7 +30,20 @@ public class mainMenu extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             myToolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2B3642")));
             //getSupportActionBar().setTitle("Test [Proj Adesua]");
+
+            // HAZARD
+
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setLogo(R.drawable.ic_004_travel);
+            getSupportActionBar().setDisplayUseLogoEnabled(true);
+
+            Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_001_settings_gears);
+            myToolbar.setOverflowIcon(drawable);
+
+
+            // HAZARD
             getSupportActionBar().setTitle(Html.fromHtml("<font color='#25B18A'>[ Project Adesua ]</font>"));
+
 
         }
         // Toolbar Related =========================================================================

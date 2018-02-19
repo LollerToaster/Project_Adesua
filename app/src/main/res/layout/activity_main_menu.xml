@@ -17,10 +17,13 @@
         <!-- TOOLBAR -->
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
+
             android:layout_width="match_parent"
-            android:layout_height="240dp"
+            android:layout_height="72dp"
+            android:minHeight="?attr/actionBarSize"
+
             android:background="?attr/colorPrimary"
-            android:elevation="4dp"
+            android:elevation="16dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
 
@@ -108,7 +111,7 @@
                         <ImageButton
                             android:id="@+id/searchPicture"
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"
+                            android:layout_height="48dp"
                             android:layout_gravity="right"
                             android:layout_marginRight="8dp"
                             android:adjustViewBounds="true"

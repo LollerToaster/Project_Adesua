@@ -18,8 +18,11 @@
         <!-- TOOLBAR -->
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
+
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:minHeight="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+
             android:background="?attr/colorPrimary"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
@@ -113,7 +116,7 @@
                             android:adjustViewBounds="true"
                             android:background="@color/background_Color"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/ic_002_search" />
+                            app:srcCompat="@drawable/ic_001_search_1" />
 
                     </LinearLayout>
 
