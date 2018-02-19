@@ -33,10 +33,13 @@ public class mainMenu extends AppCompatActivity {
 
             // HAZARD
 
+
+            // Showing Logo Icon
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setLogo(R.drawable.ic_004_travel);
             getSupportActionBar().setDisplayUseLogoEnabled(true);
 
+            // Replacing Overflow Icon to Settings Cog
             Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_001_settings_gears);
             myToolbar.setOverflowIcon(drawable);
 
