@@ -18,7 +18,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="240dp"
             android:background="?attr/colorPrimary"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
@@ -32,7 +32,8 @@
             android:layout_below="@id/my_toolbar"
             android:layout_marginTop="5dp"
             android:baselineAligned="false"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="8dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -47,6 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -57,11 +59,12 @@
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/profile_image"
-                            android:layout_width="96dp"
-                            android:layout_height="96dp"
-                            android:src="@drawable/spung"
-                            app:civ_border_color="#FF000000"
-                            app:civ_border_width="2dp" />
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:src="@drawable/spung" />
+
+                        <!-- app:civ_border_width="2dp"
+                            app:civ_border_color="#FF000000" -->
 
                         <TextView
                             android:id="@+id/usernameView"
@@ -72,7 +75,7 @@
                             android:paddingLeft="8dp"
                             android:text="[Insert Username Here]"
                             android:textColor="@color/bright_Color"
-                            android:textSize="24sp" />
+                            android:textSize="18sp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -96,20 +99,22 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:layout_margin="8dp"
                             android:layout_weight="1"
-                            android:text="Looking for Something? Search Here!"
+                            android:text="Looking for Something?"
                             android:textColor="@color/bright_Color"
-                            android:textSize="14sp" />
+                            android:textSize="18sp" />
 
                         <ImageButton
                             android:id="@+id/searchPicture"
                             android:layout_width="match_parent"
                             android:layout_height="72dp"
                             android:layout_gravity="right"
+                            android:layout_marginRight="8dp"
                             android:adjustViewBounds="true"
                             android:background="@color/background_Color"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/search_2" />
+                            app:srcCompat="@drawable/ic_002_search" />
 
                     </LinearLayout>
 
@@ -149,7 +154,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/recommended"
-                    android:textColor="@color/background_Color"
+                    android:textColor="@color/fontColor1"
                     android:textSize="24sp" />
 
             </LinearLayout>

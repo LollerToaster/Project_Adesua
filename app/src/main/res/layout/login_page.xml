@@ -42,11 +42,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="false"
-                android:contentDescription='android:textColor="subtext_Color"'
+                android:contentDescription="insert"
                 android:fontFamily="sans-serif-condensed"
                 android:gravity="center"
                 android:paddingTop="0dp"
-                android:text="[ Project Adesua ]"
+                android:text="[ Insert Logo Here ]"
                 android:textColor="@color/subtext_Color"
                 android:textSize="20sp" />
 
@@ -61,15 +61,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/freeroadbold"
+                    android:fontFamily="@font/freeroadlight"
                     android:paddingBottom="4dp"
                     android:text="Username:"
-                    android:textColor="@color/bright_Color_Light" />
+                    android:textColor="@color/fontColor1" />
 
                 <EditText
                     android:id="@+id/username"
                     android:layout_width="match_parent"
-                    android:layout_height="24dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
@@ -87,10 +87,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/freeroadbold"
+                    android:fontFamily="@font/freeroadlight"
                     android:paddingBottom="4dp"
                     android:text="Password:"
-                    android:textColor="@color/bright_Color_Light" />
+                    android:textColor="@color/fontColor1" />
 
                 <EditText
                     android:id="@+id/password"
@@ -134,7 +134,7 @@
                 android:gravity="center"
                 android:paddingTop="4dp"
                 android:text="Forgot Password?"
-                android:textColor="#ffffff"
+                android:textColor="@color/fontColor1"
                 android:textSize="12sp"
                 android:textStyle="italic" />
 

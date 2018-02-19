@@ -54,7 +54,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp">
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/profile_image"
@@ -90,7 +91,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingRight="16dp">
 
                         <TextView
                             android:id="@+id/lookingForSomething"
@@ -98,6 +100,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
+                            android:paddingRight="8dp"
                             android:text="Looking for Something? Search Here!"
                             android:textColor="@color/bright_Color"
                             android:textSize="14sp" />
@@ -110,7 +113,7 @@
                             android:adjustViewBounds="true"
                             android:background="@color/background_Color"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/search_2" />
+                            app:srcCompat="@drawable/ic_002_search" />
 
                     </LinearLayout>
 

@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 
 
 public class mainMenu extends AppCompatActivity {
@@ -35,6 +36,8 @@ public class mainMenu extends AppCompatActivity {
     }
 
 
+
+
     // Settings Button Related =====================================================================
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -43,6 +46,7 @@ public class mainMenu extends AppCompatActivity {
         return true;
     }
 
+    // Actions will be performed if clicked. [ ACTION BAR ]
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -53,6 +57,13 @@ public class mainMenu extends AppCompatActivity {
             case R.id.item2:
                 //your action
                 break;
+
+            case R.id.logs:
+                break;
+
+            case R.id.backpack:
+                break;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
