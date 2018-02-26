@@ -2,6 +2,9 @@
 <resources>
 
 
+    <color name="colorNavIcon">#dae9f6</color>
+    <color name="colorNavText">#01294b</color>
+
     <!--
 
 
