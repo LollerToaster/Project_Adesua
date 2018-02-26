@@ -32,7 +32,9 @@ dependencies {
     //Additional
     compile 'de.hdodenhof:circleimageview:2.2.0'
 
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support:design:25.1.0'
-    compile 'com.android.support:support-v4:25.1.0'
+    //compile 'com.android.support:appcompat-v7:25.1.0'
+    //compile 'com.android.support:design:25.1.0'
+    //compile 'com.android.support:support-v4:25.1.0'
+
+    //compile 'com.aurelhubert:ahbottomnavigation:0.1.3'
 }
