@@ -34,7 +34,7 @@ public class ItemOneFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-                Intent intent = new Intent(getActivity(), bookInfoPage.class);
+                Intent intent = new Intent(getActivity(), bookInfoPage_v2.class);
                 startActivity(intent);
             }
         });

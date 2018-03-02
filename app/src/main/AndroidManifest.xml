@@ -10,19 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".LoginPage">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".mainMenu"></activity>
+        <activity android:name=".mainMenu" />
         <activity android:name=".bookInfoPage" />
         <activity
             android:name=".home"
-            android:label="@string/title_activity_home"></activity>
+            android:label="@string/title_activity_home" />
+        <activity
+            android:name=".bookInfoPage_v2"
+            android:label="@string/title_activity_book_info_page_v2"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>
