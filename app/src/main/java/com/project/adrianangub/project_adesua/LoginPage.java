@@ -20,7 +20,7 @@ public class LoginPage extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginPage.this, mainMenu.class));
+                startActivity(new Intent(LoginPage.this, home.class));
             }
         });
         //DANGER
