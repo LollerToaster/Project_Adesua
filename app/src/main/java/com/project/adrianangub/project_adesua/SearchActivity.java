@@ -1,12 +1,8 @@
 package com.project.adrianangub.project_adesua;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,22 +12,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.widget.ArrayAdapter;
+import android.widget.MultiAutoCompleteTextView;
 
-public class home extends AppCompatActivity
+public class SearchActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    //
+    MultiAutoCompleteTextView MultipleValuesholdt;
+    String[] MultipleTextStringValue = { "Android","Android-MultiAutoCompleteTextView","Android Top Tutorials" };
+    //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_search);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //MultiAutoCompleteTextView
+        MultipleValuesholdt = (MultiAutoCompleteTextView)findViewById(R.id.MultiAutoCompleteTextView1);
+        ArrayAdapter<String> TopicName = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MultipleTextStringValue);
+        MultipleValuesholdt.setAdapter(TopicName);
+        MultipleValuesholdt.setThreshold(2);
+        MultipleValuesholdt.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+        //MultiAutoCompleteTextView
+
         // ACTION BAR CUSTOMIZATION
-        setTitle("Home");
+        setTitle("Search");
         // ACTION BAR CUSTOMIZATION
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -42,44 +50,6 @@ public class home extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        // BOTTOM NAV ==============================================================================
-
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)
-                findViewById(R.id.navigation);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener
-                (new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        Fragment selectedFragment = null;
-                        switch (item.getItemId()) {
-                            case R.id.action_item1:
-                                selectedFragment = ItemOneFragment.newInstance();
-                                break;
-                            case R.id.action_item2:
-                                selectedFragment = ItemTwoFragment.newInstance();
-                                break;
-                            case R.id.action_item3:
-                                selectedFragment = ItemThreeFragment.newInstance();
-                                break;
-                        }
-                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
-                        transaction.commit();
-                        return true;
-                    }
-                });
-
-        //Manually displaying the first fragment - one time only
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, ItemOneFragment.newInstance());
-        transaction.commit();
-
-        //Used to select an item programmatically
-        //bottomNavigationView.getMenu().getItem(2).setChecked(true);
-
-        // BOTTOM NAV ==============================================================================
     }
 
     @Override
@@ -91,8 +61,6 @@ public class home extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
-    // OVERFLOW MENU, NOT NEEDED // OVERFLOW MENU, NOT NEEDED // OVERFLOW MENU, NOT NEEDED
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,16 +77,12 @@ public class home extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.backpack_button) {
-
-            Toast.makeText(getApplicationContext(), "Your toast message.", Toast.LENGTH_SHORT).show();
+        if (id == R.id.action_settings) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
-    // OVERFLOW MENU, NOT NEEDED // OVERFLOW MENU, NOT NEEDED // OVERFLOW MENU, NOT NEEDED
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -144,6 +108,4 @@ public class home extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
 }

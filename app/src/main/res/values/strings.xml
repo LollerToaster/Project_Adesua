@@ -24,6 +24,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_home">home</string>
     <string name="title_activity_book_info_page_v2">bookInfoPage_v2</string>
+    <string name="title_activity_search">SearchActivity</string>
 
 
 </resources>
