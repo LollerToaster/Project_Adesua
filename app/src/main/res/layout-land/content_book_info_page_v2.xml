@@ -13,7 +13,6 @@
         android:id="@+id/scrollContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/persistentBar"
         android:background="@color/background_Color">
 
 
