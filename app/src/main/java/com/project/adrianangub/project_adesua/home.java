@@ -1,8 +1,13 @@
 package com.project.adrianangub.project_adesua;
 
+import android.app.Activity;
+import android.graphics.Color;
+import android.support.design.widget.CoordinatorLayout;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
@@ -13,12 +18,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 public class home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    private WebView mWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +105,7 @@ public class home extends AppCompatActivity
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -108,9 +116,22 @@ public class home extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.backpack_button) {
 
-            Toast.makeText(getApplicationContext(), "Your toast message.", Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+            //Toast.makeText(getApplicationContext(), "Your toast message.", Toast.LENGTH_SHORT).show();
             return true;
         }
+
+        //
+        if(id == R.id.menu_refresh){
+            Intent intent = getIntent();
+            finish();
+            overridePendingTransition( 0, 0);
+            startActivity(intent);
+            overridePendingTransition( 0, 0);
+            return true;
+        }
+        //
 
         return super.onOptionsItemSelected(item);
     }
