@@ -50,7 +50,7 @@ public class ItemOneFragment extends Fragment {
         mProgressBarLoading = (ProgressBar)view.findViewById(R.id.progressBarLoading);
 
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(layoutManager);
 
         //==========================================================================================
@@ -124,8 +124,11 @@ public class ItemOneFragment extends Fragment {
                 public void onClick(View v)
                 {
                     Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getContext(), bookInfoPage_v2.class);
+                    Intent intent = new Intent(getContext(), bookInfoPage_v2.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     getContext().startActivity(intent);
+
+                    //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
                 }
             });
         }

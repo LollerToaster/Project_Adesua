@@ -7,11 +7,21 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.project.adrianangub.project_adesua.SearchResults">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.25"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/library" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="android.support.v7.widget.GridLayoutManager"/>
+        app:layoutManager="android.support.v7.widget.GridLayoutManager">
+
+    </android.support.v7.widget.RecyclerView>
 
     <!-- Test
 

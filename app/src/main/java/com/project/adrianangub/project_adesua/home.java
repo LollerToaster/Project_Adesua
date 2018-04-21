@@ -69,6 +69,9 @@ public class home extends AppCompatActivity
                             case R.id.action_item3:
                                 selectedFragment = ItemThreeFragment.newInstance();
                                 break;
+                            case R.id.action_item4:
+                                selectedFragment = ItemThreeFragment.newInstance();
+                                break;
                         }
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_layout, selectedFragment);
@@ -95,8 +98,10 @@ public class home extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
     }
+
 
     // OVERFLOW MENU, NOT NEEDED // OVERFLOW MENU, NOT NEEDED // OVERFLOW MENU, NOT NEEDED
 
@@ -117,6 +122,7 @@ public class home extends AppCompatActivity
         if (id == R.id.search_button) {
 
             startActivity(new Intent(home.this, SearchActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();;
             return true;
@@ -146,6 +152,7 @@ public class home extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             startActivity(new Intent(home.this, home.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             Snackbar.make(findViewById(R.id.placeSnackBar), "Returning to home worked", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();;
             return true;
@@ -159,6 +166,7 @@ public class home extends AppCompatActivity
 
         } else if (id == R.id.nav_search) {
             startActivity(new Intent(home.this, SearchActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();
         }
@@ -167,4 +175,6 @@ public class home extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }

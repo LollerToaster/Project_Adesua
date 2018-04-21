@@ -198,6 +198,7 @@ public class SearchResults extends AppCompatActivity
         if (id == R.id.search_button) {
 
             startActivity(new Intent(SearchResults.this, SearchActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();;
             return true;
@@ -214,6 +215,7 @@ public class SearchResults extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             startActivity(new Intent(SearchResults.this, home.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();;
             return true;
@@ -227,8 +229,7 @@ public class SearchResults extends AppCompatActivity
 
         } else if (id == R.id.nav_search) {
             startActivity(new Intent(SearchResults.this, SearchActivity.class));
-            Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
 
 

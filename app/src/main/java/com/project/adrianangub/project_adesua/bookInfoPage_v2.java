@@ -64,7 +64,7 @@ public class bookInfoPage_v2 extends AppCompatActivity
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(bookInfoPage_v2.this, MapsActivity.class);
+                Intent intent = new Intent(bookInfoPage_v2.this, MapsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
 
@@ -101,7 +101,7 @@ public class bookInfoPage_v2 extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.search_button) {
 
-            startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class));
+            startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();;
             return true;
@@ -117,7 +117,7 @@ public class bookInfoPage_v2 extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            startActivity(new Intent(bookInfoPage_v2.this, home.class));
+            startActivity(new Intent(bookInfoPage_v2.this, home.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();;
             return true;
@@ -130,7 +130,7 @@ public class bookInfoPage_v2 extends AppCompatActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_search) {
-            startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class));
+            startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();
         }
