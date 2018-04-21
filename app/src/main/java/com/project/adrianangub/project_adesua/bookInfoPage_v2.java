@@ -1,7 +1,10 @@
 package com.project.adrianangub.project_adesua;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -9,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class bookInfoPage_v2 extends AppCompatActivity
@@ -33,7 +38,41 @@ public class bookInfoPage_v2 extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        //BUTTONS =========================================================================================================
+        final Button buttonDownloadPDF = (Button)findViewById(R.id.DownloadPDFButton);
+        buttonDownloadPDF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //buttonDownloadPDF.setText("Bookmarked!");
+                Snackbar.make(findViewById(android.R.id.content), "Feature not Available Yet!", Snackbar.LENGTH_LONG)
+                        .setActionTextColor(Color.RED)
+                        .show();
+            }
+        });
+        final Button buttonBookmark = (Button)findViewById(R.id.BookmarkButton);
+        buttonBookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buttonBookmark.setText("Bookmarked!");
+            }
+        });
+        Button orderButton = (Button) findViewById(R.id.GoogleMapsButton);
+
+        orderButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(bookInfoPage_v2.this, MapsActivity.class);
+                startActivity(intent);
+            }
+
+        });
+        //BUTTONS =========================================================================================================
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -60,9 +99,11 @@ public class bookInfoPage_v2 extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.backpack_button) {
+        if (id == R.id.search_button) {
 
-            Toast.makeText(getApplicationContext(), "Your toast message.", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class));
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();;
             return true;
         }
 
@@ -75,19 +116,25 @@ public class bookInfoPage_v2 extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_home) {
+            startActivity(new Intent(bookInfoPage_v2.this, home.class));
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();;
+            return true;
+        } else if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_search) {
+            startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class));
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

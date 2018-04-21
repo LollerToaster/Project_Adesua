@@ -1,6 +1,16 @@
 package com.project.adrianangub.project_adesua;
 
+import android.app.ActionBar;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,35 +20,48 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.MultiAutoCompleteTextView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.rengwuxian.materialedittext.MaterialMultiAutoCompleteTextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    //
-    MultiAutoCompleteTextView MultipleValuesholdt;
-    String[] MultipleTextStringValue = { "Android","Android-MultiAutoCompleteTextView","Android Top Tutorials" };
-    //
+    // MultiAutoCompleteTextView Essentials=========================================================
+    MultiAutoCompleteTextView MultipleValuesholdGenre;
+    String[] Genres = { "Action","Math","English","Wololo" };
+
+    //MultiAutoCompleteTextView MultipleValuesholdTitle;
+    //String[] Titles = { "Your mom fat","Gay","Brother","Ecks d" };
+
+    //MultiAutoCompleteTextView MultipleValuesholdAuthor;
+    //String[] Authors = { "Adrian","Jeff","Pyrocynical","Hahahaha" };
+    // MultiAutoCompleteTextView Essentials=========================================================
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        //Go to Search Results
+        Button btn = (Button)findViewById(R.id.Button1);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SearchActivity.this, SearchResults.class));
+            }
+        });
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //MultiAutoCompleteTextView
-        MultipleValuesholdt = (MultiAutoCompleteTextView)findViewById(R.id.MultiAutoCompleteTextView1);
-        ArrayAdapter<String> TopicName = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MultipleTextStringValue);
-        MultipleValuesholdt.setAdapter(TopicName);
-        MultipleValuesholdt.setThreshold(2);
-        MultipleValuesholdt.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
-        //MultiAutoCompleteTextView
-
-        // ACTION BAR CUSTOMIZATION
-        setTitle("Search");
-        // ACTION BAR CUSTOMIZATION
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -48,7 +71,36 @@ public class SearchActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //DANGER ===================================================================================
+
+        // MultiAutoCompleteTextView Essential
+
+        //Genres
+        MultipleValuesholdGenre = (MaterialMultiAutoCompleteTextView)findViewById(R.id.genre);
+        ArrayAdapter<String> Genre = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Genres);
+        MultipleValuesholdGenre.setAdapter(Genre);
+        MultipleValuesholdGenre.setThreshold(2);
+        MultipleValuesholdGenre.setTokenizer(new MaterialMultiAutoCompleteTextView.CommaTokenizer());
+
+        //Title
+        //MultipleValuesholdTitle = (MaterialMultiAutoCompleteTextView)findViewById(R.id.genre);
+        //ArrayAdapter<String> Title = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, Titles);
+        //MultipleValuesholdTitle.setAdapter(Title);
+        //MultipleValuesholdTitle.setThreshold(2);
+        //MultipleValuesholdTitle.setTokenizer(new MaterialMultiAutoCompleteTextView.CommaTokenizer());
+
+        //Authors
+        //MultipleValuesholdAuthor = (MaterialMultiAutoCompleteTextView)findViewById(R.id.author);
+        //ArrayAdapter<String> Author = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Authors);
+        //MultipleValuesholdAuthor.setAdapter(Author);
+        //MultipleValuesholdAuthor.setThreshold(2);
+        //MultipleValuesholdAuthor.setTokenizer(new MaterialMultiAutoCompleteTextView.CommaTokenizer());
+
+        //DANGER ===================================================================================
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -74,10 +126,11 @@ public class SearchActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.backpack_button) {
+        if (id == R.id.search_button) {
 
-            Toast.makeText(getApplicationContext(), "Your toast message.", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(SearchActivity.this, SearchActivity.class));
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();;
             return true;
         }
 
@@ -90,19 +143,25 @@ public class SearchActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_home) {
+            startActivity(new Intent(SearchActivity.this, home.class));
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();;
+            return true;
+        } else if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_search) {
+            startActivity(new Intent(SearchActivity.this, SearchActivity.class));
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

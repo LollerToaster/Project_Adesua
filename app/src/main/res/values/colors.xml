@@ -1,35 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="primary">#616161</color>
+    <color name="primaryLight">#8e8e8e</color>
+    <color name="primaryDark">#373737</color>
 
-    <color name="colorNavIcon">#dae9f6</color>
-    <color name="colorNavText">#01294b</color>
+    <color name="secondary">#455a64</color>
+    <color name="secondaryLight">#718792</color>
+    <color name="secondaryDark">#1c313a</color>
 
-    <!--
+    <color name="fontColor1">#ffffff</color>
 
-
-    <color name="background_Color">#2B3642</color>
-    <color name="outline_Color">#525D5A</color>
-    <color name="bright_Color">#25B18A</color>
-    <color name="bright_Color_Light">#1C886A</color>
-    <color name="subtext_Color">#6C7178</color>
     <color name="action_bar">#BA0000</color>
-
-
-    -->
-
-    <color name="background_Color">#DCDCDC</color>
-    <color name="outline_Color">#A9A9A9</color>
-    <color name="bright_Color">#25B18A</color>
-    <color name="bright_Color_Light">#808080</color>
-
-    <color name="subtext_Color">#6C7178</color>
-    <color name="action_bar">#BA0000</color>
-    <color name="white">#f5f5f5</color>
-    <color name="textColor2">#ffffff</color>
-
-    <color name="bookInfoBG">#2F3B46</color>
-    <color name="synopsisTextColor">#999999</color>
-    <color name="fontColor1">#333333</color>
-
 </resources>

@@ -16,6 +16,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telecom.Call;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
@@ -46,6 +47,7 @@ public class home extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
 
         // BOTTOM NAV ==============================================================================
 
@@ -106,23 +108,20 @@ public class home extends AppCompatActivity
     }
 
 
+    //ACTION BAR BUTTONS ===========================================================================
+    //ACTION BAR BUTTONS ===========================================================================
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the action_bar_menu/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.backpack_button) {
+        if (id == R.id.search_button) {
 
-            Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
-            //Toast.makeText(getApplicationContext(), "Your toast message.", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(home.this, SearchActivity.class));
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();;
             return true;
         }
-
-        //
+        /* REFRESH  ==========================================================================
         if(id == R.id.menu_refresh){
             Intent intent = getIntent();
             finish();
@@ -131,12 +130,13 @@ public class home extends AppCompatActivity
             overridePendingTransition( 0, 0);
             return true;
         }
-        //
+         REFRESH  ============================================================================*/
 
         return super.onOptionsItemSelected(item);
     }
 
-    // OVERFLOW MENU, NOT NEEDED // OVERFLOW MENU, NOT NEEDED // OVERFLOW MENU, NOT NEEDED
+    //NAVIGATION DRAWER SELECTION ==================================================================
+    //NAVIGATION DRAWER SELECTION ==================================================================
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -144,24 +144,27 @@ public class home extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_home) {
+            startActivity(new Intent(home.this, home.class));
+            Snackbar.make(findViewById(R.id.placeSnackBar), "Returning to home worked", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();;
+            return true;
+        } else if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_search) {
+            startActivity(new Intent(home.this, SearchActivity.class));
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
 }

@@ -7,9 +7,9 @@
     <item
         android:id="@+id/action_item2"
         android:icon="@drawable/ic_004_travel"
-        android:title="@string/title_dashboard"/>
+        android:title="Bookmarks"/>
     <item
         android:id="@+id/action_item3"
         android:icon="@drawable/ic_001_settings_gears"
-        android:title="@string/title_notifications"/>
+        android:title="Downloaded"/>
 </menu>
