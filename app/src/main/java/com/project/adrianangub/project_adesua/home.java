@@ -80,13 +80,18 @@ public class home extends AppCompatActivity
                     }
                 });
 
-        //Manually displaying the first fragment - one time only
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, ItemOneFragment.newInstance());
-        transaction.commit();
-
-        //Used to select an item programmatically
-        //bottomNavigationView.getMenu().getItem(2).setChecked(true);
+        //You're layering your Fragments one on top of the other.
+        //When a config change occurs the old Fragment adds itself to the new Activity when it's recreated. This is a massive pain in the rear most of the time.
+        //You can stop errors occurring by using the same Fragment rather than recreating a new one. Simply add this code:
+        //https://stackoverflow.com/questions/8474104/android-fragment-lifecycle-over-orientation-changes
+        if (savedInstanceState == null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_layout, ItemOneFragment.newInstance());
+            transaction.commit();
+        }
+        else {
+            // do nothing - fragment is recreated automatically
+        }
 
         // BOTTOM NAV ==============================================================================
     }

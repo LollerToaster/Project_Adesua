@@ -3,11 +3,15 @@ package com.project.adrianangub.project_adesua;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -46,12 +50,6 @@ public class ItemOneFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_item_one, container, false);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-
-        //DANGER====================================================================================
-        //mRecyclerView2 = (RecyclerView) view.findViewById(R.id.recyclerView2);
-        //DANGER====================================================================================
-        //mTextViewEmpty = (TextView)view.findViewById(R.id.textViewEmpty);
-        //mImageViewEmpty = (ImageView)view.findViewById(R.id.imageViewEmpty);
         mProgressBarLoading = (ProgressBar)view.findViewById(R.id.progressBarLoading);
 
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -59,10 +57,8 @@ public class ItemOneFragment extends Fragment {
         mRecyclerView.setLayoutManager(layoutManager);
 
         //DANGER====================================================================================
-        //mRecyclerView2.setLayoutManager(layoutManager);
-        //DANGER====================================================================================
 
-        //==========================================================================================
+        //DANGER====================================================================================
 
         seeMore = (TextView)view.findViewById(R.id.seeMore);
         seeMore.setOnClickListener(new View.OnClickListener() {
@@ -74,8 +70,6 @@ public class ItemOneFragment extends Fragment {
                 Toast.makeText(getActivity(), "See more was clicked", Toast.LENGTH_SHORT).show();
             }
         });
-
-        //==========================================================================================
 
         ArrayList data = new ArrayList<ItemOneFragmentDataModel>();
         for (int i = 0; i < ItemOneFragmentDataInformation.id.length; i++)
@@ -155,4 +149,5 @@ public class ItemOneFragment extends Fragment {
             return dataList.size();
         }
     }
+
 }

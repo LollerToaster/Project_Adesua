@@ -3,6 +3,7 @@ package com.project.adrianangub.project_adesua;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static android.widget.LinearLayout.VERTICAL;
 
 public class ItemTwoFragment extends Fragment {
     public static ItemTwoFragment newInstance() {
@@ -50,6 +53,13 @@ public class ItemTwoFragment extends Fragment {
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
+
+        //DividerItemDecoration itemDecor = new DividerItemDecoration(getContext(), VERTICAL);
+        //recyclerView.addItemDecoration(itemDecor);
+
+        mRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(
+                getContext()
+        ));
 
         ArrayList data = new ArrayList<ItemTwoFragmentDataInformation>();
         for (int i = 0; i < ItemTwoFragmentDataInformation.id.length; i++)
