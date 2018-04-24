@@ -72,7 +72,7 @@
                             android:fontFamily="@font/opensansregular"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="#000000"
-                            android:textSize="30sp" />
+                            android:textSize="24sp" />
 
                         <TextView
                             android:id="@+id/textViewShortDesc"
@@ -119,11 +119,18 @@
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_below="@id/textViewShortDesc"
-                            android:layout_marginTop="8dp"
                             android:layout_toRightOf="@id/imageView"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                             android:textStyle="bold"
                             android:visibility="invisible" />
+
+                        <RatingBar
+                            android:id="@+id/rating"
+                            style="@style/Widget.AppCompat.RatingBar.Indicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:isIndicator="true"
+                            android:numStars="5" />
 
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
                         consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi.

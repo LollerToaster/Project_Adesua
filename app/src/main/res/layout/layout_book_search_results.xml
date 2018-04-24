@@ -85,6 +85,15 @@
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textSize="14sp" />
 
+                        <RatingBar
+                            android:id="@+id/rating"
+                            style="@style/Widget.AppCompat.RatingBar.Indicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:isIndicator="true"
+                            android:numStars="5" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -118,8 +127,8 @@
                                 android:autoText="false"
                                 android:ellipsize="end"
                                 android:fontFamily="@font/opensanslight"
-                                android:maxLength="412"
-                                android:maxLines="7"
+                                android:maxLength="250"
+                                android:maxLines="3"
                                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                                 android:textColor="@color/fontColor1"

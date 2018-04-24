@@ -1,5 +1,6 @@
 package com.project.adrianangub.project_adesua;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -90,19 +91,8 @@ public class ItemOneFragment extends Fragment {
 
         mListadapter = new ListAdapter(data);
         mRecyclerView.setAdapter(mListadapter);
-
-        //DANGER====================================================================================
-        //mRecyclerView2.setAdapter(mListadapter);
-        //DANGER====================================================================================
-
         return view;
     }
-
-    /*
-    public void onClick(View v) {
-        Toast.makeText(getActivity(), "See more was clicked", Toast.LENGTH_SHORT).show();
-    }
-    */
 
     public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
     {
@@ -150,7 +140,7 @@ public class ItemOneFragment extends Fragment {
                 public void onClick(View v)
                 {
                     Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getContext(), bookInfoPage_v2.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    Intent intent = new Intent(getContext(), bookInfoPage_v2.class);
                     getContext().startActivity(intent);
 
                     //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);

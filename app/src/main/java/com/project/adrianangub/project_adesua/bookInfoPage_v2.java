@@ -41,6 +41,7 @@ public class bookInfoPage_v2 extends AppCompatActivity
 
 
         //BUTTONS =========================================================================================================
+
         final Button buttonDownloadPDF = (Button)findViewById(R.id.DownloadPDFButton);
         buttonDownloadPDF.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,13 +52,34 @@ public class bookInfoPage_v2 extends AppCompatActivity
                         .show();
             }
         });
+
+
         final Button buttonBookmark = (Button)findViewById(R.id.BookmarkButton);
         buttonBookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 buttonBookmark.setText("Bookmarked!");
+                buttonBookmark.setTextColor(Color.BLACK);
+                buttonBookmark.setBackgroundColor(Color.YELLOW);
+                /*
+                int favorite = 0;
+                if(favorite == 0)
+                {
+                    buttonBookmark.setText("Bookmark");
+                    //Toast.makeText(getApplicationContext(), favorite, Toast.LENGTH_SHORT).show();
+                    //buttonBookmark.setTextColor(Color.WHITE);
+                    //buttonBookmark.setBackgroundColor(Color.YELLOW);
+                }
+                else{
+                    buttonBookmark.setText("Bookmarked!");
+                    buttonBookmark.setTextColor(Color.WHITE);
+                    buttonBookmark.setBackgroundColor(Color.YELLOW);
+                }
+                */
             }
         });
+
         Button orderButton = (Button) findViewById(R.id.GoogleMapsButton);
 
         orderButton.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +91,9 @@ public class bookInfoPage_v2 extends AppCompatActivity
             }
 
         });
+
         //BUTTONS =========================================================================================================
+
     }
 
 
@@ -86,27 +110,18 @@ public class bookInfoPage_v2 extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.action_bar_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the action_bar_menu/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.search_button) {
 
-            startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-            //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
-            //        .setAction("Action", null).show();;
+            startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));;
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -118,8 +133,6 @@ public class bookInfoPage_v2 extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             startActivity(new Intent(bookInfoPage_v2.this, home.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-            //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
-            //        .setAction("Action", null).show();;
             return true;
         } else if (id == R.id.nav_camera) {
             // Handle the camera action
@@ -131,8 +144,6 @@ public class bookInfoPage_v2 extends AppCompatActivity
 
         } else if (id == R.id.nav_search) {
             startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-            //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
-            //        .setAction("Action", null).show();
         }
 
 

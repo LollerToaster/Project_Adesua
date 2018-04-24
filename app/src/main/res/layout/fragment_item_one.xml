@@ -59,7 +59,8 @@
                         android:onClick="onClick"
                         android:paddingEnd="8dp"
                         android:paddingRight="8dp"
-                        android:text="See More" />
+                        android:text="See More"
+                        android:textColor="#007bff" />
                 </LinearLayout>
 
                 <android.support.v7.widget.RecyclerView
@@ -114,7 +115,8 @@
                         android:onClick="onClick"
                         android:paddingEnd="8dp"
                         android:paddingRight="8dp"
-                        android:text="See More" />
+                        android:text="See More"
+                        android:textColor="#007bff" />
                 </LinearLayout>
 
                 <android.support.v7.widget.RecyclerView
