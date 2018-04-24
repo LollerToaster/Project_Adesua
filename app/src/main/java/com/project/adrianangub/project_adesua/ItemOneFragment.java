@@ -22,10 +22,10 @@ public class ItemOneFragment extends Fragment {
         return fragment;
     }
 
-    private TextView mTextViewEmpty;
+    private TextView mTextViewEmpty, seeMore;
     private ProgressBar mProgressBarLoading;
     private ImageView mImageViewEmpty;
-    private RecyclerView mRecyclerView;
+    private RecyclerView mRecyclerView,mRecyclerView2;
     private ListAdapter mListadapter;
 
     @Override
@@ -45,18 +45,34 @@ public class ItemOneFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_item_one, container, false);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        mTextViewEmpty = (TextView)view.findViewById(R.id.textViewEmpty);
-        mImageViewEmpty = (ImageView)view.findViewById(R.id.imageViewEmpty);
+
+        //DANGER====================================================================================
+        //mRecyclerView2 = (RecyclerView) view.findViewById(R.id.recyclerView2);
+        //DANGER====================================================================================
+        //mTextViewEmpty = (TextView)view.findViewById(R.id.textViewEmpty);
+        //mImageViewEmpty = (ImageView)view.findViewById(R.id.imageViewEmpty);
         mProgressBarLoading = (ProgressBar)view.findViewById(R.id.progressBarLoading);
 
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(layoutManager);
 
+        //DANGER====================================================================================
+        //mRecyclerView2.setLayoutManager(layoutManager);
+        //DANGER====================================================================================
+
         //==========================================================================================
 
-        //int numberOfColumns = 6;
-        //recyclerView.setLayoutManager(new GridLayoutManager(getContext(), numberOfColumns));
+        seeMore = (TextView)view.findViewById(R.id.seeMore);
+        seeMore.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SearchResults.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                getContext().startActivity(intent);
+                Toast.makeText(getActivity(), "See more was clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //==========================================================================================
 
@@ -75,8 +91,18 @@ public class ItemOneFragment extends Fragment {
         mListadapter = new ListAdapter(data);
         mRecyclerView.setAdapter(mListadapter);
 
+        //DANGER====================================================================================
+        //mRecyclerView2.setAdapter(mListadapter);
+        //DANGER====================================================================================
+
         return view;
     }
+
+    /*
+    public void onClick(View v) {
+        Toast.makeText(getActivity(), "See more was clicked", Toast.LENGTH_SHORT).show();
+    }
+    */
 
     public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
     {

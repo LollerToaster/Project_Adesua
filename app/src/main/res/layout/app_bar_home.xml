@@ -60,4 +60,12 @@
     </LinearLayout>
 
     <include layout="@layout/content_home"/>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.12"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/library" />
 </android.support.design.widget.CoordinatorLayout>

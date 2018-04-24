@@ -6,8 +6,8 @@ package com.project.adrianangub.project_adesua;
 
 public class ItemOneFragmentDataInformation
 {
-    public static String[] textArray = {"Lightshot 截圖工具" ,"Lightshot 截圖工具" ," Lightshot 截圖工具" ,"Lightshot 截圖工具"};
-    public static String[] dateArray = {"2017-04-25" ,"2017-04-25" ,"2017-04-25" ,"2017-04-25"};
-    public static String[] id = {"1" ,"2" ,"3" ,"4"};
+    public static String[] textArray = {"The Smoke is Rising" ,"The Smoke is Rising" ,"The Smoke is Rising" ,"The Smoke is Rising", "The Smoke is Rising"};
+    public static String[] dateArray = {"Adrian Angub" ,"Jake Oliva" ,"Jono Chinese" ,"x d", "Name here"};
+    public static String[] id = {"1" ,"2" ,"3" ,"4", "5"};
 
 }
