@@ -17,46 +17,47 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class BookSearchResultsAdapter extends RecyclerView.Adapter<BookSearchResultsAdapter.ProductViewHolder> {
+public class BookSearchResultsAdapter extends RecyclerView.Adapter<BookSearchResultsAdapter.dataListViewHolder> {
 
     //this context we will use to inflate the layout
     private Context mCtx;
 
     //we are storing all the products in a list
-    private List<BookSearchResultsDataModel> productList;
+    private List<BookSearchResultsDataModel> dataList;
 
     //getting the context and product list with constructor
-    public BookSearchResultsAdapter(Context mCtx, List<BookSearchResultsDataModel> productList) {
+    public BookSearchResultsAdapter(Context mCtx, List<BookSearchResultsDataModel> dataList) {
         this.mCtx = mCtx;
-        this.productList = productList;
+        this.dataList = dataList;
     }
 
 
     @Override
-    public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public dataListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflating and returning our view holder
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.layout_book_search_results, null);
-        return new ProductViewHolder(view);
+        return new dataListViewHolder(view);
     }
 
 
     @Override
-    public void onBindViewHolder(ProductViewHolder holder, final int position) {
+    public void onBindViewHolder(dataListViewHolder holder, final int position) {
         //getting the product of the specified position
-        BookSearchResultsDataModel product = productList.get(position);
+        BookSearchResultsDataModel data = dataList.get(position);
 
         //binding the data with the viewholder views
-        holder.textViewTitle.setText(product.getTitle());
-        holder.textViewShortDesc.setText(product.getShortdesc());
-        holder.textViewPrice.setText(String.valueOf(product.getPrice()));
-        holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(product.getImage()));
-
+        holder.textViewBookNumber.setText(data.getBookNumber());
+        holder.textViewBookTitle.setText(data.getBookTitle());
+        holder.textViewBookAuthor.setText(data.getBookAuthor());
+        holder.textViewBookSynopsis.setText(data.getBookSynopsis());
+        holder.textViewBookRating.setText(data.getBookRating());
         holder.buttonCheck.setOnClickListener(new View.OnClickListener() {
             @Override
-                public void onClick(View v){
+            public void onClick(View v){
                 Toast.makeText(mCtx,"ENTRY NUMBER " + position ,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(mCtx, bookInfoPage_v2.class);
+                intent.putExtra("bookSynopsis", dataList.get(position).getBookSynopsis());
                 mCtx.startActivity(intent);
             }
         });
@@ -65,23 +66,27 @@ public class BookSearchResultsAdapter extends RecyclerView.Adapter<BookSearchRes
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return dataList.size();
     }
 
-    class ProductViewHolder extends RecyclerView.ViewHolder {
+    class dataListViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewTitle, textViewShortDesc, textViewRating, textViewPrice;
-        ImageView imageView;
+        TextView textViewBookNumber;
+        TextView textViewBookTitle;
+        TextView textViewBookAuthor;
+        TextView textViewBookSynopsis;
+        TextView textViewBookRating;
         Button buttonCheck;
 
-        public ProductViewHolder(View itemView) {
+        public dataListViewHolder(View itemView) {
             super(itemView);
 
+            this.textViewBookNumber = (TextView) itemView.findViewById(R.id.bookNumber);
+            this.textViewBookTitle = (TextView) itemView.findViewById(R.id.bookTitle);
+            this.textViewBookAuthor = (TextView) itemView.findViewById(R.id.bookAuthor);
+            this.textViewBookSynopsis = (TextView) itemView.findViewById(R.id.bookSynopsis);
+            this.textViewBookRating = (TextView) itemView.findViewById(R.id.bookRating);
             buttonCheck = (Button) itemView.findViewById(R.id.Check);
-            textViewTitle = itemView.findViewById(R.id.textViewTitle);
-            textViewShortDesc = itemView.findViewById(R.id.textViewShortDesc);
-            textViewPrice = itemView.findViewById(R.id.textViewPrice);
-            imageView = itemView.findViewById(R.id.imageView);
         }
     }
 }

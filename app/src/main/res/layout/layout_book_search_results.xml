@@ -42,11 +42,12 @@
                     -->
 
                     <ImageButton
-                        android:id="@+id/imageView"
+                        android:id="@+id/bookImage"
                         android:layout_width="wrap_content"
                         android:layout_height="266dp"
                         android:padding="4dp"
-                        android:scaleType="fitXY" />
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/book_sample_1" />
 
                 </LinearLayout>
 
@@ -63,11 +64,11 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textViewTitle"
+                            android:id="@+id/bookTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:layout_toRightOf="@id/imageView"
+                            android:layout_toRightOf="@id/bookImage"
                             android:fontFamily="@font/opensansregular"
                             android:maxLines="2"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
@@ -75,24 +76,50 @@
                             android:textSize="18sp" />
 
                         <TextView
-                            android:id="@+id/textViewShortDesc"
+                            android:id="@+id/bookNumber"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/textViewTitle"
-                            android:layout_toRightOf="@id/imageView"
+                            android:layout_marginTop="8dp"
+                            android:layout_toRightOf="@id/bookImage"
+                            android:fontFamily="@font/opensansregular"
+                            android:maxLines="2"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/bookAuthor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/bookTitle"
+                            android:layout_toRightOf="@id/bookImage"
                             android:fontFamily="freeroadlight"
                             android:maxLines="1"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textSize="14sp" />
 
+                        <TextView
+                            android:id="@+id/bookRating"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/bookTitle"
+                            android:layout_toRightOf="@id/bookImage"
+                            android:fontFamily="freeroadlight"
+                            android:maxLines="1"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textSize="14sp"
+                            android:visibility="gone"/>
+
                         <RatingBar
-                            android:id="@+id/rating"
+                            android:id="@+id/bookRatingStars"
                             style="@style/Widget.AppCompat.RatingBar.Indicator"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:isIndicator="true"
                             android:numStars="5" />
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -109,7 +136,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/textViewPrice"
                                 android:layout_marginTop="4dp"
-                                android:layout_toRightOf="@id/imageView"
+                                android:layout_toRightOf="@id/bookImage"
                                 android:fontFamily="@font/opensansbold"
                                 android:text="Synopsis"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
@@ -117,18 +144,18 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/lorem_ipsum"
+                                android:id="@+id/bookSynopsis"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/textViewPrice"
                                 android:layout_marginBottom="4dp"
                                 android:layout_marginTop="4dp"
-                                android:layout_toRightOf="@id/imageView"
+                                android:layout_toRightOf="@id/bookImage"
                                 android:autoText="false"
                                 android:ellipsize="end"
                                 android:fontFamily="@font/opensanslight"
                                 android:maxLength="250"
-                                android:maxLines="3"
+                                android:maxLines="4"
                                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                                 android:textColor="@color/fontColor1"
@@ -140,9 +167,9 @@
                             android:id="@+id/textViewPrice"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_below="@id/textViewShortDesc"
+                            android:layout_below="@id/bookAuthor"
                             android:layout_marginTop="8dp"
-                            android:layout_toRightOf="@id/imageView"
+                            android:layout_toRightOf="@id/bookImage"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                             android:textStyle="bold"
                             android:visibility="invisible" />
@@ -158,6 +185,7 @@
                                 style="@style/AppTheme.RoundedCornerMaterialButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="2dp"
                                 android:background="@color/primaryLight"
                                 android:enabled="true"
                                 android:text="Check" />
@@ -167,6 +195,7 @@
                                 style="@style/AppTheme.RoundedCornerMaterialButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="2dp"
                                 android:layout_marginStart="16dp"
                                 android:background="@color/primaryLight"
                                 android:enabled="true"

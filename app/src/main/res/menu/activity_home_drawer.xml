@@ -11,15 +11,15 @@
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Library" />
+            android:title="Placeholder" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Bookmarks" />
+            android:title="Placeholder" />
         <item
             android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:icon="@drawable/ic_account_box_black_24px"
+            android:title="Profile Settings" />
     </group>
 
     <item android:title="E-Books">

@@ -26,6 +26,10 @@ public class bookInfoPage_v2 extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //INTENT PASSED BY ANOTHER ACTIVITY TEST
+        final String bookSynopsis = getIntent().getExtras().getString("bookSynopsis");
+        //INTENT PASSED BY ANOTHER ACTIVITY TEST
+
         // ACTION BAR CUSTOMIZATION
         setTitle("Book Information");
         // ACTION BAR CUSTOMIZATION
@@ -62,6 +66,11 @@ public class bookInfoPage_v2 extends AppCompatActivity
                 buttonBookmark.setText("Bookmarked!");
                 buttonBookmark.setTextColor(Color.BLACK);
                 buttonBookmark.setBackgroundColor(Color.YELLOW);
+
+                //RECIEVING THE INTENT TEST
+                //Toast.makeText(getApplicationContext(), bookSynopsis ,Toast.LENGTH_SHORT).show();
+                //RECIEVING THE INTENT TEST
+
                 /*
                 int favorite = 0;
                 if(favorite == 0)

@@ -1,37 +1,40 @@
 package com.project.adrianangub.project_adesua;
 
 public class BookSearchResultsDataModel {
-    private int id;
-    private String title;
-    private String shortdesc;
-    private double price;
-    private int image;
 
-    public BookSearchResultsDataModel(int id, String title, String shortdesc, double price, int image) {
-        this.id = id;
-        this.title = title;
-        this.shortdesc = shortdesc;
-        this.price = price;
-        this.image = image;
+    String bookNumber;
+    String bookTitle;
+    String bookAuthor;
+    String bookSynopsis;
+    String bookRating;
+
+    public BookSearchResultsDataModel(String bookNumber, String bookTitle, String bookAuthor, String bookSynopsis, String bookRating)
+    {
+        this.bookNumber = bookNumber;
+        this.bookTitle = bookTitle;
+        this.bookAuthor = bookAuthor;
+        this.bookSynopsis = bookSynopsis;
+        this.bookRating = bookRating;
     }
 
-    public int getId() {
-        return id;
+    public String getBookNumber()
+    {
+        return bookNumber;
     }
-
-    public String getTitle() {
-        return title;
+    public String getBookTitle()
+    {
+        return bookTitle;
     }
-
-    public String getShortdesc() {
-        return shortdesc;
+    public String getBookAuthor()
+    {
+        return bookAuthor;
     }
-
-    public double getPrice() {
-        return price;
+    public String getBookSynopsis()
+    {
+        return bookSynopsis;
     }
-
-    public int getImage() {
-        return image;
+    public String getBookRating()
+    {
+        return bookRating;
     }
 }

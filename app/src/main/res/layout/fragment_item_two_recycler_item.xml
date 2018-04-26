@@ -27,7 +27,7 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/text"
+                android:id="@+id/bookNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -39,20 +39,20 @@
                 android:visibility="gone" />
 
             <TextView
-                android:id="@+id/comment"
+                android:id="@+id/bookTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_toLeftOf="@+id/date"
                 android:layout_toRightOf="@+id/text"
                 android:ellipsize="end"
-                android:fontFamily="@font/opensansregular"
+                android:fontFamily="@font/opensanssemibold"
                 android:maxLines="1"
                 android:text="comment"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/bookAuthor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -61,6 +61,18 @@
                 android:fontFamily="@font/opensansitalic"
                 android:text="Author"
                 android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/bookRating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/opensansitalic"
+                android:text="Author"
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -72,11 +84,10 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/synopsis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewPrice"
-                android:layout_toRightOf="@id/imageView"
+                android:layout_toRightOf="@id/bookImage"
                 android:fontFamily="@font/opensansbold"
                 android:text="Synopsis"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
@@ -84,11 +95,11 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/lorem_ipsum"
+                android:id="@+id/bookSynopsis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewPrice"
-                android:layout_toRightOf="@id/imageView"
+                android:layout_toRightOf="@id/bookImage"
                 android:ellipsize="end"
                 android:fontFamily="@font/opensanslight"
                 android:maxLines="5"

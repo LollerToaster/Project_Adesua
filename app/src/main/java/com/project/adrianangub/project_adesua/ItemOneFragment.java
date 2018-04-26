@@ -27,9 +27,8 @@ public class ItemOneFragment extends Fragment {
         return fragment;
     }
 
-    private TextView mTextViewEmpty, seeMore;
+    private TextView seeMore, seeMore2;
     private ProgressBar mProgressBarLoading;
-    private ImageView mImageViewEmpty;
     private RecyclerView mRecyclerView,mRecyclerView2;
     private ListAdapter mListadapter;
 
@@ -38,28 +37,27 @@ public class ItemOneFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    //a list to store all the products
-    //List<ItemOneFragmentModel> productList;
-
-    //the recyclerview
-    RecyclerView recyclerView;
+    //REFERENCE
+    //https://medium.com/@Pang_Yao/android-fragment-use-recyclerview-cardview-4bc10beac446
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_item_one, container, false);
-
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         mProgressBarLoading = (ProgressBar)view.findViewById(R.id.progressBarLoading);
 
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        //DANGER====================================================================================
+        mRecyclerView2 = (RecyclerView) view.findViewById(R.id.recyclerView2);
+        final LinearLayoutManager layoutManager2 = new LinearLayoutManager(getActivity());
+        layoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
+        mRecyclerView2.setLayoutManager(layoutManager2);
 
-        //DANGER====================================================================================
 
+        //SEE MORE SECTION =========================================================================
         seeMore = (TextView)view.findViewById(R.id.seeMore);
         seeMore.setOnClickListener(new View.OnClickListener() {
 
@@ -71,19 +69,37 @@ public class ItemOneFragment extends Fragment {
             }
         });
 
+        seeMore2 = (TextView)view.findViewById(R.id.seeMore2);
+        seeMore2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SearchResults.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                getContext().startActivity(intent);
+                Toast.makeText(getActivity(), "See more was clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //SEE MORE SECTION =========================================================================
+
         ArrayList data = new ArrayList<ItemOneFragmentDataModel>();
-        for (int i = 0; i < ItemOneFragmentDataInformation.id.length; i++)
+        for (int i = 0; i < ItemOneFragmentDataInformation.bookNumber.length; i++)
         {
             data.add(
                     new ItemOneFragmentDataModel
                             (
-                                    ItemOneFragmentDataInformation.id[i],
-                                    ItemOneFragmentDataInformation.textArray[i],
-                                    ItemOneFragmentDataInformation.dateArray[i]
+                                    ItemOneFragmentDataInformation.bookNumber[i],
+                                    ItemOneFragmentDataInformation.bookTitleArray[i],
+                                    ItemOneFragmentDataInformation.bookAuthorArray[i],
+                                    ItemOneFragmentDataInformation.bookSynopsisArray[i],
+                                    ItemOneFragmentDataInformation.bookRatingArray[i]
                             ));
         }
 
+
+
         mListadapter = new ListAdapter(data);
+        mRecyclerView2.setAdapter(mListadapter);
         mRecyclerView.setAdapter(mListadapter);
         return view;
     }
@@ -99,16 +115,20 @@ public class ItemOneFragment extends Fragment {
 
         public class ViewHolder extends RecyclerView.ViewHolder
         {
-            TextView textViewText;
-            TextView textViewComment;
-            TextView textViewDate;
+            TextView textViewBookNumber;
+            TextView textViewBookTitle;
+            TextView textViewBookAuthor;
+            TextView textViewBookSynopsis;
+            TextView textViewBookRating;
 
             public ViewHolder(View itemView)
             {
                 super(itemView);
-                this.textViewText = (TextView) itemView.findViewById(R.id.text);
-                this.textViewComment = (TextView) itemView.findViewById(R.id.comment);
-                this.textViewDate = (TextView) itemView.findViewById(R.id.date);
+                this.textViewBookNumber = (TextView) itemView.findViewById(R.id.bookNumber);
+                this.textViewBookTitle = (TextView) itemView.findViewById(R.id.bookTitle);
+                this.textViewBookAuthor = (TextView) itemView.findViewById(R.id.bookAuthor);
+                this.textViewBookSynopsis = (TextView) itemView.findViewById(R.id.bookSynopsis);
+                this.textViewBookRating = (TextView) itemView.findViewById(R.id.bookRating);
             }
         }
 
@@ -124,17 +144,23 @@ public class ItemOneFragment extends Fragment {
         @Override
         public void onBindViewHolder(ListAdapter.ViewHolder holder, final int position)
         {
-            holder.textViewText.setText(dataList.get(position).getText());
-            holder.textViewComment.setText(dataList.get(position).getComment());
-            holder.textViewDate.setText(dataList.get(position).getDate());
+            holder.textViewBookNumber.setText(dataList.get(position).getBookNumber());
+            holder.textViewBookTitle.setText(dataList.get(position).getBookTitle());
+            holder.textViewBookAuthor.setText(dataList.get(position).getBookAuthor());
+            holder.textViewBookSynopsis.setText(dataList.get(position).getBookSynopsis());
+            holder.textViewBookRating.setText(dataList.get(position).getBookRating());
 
             holder.itemView.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
-                    Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Item  is clicked.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getContext(), bookInfoPage_v2.class);
+                    //PASSING VALUES TO INTENT SECTION
+                    intent.putExtra("bookSynopsis", dataList.get(position).getBookSynopsis());
+                    //PASSING VALUES TO INTENT SECTION
                     getContext().startActivity(intent);
 
                     //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);

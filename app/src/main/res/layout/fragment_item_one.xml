@@ -37,7 +37,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/textView1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
@@ -55,12 +55,12 @@
                         android:layout_margin="8dp"
                         android:layout_weight="1"
                         android:clickable="true"
+                        android:fontFamily="@font/opensanssemibold"
                         android:gravity="right|center|end"
                         android:onClick="onClick"
                         android:paddingEnd="8dp"
                         android:paddingRight="8dp"
-                        android:text="See More"
-                        android:textColor="#007bff" />
+                        android:text="See More" />
                 </LinearLayout>
 
                 <android.support.v7.widget.RecyclerView
@@ -83,7 +83,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/newReleases"
-                android:layout_margin="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
                 android:background="#DCDCDC"
                 android:orientation="vertical">
 
@@ -93,7 +97,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
@@ -101,11 +105,11 @@
                         android:fontFamily="@font/opensansregular"
                         android:paddingLeft="8dp"
                         android:paddingStart="8dp"
-                        android:text="New Releases"
+                        android:text="2nd RecyclerView"
                         android:textSize="24sp" />
 
                     <TextView
-                        android:id="@+id/seeMore"
+                        android:id="@+id/seeMore2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
@@ -115,8 +119,7 @@
                         android:onClick="onClick"
                         android:paddingEnd="8dp"
                         android:paddingRight="8dp"
-                        android:text="See More"
-                        android:textColor="#007bff" />
+                        android:text="See More" />
                 </LinearLayout>
 
                 <android.support.v7.widget.RecyclerView

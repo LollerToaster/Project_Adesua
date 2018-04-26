@@ -6,29 +6,39 @@ package com.project.adrianangub.project_adesua;
 
 public class ItemOneFragmentDataModel
 {
-    String text;
-    String comment;
-    String date;
+    String bookNumber;
+    String bookTitle;
+    String bookAuthor;
+    String bookSynopsis;
+    String bookRating;
 
-    public ItemOneFragmentDataModel(String text, String comment, String date)
+    public ItemOneFragmentDataModel(String bookNumber, String bookTitle, String bookAuthor, String bookSynopsis, String bookRating)
     {
-        this.text = text;
-        this.comment = comment;
-        this.date = date;
+        this.bookNumber = bookNumber;
+        this.bookTitle = bookTitle;
+        this.bookAuthor = bookAuthor;
+        this.bookSynopsis = bookSynopsis;
+        this.bookRating = bookRating;
     }
 
-    public String getText()
+    public String getBookNumber()
     {
-        return text;
+        return bookNumber;
     }
-
-    public String getComment()
+    public String getBookTitle()
     {
-        return comment;
+        return bookTitle;
     }
-
-    public String getDate()
+    public String getBookAuthor()
     {
-        return date;
+        return bookAuthor;
+    }
+    public String getBookSynopsis()
+    {
+        return bookSynopsis;
+    }
+    public String getBookRating()
+    {
+        return bookRating;
     }
 }

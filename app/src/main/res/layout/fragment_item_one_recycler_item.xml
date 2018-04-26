@@ -8,50 +8,68 @@
     app:cardBackgroundColor="@color/primary">
 
     <LinearLayout
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/newReleases"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:background="@color/primary"
         android:orientation="vertical"
-        android:paddingTop="8dp">
+        android:paddingTop="16dp"
+        android:weightSum="4">
 
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="200dp"
-            android:layout_height="266dp"
+            android:layout_width="216dp"
+            android:layout_height="288dp"
             android:layout_gravity="center"
-            android:padding="8dp"
+            android:layout_weight="3"
             app:srcCompat="@drawable/book_sample_1" />
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/bookNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/imageView5"
             android:layout_gravity="center"
             android:fontFamily="@font/opensansregular"
-            android:text="Title"
+            android:text="Book Number"
             android:textColor="@color/fontColor1"
             android:textSize="16sp"
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/comment"
+            android:id="@+id/bookTitle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@+id/imageView5"
             android:layout_gravity="center"
             android:layout_toLeftOf="@+id/date"
             android:layout_toRightOf="@+id/text"
+            android:layout_weight="1"
             android:ellipsize="end"
             android:fontFamily="@font/opensansregular"
             android:maxLines="1"
-            android:text="comment"
+            android:text="Book Title"
             android:textColor="@color/fontColor1"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/bookAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/imageView5"
+            android:layout_gravity="center"
+            android:layout_marginBottom="4dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/opensansitalic"
+            android:text="Book Author"
+            android:textColor="@color/fontColor1"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/bookSynopsis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -59,9 +77,24 @@
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/opensansitalic"
-            android:text="Author"
+            android:text="Book Author"
             android:textColor="@color/fontColor1"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/bookRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/imageView5"
+            android:layout_gravity="center"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/opensansitalic"
+            android:text="Book Author"
+            android:textColor="@color/fontColor1"
+            android:textSize="12sp"
+            android:visibility="gone" />
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

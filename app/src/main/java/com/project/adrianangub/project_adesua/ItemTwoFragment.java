@@ -25,22 +25,14 @@ public class ItemTwoFragment extends Fragment {
         return fragment;
     }
 
-    private TextView mTextViewEmpty;
     private ProgressBar mProgressBarLoading;
-    private ImageView mImageViewEmpty;
-    private RecyclerView mRecyclerView,mRecyclerView2;
+    private RecyclerView mRecyclerView;
     private ListAdapter mListadapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
-    //a list to store all the products
-    //List<ItemOneFragmentModel> productList;
-
-    //the recyclerview
-    RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -54,22 +46,21 @@ public class ItemTwoFragment extends Fragment {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        //DividerItemDecoration itemDecor = new DividerItemDecoration(getContext(), VERTICAL);
-        //recyclerView.addItemDecoration(itemDecor);
-
         mRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(
                 getContext()
         ));
 
         ArrayList data = new ArrayList<ItemTwoFragmentDataInformation>();
-        for (int i = 0; i < ItemTwoFragmentDataInformation.id.length; i++)
+        for (int i = 0; i < ItemTwoFragmentDataInformation.bookNumber.length; i++)
         {
             data.add(
                     new ItemTwoFragmentDataModel
                             (
-                                    ItemTwoFragmentDataInformation.id[i],
-                                    ItemTwoFragmentDataInformation.textArray[i],
-                                    ItemTwoFragmentDataInformation.dateArray[i]
+                                    ItemTwoFragmentDataInformation.bookNumber[i],
+                                    ItemTwoFragmentDataInformation.bookTitleArray[i],
+                                    ItemTwoFragmentDataInformation.bookAuthorArray[i],
+                                    ItemTwoFragmentDataInformation.bookSynopsisArray[i],
+                                    ItemTwoFragmentDataInformation.bookRatingArray[i]
                             ));
         }
 
@@ -90,16 +81,20 @@ public class ItemTwoFragment extends Fragment {
 
         public class ViewHolder extends RecyclerView.ViewHolder
         {
-            TextView textViewText;
-            TextView textViewComment;
-            TextView textViewDate;
+            TextView textViewBookNumber;
+            TextView textViewBookTitle;
+            TextView textViewBookAuthor;
+            TextView textViewBookSynopsis;
+            TextView textViewBookRating;
 
             public ViewHolder(View itemView)
             {
                 super(itemView);
-                this.textViewText = (TextView) itemView.findViewById(R.id.text);
-                this.textViewComment = (TextView) itemView.findViewById(R.id.comment);
-                this.textViewDate = (TextView) itemView.findViewById(R.id.date);
+                this.textViewBookNumber = (TextView) itemView.findViewById(R.id.bookNumber);
+                this.textViewBookTitle = (TextView) itemView.findViewById(R.id.bookTitle);
+                this.textViewBookAuthor = (TextView) itemView.findViewById(R.id.bookAuthor);
+                this.textViewBookSynopsis = (TextView) itemView.findViewById(R.id.bookSynopsis);
+                this.textViewBookRating = (TextView) itemView.findViewById(R.id.bookRating);
             }
         }
 
@@ -115,9 +110,11 @@ public class ItemTwoFragment extends Fragment {
         @Override
         public void onBindViewHolder(ListAdapter.ViewHolder holder, final int position)
         {
-            holder.textViewText.setText(dataList.get(position).getText());
-            holder.textViewComment.setText(dataList.get(position).getComment());
-            holder.textViewDate.setText(dataList.get(position).getDate());
+            holder.textViewBookNumber.setText(dataList.get(position).getBookNumber());
+            holder.textViewBookTitle.setText(dataList.get(position).getBookTitle());
+            holder.textViewBookAuthor.setText(dataList.get(position).getBookAuthor());
+            holder.textViewBookSynopsis.setText(dataList.get(position).getBookSynopsis());
+            holder.textViewBookRating.setText(dataList.get(position).getBookRating());
 
             holder.itemView.setOnClickListener(new View.OnClickListener()
             {
@@ -126,10 +123,8 @@ public class ItemTwoFragment extends Fragment {
                 {
                     Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getContext(), bookInfoPage_v2.class);
+                    intent.putExtra("bookSynopsis", dataList.get(position).getBookSynopsis());
                     getContext().startActivity(intent);
-
-                    //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-
                 }
             });
         }
