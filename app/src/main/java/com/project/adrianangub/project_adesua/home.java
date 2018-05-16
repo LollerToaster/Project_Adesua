@@ -93,10 +93,10 @@ public class home extends AppCompatActivity
         */
         //Toast.makeText(getApplicationContext(), user.getUsername(), Toast.LENGTH_SHORT).show();
         //Toast.makeText(getApplicationContext(), user.getPassword(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(), user.getUid(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(), user.getDesc(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(), user.getMeta(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(), user.getStat(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), user.getUid(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), user.getDesc(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), user.getMeta(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), user.getStat(), Toast.LENGTH_LONG).show();
 
         //when the user presses logout button
         //calling the logout method
@@ -109,6 +109,7 @@ public class home extends AppCompatActivity
             }
         });
         */
+
 
 
         // BOTTOM NAV ==============================================================================
@@ -247,7 +248,7 @@ public class home extends AppCompatActivity
             finish();
             SharedPrefManager.getInstance(getApplicationContext()).logout();
             //startActivity(new Intent(home.this, SearchActivity.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();
         }

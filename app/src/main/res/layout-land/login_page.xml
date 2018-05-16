@@ -29,29 +29,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="268dp"
-            android:layout_marginRight="268dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="192dp"
+            android:layout_marginRight="192dp"
+            android:layout_marginTop="12dp"
             android:background="@color/primary"
             android:gravity="center_vertical|center_horizontal"
             android:orientation="vertical"
-            android:paddingLeft="56dp"
-            android:paddingRight="56dp">
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp">
 
-            <TextView
-                android:id="@+id/appName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:layout_width="128dp"
+                android:layout_height="128dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="36dp"
-                android:clickable="false"
-                android:contentDescription="insert"
-                android:fontFamily="sans-serif-condensed"
                 android:gravity="center"
-                android:text="[ Insert Logo Here ]"
-                android:textColor="@color/fontColor1"
-                android:textSize="20sp" />
+                android:src="@drawable/adesua" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,15 +70,15 @@
                     android:inputType="text"
                     android:textColor="@color/fontColor1"
                     android:textColorLink="@color/fontColor1"
-                    android:textSize="20sp"
+                    android:textSize="12sp"
                     app:met_baseColor="@color/fontColor1"
                     app:met_clearButton="true"
                     app:met_floatingLabel="highlight"
                     app:met_floatingLabelAlwaysShown="false"
                     app:met_floatingLabelAnimating="true"
                     app:met_floatingLabelText="Username"
-                    app:met_floatingLabelTextSize="16dp"
-                    app:met_iconPadding="16dp"
+                    app:met_floatingLabelTextSize="8dp"
+                    app:met_iconPadding="8dp"
                     app:met_primaryColor="@android:color/white"
                     app:met_underlineColor="@color/common_google_signin_btn_text_dark_focused" />
 
@@ -98,15 +91,15 @@
                     android:inputType="textPassword"
                     android:textColor="@color/fontColor1"
                     android:textColorLink="@color/fontColor1"
-                    android:textSize="20sp"
+                    android:textSize="12sp"
                     app:met_baseColor="@color/fontColor1"
                     app:met_clearButton="true"
                     app:met_floatingLabel="highlight"
                     app:met_floatingLabelAlwaysShown="false"
                     app:met_floatingLabelAnimating="true"
                     app:met_floatingLabelText="Password"
-                    app:met_floatingLabelTextSize="16dp"
-                    app:met_iconPadding="16dp"
+                    app:met_floatingLabelTextSize="8dp"
+                    app:met_iconPadding="8dp"
                     app:met_primaryColor="@android:color/white"
                     app:met_underlineColor="@color/common_google_signin_btn_text_dark_focused" />
 
@@ -167,7 +160,7 @@
                 android:gravity="center"
                 android:text="Login"
                 android:textColor="#ffffff"
-                android:textSize="20sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -191,7 +184,7 @@
                     android:autoText="false"
                     android:text="or"
                     android:textColor="@color/fontColor1"
-                    android:textSize="20sp" />
+                    android:textSize="12sp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -214,14 +207,14 @@
                 android:gravity="center"
                 android:text="Forgot Password?"
                 android:textColor="@color/fontColor1"
-                android:textSize="20sp"
+                android:textSize="12sp"
                 android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/footer2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:contentDescription="Footer"
                 android:gravity="bottom|center"
                 android:text="Placeholder ® 2017-2018"

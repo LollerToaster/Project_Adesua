@@ -30,10 +30,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="128dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            android:layout_marginTop="128dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="32dp"
             android:background="@color/primary"
             android:gravity="center_vertical|center_horizontal"
             android:orientation="vertical"
@@ -43,10 +43,11 @@
             android:paddingTop="12dp">
 
             <ImageView
-                android:layout_width="140dp"
-                android:layout_height="140dp"
+                android:layout_width="256dp"
+                android:layout_height="256dp"
                 android:layout_gravity="center"
-                android:gravity="center" />
+                android:gravity="center"
+                android:src="@drawable/adesua" />
 
             <LinearLayout
                 android:layout_width="match_parent"
