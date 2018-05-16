@@ -14,12 +14,15 @@ public class SharedPrefManager {
 
     //the constants
     private static final String SHARED_PREF_NAME = "userSharedPreference";
-    private static final String KEY_USERNAME = "keyUsername";
-    private static final String KEY_PASSWORD = "keyPassword";
     private static final String KEY_UID = "keyUid";
     private static final String KEY_DESC = "keyDesc";
     private static final String KEY_META = "keyMeta";
     private static final String KEY_STAT = "keyDesc";
+    private static final String KEY_SCHOOLID = "keySchoolId";
+    private static final String KEY_SCHOOLNAME = "keySchoolName";
+    private static final String KEY_SCHOOLADDRESS = "keySchoolAddress";
+    private static final String KEY_SCHOOLACRYN = "keySchoolAcryn";
+    private static final String KEY_SCHOOLNUM = "keySchoolNum";
 
     private static SharedPrefManager mInstance;
     private static Context mCtx;
@@ -38,15 +41,16 @@ public class SharedPrefManager {
     public void sharedResponse(Users user) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        //editor.putString(KEY_USERNAME, user.getUsername());
-        //editor.putString(KEY_PASSWORD, user.getPassword());
         editor.putString(KEY_UID, user.getUid());
         editor.putString(KEY_DESC, user.getDesc());
         editor.putString(KEY_META, user.getMeta());
         editor.putString(KEY_STAT, user.getStat());
+        editor.putString(KEY_SCHOOLID, user.getSchoolid());
+        editor.putString(KEY_SCHOOLNAME, user.getSchoolname());
+        editor.putString(KEY_SCHOOLADDRESS, user.getSchooladdress());
+        editor.putString(KEY_SCHOOLACRYN, user.getSchoolacryn());
+        editor.putString(KEY_SCHOOLNUM, user.getSchoolnum());
         //editor.putString("imagepath","/sdcard/imh.jpeg");
-        //editor.putString(KEY_FIRST_NAME, user.getStat());
-        //editor.putString(KEY_LAST_NAME, user.getStat());
         editor.apply();
     }
 
@@ -61,12 +65,15 @@ public class SharedPrefManager {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return new Users(
                 //sharedPreferences.getInt(KEY_ID, -1),
-                //sharedPreferences.getString(KEY_USERNAME, null),
-                //sharedPreferences.getString(KEY_PASSWORD, null),
                 sharedPreferences.getString(KEY_UID, null),
                 sharedPreferences.getString(KEY_DESC, null),
                 sharedPreferences.getString(KEY_META, null),
-                sharedPreferences.getString(KEY_STAT, null)
+                sharedPreferences.getString(KEY_STAT, null),
+                sharedPreferences.getString(KEY_SCHOOLID, null),
+                sharedPreferences.getString(KEY_SCHOOLNAME, null),
+                sharedPreferences.getString(KEY_SCHOOLADDRESS, null),
+                sharedPreferences.getString(KEY_SCHOOLACRYN, null),
+                sharedPreferences.getString(KEY_SCHOOLNUM, null)
         );
     }
 

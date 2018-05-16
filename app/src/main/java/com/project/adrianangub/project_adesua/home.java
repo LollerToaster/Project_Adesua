@@ -97,6 +97,11 @@ public class home extends AppCompatActivity
         Toast.makeText(getApplicationContext(), user.getDesc(), Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), user.getMeta(), Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), user.getStat(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), user.getSchoolid(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), user.getSchoolname(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), user.getSchooladdress(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), user.getSchoolacryn(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), user.getSchoolnum(), Toast.LENGTH_LONG).show();
 
         //when the user presses logout button
         //calling the logout method

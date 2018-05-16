@@ -74,16 +74,30 @@ public class LoginPage extends AppCompatActivity {
                         try {
                             //getting the user from the response
                             JSONObject userJson = new JSONObject(response);
+                            JSONObject schoolJson = userJson.getJSONObject("school");
+
+                            Log.d("debug", "SchoolID : " + schoolJson.getString("uid"));
+                            Log.d("debug", "SchoolID : " + schoolJson.getString("desc"));
+                            Log.d("debug", "SchoolID : " + schoolJson.getString("meta"));
+                            Log.d("debug", "SchoolID : " + schoolJson.getString("stat"));
+                            Log.d("debug", "SchoolID : " + schoolJson.getString("schoolID"));
+                            Log.d("debug", "schoolName : " + schoolJson.getString("schoolName"));
+                            Log.d("debug", "schoolAddress : " + schoolJson.getString("schoolAddress"));
+                            Log.d("debug", "schoolAcryn : " + schoolJson.getString("schoolAcryn"));
+                            Log.d("debug", "schoolNum : " + schoolJson.getString("schoolNum"));
 
                             //creating a new user object
                             Users user = new Users(
                                     //userJson.getInt("id"),
-                                    //userJson.getString(username),
-                                    //userJson.getString(password),
                                     userJson.getString("uid"),
                                     userJson.getString("desc"),
                                     userJson.getString("meta"),
-                                    userJson.getString("stat")
+                                    userJson.getString("stat"),
+                                    schoolJson.getString("schoolID"),
+                                    schoolJson.getString("schoolName"),
+                                    schoolJson.getString("schoolAddress"),
+                                    schoolJson.getString("schoolAcryn"),
+                                    schoolJson.getString("schoolNum")
                             );
                             //storing the user in shared preferences
                             SharedPrefManager.getInstance(getApplicationContext()).sharedResponse(user);
