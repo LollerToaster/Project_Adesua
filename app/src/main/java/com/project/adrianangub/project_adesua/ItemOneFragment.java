@@ -155,8 +155,8 @@ public class ItemOneFragment extends Fragment {
                 @Override
                 public void onClick(View v)
                 {
-                    //Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getActivity(), "Item  is clicked.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "Item  is clicked.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getContext(), bookInfoPage_v2.class);
                     //PASSING VALUES TO INTENT SECTION
                     intent.putExtra("bookSynopsis", dataList.get(position).getBookSynopsis());

@@ -35,8 +35,8 @@ public class SearchActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     // MultiAutoCompleteTextView Essentials=========================================================
-    MultiAutoCompleteTextView MultipleValuesholdGenre;
-    String[] Genres = { "Action","Math","English","Wololo" };
+    //MultiAutoCompleteTextView MultipleValuesholdGenre;
+    //String[] Genres = { "Action","Math","English","Wololo" };
 
     //MultiAutoCompleteTextView MultipleValuesholdTitle;
     //String[] Titles = { "Your mom fat","Gay","Brother","Ecks d" };
@@ -78,11 +78,11 @@ public class SearchActivity extends AppCompatActivity
         // MultiAutoCompleteTextView Essential
 
         //Genres
-        MultipleValuesholdGenre = (MaterialMultiAutoCompleteTextView)findViewById(R.id.genre);
-        ArrayAdapter<String> Genre = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Genres);
-        MultipleValuesholdGenre.setAdapter(Genre);
-        MultipleValuesholdGenre.setThreshold(2);
-        MultipleValuesholdGenre.setTokenizer(new MaterialMultiAutoCompleteTextView.CommaTokenizer());
+        //MultipleValuesholdGenre = (MaterialMultiAutoCompleteTextView)findViewById(R.id.genre);
+        //ArrayAdapter<String> Genre = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Genres);
+        //MultipleValuesholdGenre.setAdapter(Genre);
+        //MultipleValuesholdGenre.setThreshold(2);
+        //MultipleValuesholdGenre.setTokenizer(new MaterialMultiAutoCompleteTextView.CommaTokenizer());
 
         //Title
         //MultipleValuesholdTitle = (MaterialMultiAutoCompleteTextView)findViewById(R.id.genre);
@@ -101,8 +101,6 @@ public class SearchActivity extends AppCompatActivity
         //DANGER ===================================================================================
     }
 
-
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -110,6 +108,7 @@ public class SearchActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
     }
 
@@ -147,7 +146,7 @@ public class SearchActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             startActivity(new Intent(SearchActivity.this, home.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Returning to home worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();;
             return true;
         } else if (id == R.id.nav_camera) {
@@ -155,6 +154,8 @@ public class SearchActivity extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_manage) {
+            startActivity(new Intent(SearchActivity.this, profileSettingsActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         } else if (id == R.id.nav_share) {
 

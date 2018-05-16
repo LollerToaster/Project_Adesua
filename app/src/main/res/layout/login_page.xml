@@ -42,19 +42,11 @@
             android:paddingRight="56dp"
             android:paddingTop="12dp">
 
-            <TextView
-                android:id="@+id/appName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:layout_width="140dp"
+                android:layout_height="140dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="72dp"
-                android:clickable="false"
-                android:contentDescription="insert"
-                android:fontFamily="sans-serif-condensed"
-                android:gravity="center"
-                android:text="[ Insert Logo Here ]"
-                android:textColor="@color/fontColor1"
-                android:textSize="20sp" />
+                android:gravity="center" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -235,8 +227,8 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="false"
             android:layout_alignParentStart="false"
             android:layout_alignParentTop="false"

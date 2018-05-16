@@ -65,7 +65,10 @@ public class bookInfoPage_v2 extends AppCompatActivity
 
                 buttonBookmark.setText("Bookmarked!");
                 buttonBookmark.setTextColor(Color.BLACK);
-                buttonBookmark.setBackgroundColor(Color.YELLOW);
+                //buttonBookmark.setBackgroundColor("#FFC536");
+                buttonBookmark.setBackgroundColor(Color.parseColor("#FFC536"));
+
+
 
                 //RECIEVING THE INTENT TEST
                 //Toast.makeText(getApplicationContext(), bookSynopsis ,Toast.LENGTH_SHORT).show();
@@ -95,8 +98,8 @@ public class bookInfoPage_v2 extends AppCompatActivity
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(bookInfoPage_v2.this, MapsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
+                startActivity(new Intent(bookInfoPage_v2.this, MapsActivity.class));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
 
         });
@@ -114,6 +117,7 @@ public class bookInfoPage_v2 extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
     }
 
@@ -128,7 +132,8 @@ public class bookInfoPage_v2 extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.search_button) {
 
-            startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));;
+            startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -141,20 +146,27 @@ public class bookInfoPage_v2 extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            startActivity(new Intent(bookInfoPage_v2.this, home.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            startActivity(new Intent(bookInfoPage_v2.this, home.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Returning to home worked", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();;
             return true;
         } else if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_manage) {
+            startActivity(new Intent(bookInfoPage_v2.this, profileSettingsActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_search) {
-            startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

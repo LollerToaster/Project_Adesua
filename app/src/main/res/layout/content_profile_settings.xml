@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.project.adrianangub.project_adesua.SearchActivity"
-    tools:showIn="@layout/app_bar_search">
+    tools:context="com.project.adrianangub.project_adesua.profileSettingsActivity"
+    tools:showIn="@layout/app_bar_profile_settings">
 
     <ImageView
         android:id="@+id/imageView"
@@ -32,12 +32,13 @@
         android:padding="48dp">
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/bookTitleSearch"
+            android:id="@+id/previousProfileName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:focusable="false"
             android:fontFamily="sans-serif-condensed"
-            android:hint="Title"
+            android:hint="Lorem S. Ipsum"
             android:inputType="text"
             android:textColor="@color/fontColor1"
             android:textColorLink="@color/fontColor1"
@@ -45,9 +46,9 @@
             app:met_baseColor="@color/fontColor1"
             app:met_clearButton="true"
             app:met_floatingLabel="highlight"
-            app:met_floatingLabelAlwaysShown="false"
+            app:met_floatingLabelAlwaysShown="true"
             app:met_floatingLabelAnimating="true"
-            app:met_floatingLabelText="Title"
+            app:met_floatingLabelText="Previous Name"
             app:met_floatingLabelTextSize="16dp"
             app:met_iconPadding="16dp"
             app:met_primaryColor="@android:color/white"
@@ -56,12 +57,12 @@
         </com.rengwuxian.materialedittext.MaterialEditText>
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/bookAuthorSearch"
+            android:id="@+id/changeProfileName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:fontFamily="sans-serif-condensed"
-            android:hint="Author"
+            android:hint="New Name"
             android:inputType="text"
             android:textColor="@color/fontColor1"
             android:textColorLink="@color/fontColor1"
@@ -71,7 +72,7 @@
             app:met_floatingLabel="highlight"
             app:met_floatingLabelAlwaysShown="false"
             app:met_floatingLabelAnimating="true"
-            app:met_floatingLabelText="Author"
+            app:met_floatingLabelText="Name"
             app:met_floatingLabelTextSize="16dp"
             app:met_iconPadding="16dp"
             app:met_primaryColor="@android:color/white"
@@ -80,12 +81,13 @@
         </com.rengwuxian.materialedittext.MaterialEditText>
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/codeSearch"
+            android:id="@+id/previousProfileLastName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:focusable="false"
             android:fontFamily="sans-serif-condensed"
-            android:hint="Code"
+            android:hint="Lorem S. Ipsum"
             android:inputType="text"
             android:textColor="@color/fontColor1"
             android:textColorLink="@color/fontColor1"
@@ -93,9 +95,9 @@
             app:met_baseColor="@color/fontColor1"
             app:met_clearButton="true"
             app:met_floatingLabel="highlight"
-            app:met_floatingLabelAlwaysShown="false"
+            app:met_floatingLabelAlwaysShown="true"
             app:met_floatingLabelAnimating="true"
-            app:met_floatingLabelText="Code"
+            app:met_floatingLabelText="Previous Name"
             app:met_floatingLabelTextSize="16dp"
             app:met_iconPadding="16dp"
             app:met_primaryColor="@android:color/white"
@@ -104,12 +106,12 @@
         </com.rengwuxian.materialedittext.MaterialEditText>
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/classificationSearch"
+            android:id="@+id/changeProfileLastName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:fontFamily="sans-serif-condensed"
-            android:hint="Classification"
+            android:hint="New Name"
             android:inputType="text"
             android:textColor="@color/fontColor1"
             android:textColorLink="@color/fontColor1"
@@ -119,7 +121,7 @@
             app:met_floatingLabel="highlight"
             app:met_floatingLabelAlwaysShown="false"
             app:met_floatingLabelAnimating="true"
-            app:met_floatingLabelText="Classification"
+            app:met_floatingLabelText="Name"
             app:met_floatingLabelTextSize="16dp"
             app:met_iconPadding="16dp"
             app:met_primaryColor="@android:color/white"
@@ -128,9 +130,9 @@
         </com.rengwuxian.materialedittext.MaterialEditText>
 
         <Button
-            android:id="@+id/Button1"
+            android:id="@+id/button2"
             style="@style/AppTheme.RoundedCornerMaterialButton"
-            android:layout_width="256dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_below="@+id/classificationSearch"
             android:layout_marginTop="48dp"
@@ -140,7 +142,7 @@
             android:bottomRightRadius="3dp"
             android:enabled="true"
             android:padding="8dp"
-            android:text="Search!"
+            android:text="Save Changes!"
             android:topLeftRadius="3dp"
             android:topRightRadius="1dp" />
 
@@ -158,92 +160,5 @@
         android:contentDescription="Background"
         android:scaleType="centerCrop"
         android:src="@drawable/library" />
-
-    <!--
-    <com.rengwuxian.materialedittext.MaterialMultiAutoCompleteTextView
-        android:id="@+id/genre"
-        android:layout_width="256dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:fontFamily="sans-serif-condensed"
-        android:hint="Genre"
-        android:inputType="text"
-        android:textColor="#000"
-        android:textSize="20sp"
-        app:met_baseColor="#000"
-        app:met_clearButton="true"
-        app:met_floatingLabel="highlight"
-        app:met_floatingLabelAlwaysShown="false"
-        app:met_floatingLabelAnimating="true"
-        app:met_floatingLabelText="Genre"
-        app:met_floatingLabelTextSize="16dp"
-        app:met_iconPadding="16dp"
-        app:met_primaryColor="#000"
-        app:met_underlineColor="@color/common_google_signin_btn_text_dark_focused">
-
-        <requestFocus />
-    </com.rengwuxian.materialedittext.MaterialMultiAutoCompleteTextView>
-
-    -->
-
-
-
-    <!--
-    <com.rengwuxian.materialedittext.MaterialMultiAutoCompleteTextView
-        android:id="@+id/title"
-        android:layout_width="256dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/author"
-        android:layout_alignLeft="@+id/author"
-        android:layout_alignStart="@+id/author"
-        android:layout_marginBottom="41dp"
-        android:fontFamily="sans-serif-condensed"
-        android:hint="Title"
-        android:inputType="text"
-        android:textColor="#000"
-        android:textSize="20sp"
-        app:met_baseColor="#000"
-        app:met_clearButton="true"
-        app:met_floatingLabel="highlight"
-        app:met_floatingLabelAlwaysShown="false"
-        app:met_floatingLabelAnimating="true"
-        app:met_floatingLabelText="Title"
-        app:met_floatingLabelTextSize="16dp"
-        app:met_iconPadding="16dp"
-        app:met_primaryColor="#000"
-        app:met_underlineColor="@color/common_google_signin_btn_text_dark_focused">
-
-        <requestFocus />
-    </com.rengwuxian.materialedittext.MaterialMultiAutoCompleteTextView>
-
-    <com.rengwuxian.materialedittext.MaterialMultiAutoCompleteTextView
-        android:id="@+id/author"
-        android:layout_width="256dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/genre"
-        android:layout_alignLeft="@+id/genre"
-        android:layout_alignStart="@+id/genre"
-        android:layout_marginBottom="121dp"
-        android:fontFamily="sans-serif-condensed"
-        android:hint="Author"
-        android:inputType="text"
-        android:textColor="#000"
-        android:textSize="20sp"
-        app:met_baseColor="#000"
-        app:met_clearButton="true"
-        app:met_floatingLabel="highlight"
-        app:met_floatingLabelAlwaysShown="false"
-        app:met_floatingLabelAnimating="true"
-        app:met_floatingLabelText="Author"
-        app:met_floatingLabelTextSize="16dp"
-        app:met_iconPadding="16dp"
-        app:met_primaryColor="#000"
-        app:met_underlineColor="@color/common_google_signin_btn_text_dark_focused">
-
-        <requestFocus />
-    </com.rengwuxian.materialedittext.MaterialMultiAutoCompleteTextView>
-    -->
 
 </RelativeLayout>

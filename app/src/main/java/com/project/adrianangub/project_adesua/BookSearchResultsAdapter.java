@@ -52,6 +52,8 @@ public class BookSearchResultsAdapter extends RecyclerView.Adapter<BookSearchRes
         holder.textViewBookAuthor.setText(data.getBookAuthor());
         holder.textViewBookSynopsis.setText(data.getBookSynopsis());
         holder.textViewBookRating.setText(data.getBookRating());
+
+        //ButtonClick to check the book
         holder.buttonCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){

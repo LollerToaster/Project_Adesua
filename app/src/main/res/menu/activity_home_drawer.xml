@@ -35,4 +35,17 @@
         </menu>
     </item>
 
+    <item android:title="Account">
+        <menu>
+            <item
+                android:id="@+id/profile_settings"
+                android:icon="@android:drawable/ic_menu_gallery"
+                android:title="Profile Settings" />
+            <item
+                android:id="@+id/logout"
+                android:icon="@android:drawable/ic_menu_gallery"
+                android:title="Logout" />
+        </menu>
+    </item>
+
 </menu>

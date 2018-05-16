@@ -19,8 +19,11 @@ import android.support.v7.widget.Toolbar;
 import android.telecom.Call;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class home extends AppCompatActivity
@@ -45,8 +48,67 @@ public class home extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+
+
+        // LOG IN PART =============================================================================
+
+        // NAVIGATION DRAWER ===============================================================================================
+
+        //NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.getHeaderView(0);
+        //ImageView drawerImage = (ImageView) headerView.findViewById(R.id.profile_image);
+        TextView drawerUsername = (TextView) headerView.findViewById(R.id.name);
+        TextView drawerAccount = (TextView) headerView.findViewById(R.id.email);
+        //drawerImage.setImageDrawable(R.drawable.ic);
+        drawerUsername.setText("lol my name jeff");
+        drawerAccount.setText("user@gmail.com");
+
+        // NAVIGATION DRAWER ===============================================================================================
+
+
+        if (!SharedPrefManager.getInstance(this).isLoggedIn()) {
+            finish();
+            startActivity(new Intent(this, home.class));
+        }
+        //textViewUid = (TextView) findViewById(R.id.textViewUid);
+        //textViewDesc = (TextView) findViewById(R.id.textViewDesc);
+        //textViewMeta = (TextView) findViewById(R.id.textViewMeta);
+        //textViewStat = (TextView) findViewById(R.id.textViewStat);
+
+
+        //getting the current user
+        Users user = SharedPrefManager.getInstance(this).getUser();
+
+        //setting the values to the textviews
+        //textViewId.setText(String.valueOf(user.getId()));
+        /*
+        textViewUid.setText(user.getUid());
+        textViewDesc.setText(user.getDesc());
+        textViewMeta.setText(user.getMeta());
+        textViewStat.setText(user.getStat());
+        */
+        //Toast.makeText(getApplicationContext(), user.getUsername(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), user.getPassword(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), user.getUid(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), user.getDesc(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), user.getMeta(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), user.getStat(), Toast.LENGTH_SHORT).show();
+
+        //when the user presses logout button
+        //calling the logout method
+        /*
+        findViewById(R.id.buttonLogout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                SharedPrefManager.getInstance(getApplicationContext()).logout();
+            }
+        });
+        */
 
 
         // BOTTOM NAV ==============================================================================
@@ -158,14 +220,16 @@ public class home extends AppCompatActivity
         if (id == R.id.nav_home) {
             startActivity(new Intent(home.this, home.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            Snackbar.make(findViewById(R.id.placeSnackBar), "Returning to home worked", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();;
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Returning to home worked", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();;
             return true;
         } else if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_manage) {
+            startActivity(new Intent(home.this, profileSettingsActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         } else if (id == R.id.nav_share) {
 
@@ -174,7 +238,20 @@ public class home extends AppCompatActivity
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();
+        } else if (id == R.id.profile_settings) {
+            startActivity(new Intent(home.this, SearchActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();
+        } else if (id == R.id.logout) {
+            finish();
+            SharedPrefManager.getInstance(getApplicationContext()).logout();
+            //startActivity(new Intent(home.this, SearchActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

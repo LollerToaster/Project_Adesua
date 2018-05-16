@@ -10,10 +10,10 @@
         android:title="Virtual Bag"/>
     <item
         android:id="@+id/action_item3"
-        android:icon="@drawable/ic_004_travel"
-        android:title="Bookmarks"/>
+        android:icon="@android:drawable/ic_menu_mylocation"
+        android:title="Bookmarks" />
     <item
         android:id="@+id/action_item4"
-        android:icon="@drawable/ic_001_settings_gears"
-        android:title="Downloaded"/>
+        android:icon="@android:drawable/stat_sys_download"
+        android:title="Downloaded" />
 </menu>

@@ -65,6 +65,77 @@ public class SearchResults extends AppCompatActivity
                         "Mashesh Rao",
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
                         "5"));
+        dataList.add(
+                new BookSearchResultsDataModel(
+                        "1",
+                        "The Smoke is Rising",
+                        "Mashesh Rao",
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
+                        "5"));
+        dataList.add(
+                new BookSearchResultsDataModel(
+                        "1",
+                        "The Smoke is Rising",
+                        "Mashesh Rao",
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
+                        "5"));
+        dataList.add(
+                new BookSearchResultsDataModel(
+                        "1",
+                        "The Smoke is Rising",
+                        "Mashesh Rao",
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
+                        "5"));
+        dataList.add(
+                new BookSearchResultsDataModel(
+                        "1",
+                        "The Smoke is Rising",
+                        "Mashesh Rao",
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
+                        "5"));
+        dataList.add(
+                new BookSearchResultsDataModel(
+                        "1",
+                        "The Smoke is Rising",
+                        "Mashesh Rao",
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
+                        "5"));
+        dataList.add(
+                new BookSearchResultsDataModel(
+                        "1",
+                        "The Smoke is Rising",
+                        "Mashesh Rao",
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
+                        "5"));
+        dataList.add(
+                new BookSearchResultsDataModel(
+                        "1",
+                        "The Smoke is Rising",
+                        "Mashesh Rao",
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
+                        "5"));
+        dataList.add(
+                new BookSearchResultsDataModel(
+                        "1",
+                        "The Smoke is Rising",
+                        "Mashesh Rao",
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
+                        "5"));
+        dataList.add(
+                new BookSearchResultsDataModel(
+                        "1",
+                        "The Smoke is Rising",
+                        "Mashesh Rao",
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
+                        "5"));
+        dataList.add(
+                new BookSearchResultsDataModel(
+                        "1",
+                        "The Smoke is Rising",
+                        "Mashesh Rao",
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
+                        "5"));
+
 
         BookSearchResultsAdapter adapter = new BookSearchResultsAdapter(this, dataList);
         recyclerView.setAdapter(adapter);
@@ -90,6 +161,7 @@ public class SearchResults extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
     }
 
@@ -113,23 +185,30 @@ public class SearchResults extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
             startActivity(new Intent(SearchResults.this, home.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Returning to home worked", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();;
             return true;
         } else if (id == R.id.nav_camera) {
-
+            // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_manage) {
+            startActivity(new Intent(SearchResults.this, profileSettingsActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_search) {
             startActivity(new Intent(SearchResults.this, SearchActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
