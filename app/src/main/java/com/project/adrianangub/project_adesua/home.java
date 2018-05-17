@@ -49,50 +49,29 @@ public class home extends AppCompatActivity
         toggle.syncState();
 
 
+        // CALLING SHARED PREFERENCES
+        Users user = SharedPrefManager.getInstance(this).getUser();
 
         // LOG IN PART =============================================================================
 
-        // NAVIGATION DRAWER ===============================================================================================
-
-        //NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
+        // NAVIGATION DRAWER =======================================================================
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         View headerView = navigationView.getHeaderView(0);
         //ImageView drawerImage = (ImageView) headerView.findViewById(R.id.profile_image);
         TextView drawerUsername = (TextView) headerView.findViewById(R.id.name);
         TextView drawerAccount = (TextView) headerView.findViewById(R.id.email);
         //drawerImage.setImageDrawable(R.drawable.ic);
-        drawerUsername.setText("lol my name jeff");
-        drawerAccount.setText("user@gmail.com");
+        drawerUsername.setText("<no name in database yet>");
+        drawerAccount.setText(user.getSchoolname());
+        // NAVIGATION DRAWER =======================================================================
 
-        // NAVIGATION DRAWER ===============================================================================================
-
-
+        // SHARED PREFERENCE, IF USER IS NOT SAVED IN PHONE, AUTO INTENT TO LOGIN PAGE
         if (!SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
             startActivity(new Intent(this, home.class));
         }
-        //textViewUid = (TextView) findViewById(R.id.textViewUid);
-        //textViewDesc = (TextView) findViewById(R.id.textViewDesc);
-        //textViewMeta = (TextView) findViewById(R.id.textViewMeta);
-        //textViewStat = (TextView) findViewById(R.id.textViewStat);
 
-
-        //getting the current user
-        Users user = SharedPrefManager.getInstance(this).getUser();
-
-        //setting the values to the textviews
-        //textViewId.setText(String.valueOf(user.getId()));
-        /*
-        textViewUid.setText(user.getUid());
-        textViewDesc.setText(user.getDesc());
-        textViewMeta.setText(user.getMeta());
-        textViewStat.setText(user.getStat());
-        */
-        //Toast.makeText(getApplicationContext(), user.getUsername(), Toast.LENGTH_SHORT).show();
-        //Toast.makeText(getApplicationContext(), user.getPassword(), Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(), user.getUid(), Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), user.getDesc(), Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), user.getMeta(), Toast.LENGTH_LONG).show();
@@ -103,22 +82,7 @@ public class home extends AppCompatActivity
         Toast.makeText(getApplicationContext(), user.getSchoolacryn(), Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), user.getSchoolnum(), Toast.LENGTH_LONG).show();
 
-        //when the user presses logout button
-        //calling the logout method
-        /*
-        findViewById(R.id.buttonLogout).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                SharedPrefManager.getInstance(getApplicationContext()).logout();
-            }
-        });
-        */
-
-
-
         // BOTTOM NAV ==============================================================================
-
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.navigation);
 
@@ -185,8 +149,6 @@ public class home extends AppCompatActivity
         return true;
     }
 
-
-    //ACTION BAR BUTTONS ===========================================================================
     //ACTION BAR BUTTONS ===========================================================================
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
