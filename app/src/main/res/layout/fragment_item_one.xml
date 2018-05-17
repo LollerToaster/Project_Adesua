@@ -77,6 +77,7 @@
 
             <!-- 2ND ROW -->
 
+            <!--
             <LinearLayout
                 android:id="@+id/recommended"
                 android:layout_width="match_parent"
@@ -120,6 +121,7 @@
                         android:text="See More" />
                 </LinearLayout>
 
+
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recyclerView2"
                     android:layout_width="match_parent"
@@ -131,8 +133,9 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp" />
-            </LinearLayout>
 
+            </LinearLayout>
+            -->
             <!--
             <ImageView
                 android:id="@+id/imageViewEmpty"

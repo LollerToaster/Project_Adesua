@@ -72,6 +72,7 @@ public class home extends AppCompatActivity
             startActivity(new Intent(this, home.class));
         }
 
+        /*
         Toast.makeText(getApplicationContext(), user.getUid(), Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), user.getDesc(), Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), user.getMeta(), Toast.LENGTH_LONG).show();
@@ -81,6 +82,7 @@ public class home extends AppCompatActivity
         Toast.makeText(getApplicationContext(), user.getSchooladdress(), Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), user.getSchoolacryn(), Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), user.getSchoolnum(), Toast.LENGTH_LONG).show();
+        */
 
         // BOTTOM NAV ==============================================================================
         BottomNavigationView bottomNavigationView = (BottomNavigationView)

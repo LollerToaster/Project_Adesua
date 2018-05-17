@@ -25,20 +25,21 @@
 
         <TextView
             android:id="@+id/bookNumber"
-            android:layout_width="wrap_content"
+            android:layout_width="216dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/imageView5"
             android:layout_gravity="center"
             android:fontFamily="@font/opensansregular"
+            android:gravity="center"
+            android:maxLines="1"
             android:text="Book Number"
             android:textColor="@color/fontColor1"
-            android:textSize="16sp"
-            android:visibility="gone" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/bookTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="216dp"
             android:layout_height="match_parent"
             android:layout_below="@+id/imageView5"
             android:layout_gravity="center"
@@ -46,6 +47,7 @@
             android:layout_toRightOf="@+id/text"
             android:ellipsize="end"
             android:fontFamily="@font/opensansregular"
+            android:gravity="center"
             android:maxLines="1"
             android:text="Book Title"
             android:textColor="@color/fontColor1"
@@ -53,26 +55,30 @@
 
         <TextView
             android:id="@+id/bookAuthor"
-            android:layout_width="wrap_content"
+            android:layout_width="216dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/imageView5"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/opensansitalic"
+            android:gravity="center"
+            android:maxLines="1"
             android:text="Book Author"
             android:textColor="@color/fontColor1"
             android:textSize="12sp" />
 
         <TextView
             android:id="@+id/bookSynopsis"
-            android:layout_width="wrap_content"
+            android:layout_width="216dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/imageView5"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/opensansitalic"
+            android:gravity="center"
+            android:maxLines="1"
             android:text="Book Author"
             android:textColor="@color/fontColor1"
             android:textSize="12sp"
@@ -80,13 +86,15 @@
 
         <TextView
             android:id="@+id/bookRating"
-            android:layout_width="wrap_content"
+            android:layout_width="216dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/imageView5"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/opensansitalic"
+            android:gravity="center"
+            android:maxLines="1"
             android:text="Book Author"
             android:textColor="@color/fontColor1"
             android:textSize="12sp"
