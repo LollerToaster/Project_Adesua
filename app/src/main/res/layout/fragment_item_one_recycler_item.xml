@@ -9,39 +9,41 @@
 
     <LinearLayout
         android:id="@+id/newReleases"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="162dp"
+        android:layout_height="282dp"
         android:layout_gravity="center"
         android:background="@color/primary"
         android:orientation="vertical"
-        android:paddingTop="16dp">
+        android:paddingTop="8dp">
 
         <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="216dp"
-            android:layout_height="288dp"
+            android:id="@+id/bookImage"
+            android:layout_width="162dp"
+            android:layout_height="216dp"
             android:layout_gravity="center"
+            android:padding="8dp"
+            android:scaleType="centerCrop"
             app:srcCompat="@drawable/book_sample_1" />
 
         <TextView
             android:id="@+id/bookNumber"
-            android:layout_width="216dp"
+            android:layout_width="162dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/imageView5"
+            android:layout_below="@+id/bookImage"
             android:layout_gravity="center"
             android:fontFamily="@font/opensansregular"
             android:gravity="center"
-            android:maxLines="1"
+            android:maxLines="2"
             android:text="Book Number"
             android:textColor="@color/fontColor1"
-            android:textSize="16sp" />
+            android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/bookTitle"
-            android:layout_width="216dp"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/imageView5"
+            android:id="@+id/classIdent"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookImage"
             android:layout_gravity="center"
             android:layout_toLeftOf="@+id/date"
             android:layout_toRightOf="@+id/text"
@@ -51,14 +53,14 @@
             android:maxLines="1"
             android:text="Book Title"
             android:textColor="@color/fontColor1"
-            android:textSize="14sp" />
+            android:textSize="10sp" />
 
         <TextView
-            android:id="@+id/bookAuthor"
-            android:layout_width="216dp"
+            android:id="@+id/classDescription"
+            android:layout_width="162dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/imageView5"
+            android:layout_below="@+id/bookImage"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/opensansitalic"
@@ -66,14 +68,14 @@
             android:maxLines="1"
             android:text="Book Author"
             android:textColor="@color/fontColor1"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/bookSynopsis"
-            android:layout_width="216dp"
+            android:layout_width="162dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/imageView5"
+            android:layout_below="@+id/bookImage"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/opensansitalic"
@@ -86,10 +88,10 @@
 
         <TextView
             android:id="@+id/bookRating"
-            android:layout_width="216dp"
+            android:layout_width="162dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/imageView5"
+            android:layout_below="@+id/bookImage"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/opensansitalic"

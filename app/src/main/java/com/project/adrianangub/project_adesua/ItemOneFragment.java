@@ -1,18 +1,15 @@
 package com.project.adrianangub.project_adesua;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -33,8 +30,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 public class ItemOneFragment extends Fragment {
     public static ItemOneFragment newInstance() {
@@ -44,7 +46,7 @@ public class ItemOneFragment extends Fragment {
 
     private TextView seeMore, seeMore2;
     private ProgressBar mProgressBarLoading;
-    private RecyclerView mRecyclerView,mRecyclerView2;
+    private RecyclerView mRecyclerView, mRecyclerView2;
     private ListAdapter mListadapter;
     private static final String URL_PRODUCTS = "http://adesuaapi.spottyus.com/book/search?uid=4007";
 
@@ -56,7 +58,8 @@ public class ItemOneFragment extends Fragment {
     //REFERENCE
     //https://medium.com/@Pang_Yao/android-fragment-use-recyclerview-cardview-4bc10beac446
 
-    ArrayList<ItemOneFragmentDataModel> productList;
+    //Settling the Model
+    ArrayList<ItemOneFragmentDataModel> bookList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -78,7 +81,6 @@ public class ItemOneFragment extends Fragment {
 
         // Calling Volley functions to retrieve data from database
         loadRow1();
-        //
 
         //SEE MORE SECTION =========================================================================
         seeMore = (TextView)view.findViewById(R.id.seeMore);
@@ -128,8 +130,8 @@ public class ItemOneFragment extends Fragment {
                     JSONArray array = new JSONArray(response);
 
                     //adding the product to product list
-                    productList = new ArrayList<>();
-                    ArrayList productList = new ArrayList<ItemOneFragmentDataModel>();
+                    bookList = new ArrayList<>();
+                    ArrayList bookList = new ArrayList<ItemOneFragmentDataModel>();
 
                     //traversing through all the object
                     for (int i = 0; i < array.length(); i++)
@@ -137,9 +139,17 @@ public class ItemOneFragment extends Fragment {
                         //getting product object from json array
                         JSONObject product = array.getJSONObject(i);
 
+                        //Debugging Purposes
+                        /*
+                        Log.d("debug", "Title : " + product.getString("t"));
+                        Log.d("debug", "Cover : " + product.getString("cover"));
+                        Log.d("debug", "ID : " + product.getString("id"));
+                        Log.d("debug", "Author : " + product.getString("auth"));
+                        Log.d("debug", "Call Card : " + product.getString("callcrd"));
+                        Log.d("debug", "Has Pdf : " + product.getString("haspdf"));
+                        */
 
-
-                        productList.add(
+                        bookList.add(
                                 new ItemOneFragmentDataModel
                                         (
                                             product.getString("t"),
@@ -156,14 +166,9 @@ public class ItemOneFragment extends Fragment {
                                             product.getString("lbs")
                                         ));
 
-                        mListadapter = new ListAdapter(productList);
+                        mListadapter = new ListAdapter(bookList);
                         mRecyclerView.setAdapter(mListadapter);
                     }
-                    //creating adapter object and setting it to recyclerview
-                    //mListadapter = new ListAdapter(productList);
-                    //mRecyclerView.setAdapter(mListadapter);
-                    //Toast.makeText(getContext(), productList.getUid(), Toast.LENGTH_LONG).show();
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -172,10 +177,10 @@ public class ItemOneFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        // Do Something
                     }
                 }) {
-
+            //Header Responses
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
@@ -195,22 +200,14 @@ public class ItemOneFragment extends Fragment {
     public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
     {
         private ArrayList<ItemOneFragmentDataModel> dataList;
-
         public ListAdapter(ArrayList<ItemOneFragmentDataModel> data)
         {
             this.dataList = data;
         }
         public class ViewHolder extends RecyclerView.ViewHolder
         {
-            /*
-            TextView textViewId;
-            TextView textViewName;
-            TextView textViewEmail;
-            TextView textViewFact;
-            */
-
             TextView textViewBookNumber;
-            //TextView textViewBookTitle;
+            ImageView bookCover;
             TextView textViewBookAuthor;
             TextView textViewBookSynopsis;
             TextView textViewBookRating;
@@ -218,19 +215,9 @@ public class ItemOneFragment extends Fragment {
             public ViewHolder(View itemView)
             {
                 super(itemView);
-                //this.textViewBookNumber = (TextView) itemView.findViewById(R.id.bookNumber);
-                //textViewId = itemView.findViewById(R.id.textViewId);
-                //this.textViewId = (TextView) itemView.findViewById(R.id.bookNumber);
-                //this.textViewName = (TextView) itemView.findViewById(R.id.bookTitle);
-                //this.textViewEmail = (TextView) itemView.findViewById(R.id.bookNumber);
-                //this.textViewFact = (TextView) itemView.findViewById(R.id.bookNumber);
-                //this.textViewName = (TextView) itemView.findViewById(R.id.bookNumber);
-                //this.textViewEmail = (TextView) itemView.findViewById(R.id.bookNumber);
-                //this.textViewFact = (TextView) itemView.findViewById(R.id.bookNumber);
-
                 this.textViewBookNumber = (TextView) itemView.findViewById(R.id.bookNumber);
-                //this.textViewBookTitle = (TextView) itemView.findViewById(R.id.bookTitle);
-                this.textViewBookAuthor = (TextView) itemView.findViewById(R.id.bookAuthor);
+                this.bookCover = itemView.findViewById(R.id.bookImage);
+                this.textViewBookAuthor = (TextView) itemView.findViewById(R.id.classDescription);
                 this.textViewBookSynopsis = (TextView) itemView.findViewById(R.id.bookSynopsis);
                 this.textViewBookRating = (TextView) itemView.findViewById(R.id.bookRating);
 
@@ -249,8 +236,27 @@ public class ItemOneFragment extends Fragment {
         public void onBindViewHolder(ListAdapter.ViewHolder holder, final int position)
         {
             holder.textViewBookNumber.setText(dataList.get(position).getT());
-            //holder.textViewBookTitle.setText(dataList.get(position).getCover());
-            holder.textViewBookAuthor.setText(dataList.get(position).getId());
+
+            // Image Holder Using Glide
+            String url = dataList.get(position).getCover();
+            Glide.with(getContext())
+                    .load(url)
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            mProgressBarLoading.setVisibility(View.GONE);
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            mProgressBarLoading.setVisibility(View.GONE);
+                            return false;
+                        }
+                    })
+                    .into(holder.bookCover);
+
+            holder.textViewBookAuthor.setText(dataList.get(position).getAuth());
             holder.textViewBookSynopsis.setText(dataList.get(position).getAuth());
             holder.textViewBookRating.setText(dataList.get(position).getCallcrd());
 
@@ -262,9 +268,13 @@ public class ItemOneFragment extends Fragment {
                     Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(getActivity(), "Item  is clicked.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getContext(), bookInfoPage_v2.class);
+
                     //PASSING VALUES TO INTENT SECTION
-                    //intent.putExtra("bookSynopsis", dataList.get(position).getBookSynopsis());
+                    intent.putExtra("bookTitle", dataList.get(position).getT());
+                    intent.putExtra("bookAuthor", dataList.get(position).getAuth());
+                    intent.putExtra("bookImage", dataList.get(position).getCover());
                     //PASSING VALUES TO INTENT SECTION
+
                     getContext().startActivity(intent);
 
                     //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);

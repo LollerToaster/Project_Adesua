@@ -36,8 +36,8 @@
             android:background="@color/primary"
             android:gravity="center_vertical|center_horizontal"
             android:orientation="vertical"
-            android:paddingLeft="32dp"
-            android:paddingRight="32dp">
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
 
             <ImageView
                 android:layout_width="128dp"
@@ -154,7 +154,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="48dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="12dp"
                 android:background="@color/primaryLight"
                 android:contentDescription="Login Button"
                 android:gravity="center"
@@ -200,7 +201,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:clickable="false"
                 android:contentDescription="Forgot Password Button"
                 android:fontFamily="@font/freeroadlightitalic"

@@ -17,7 +17,7 @@
         android:paddingTop="16dp">
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/bookImage"
             android:layout_width="150dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/imageView5"
+            android:layout_below="@+id/bookImage"
             android:layout_gravity="center"
             android:fontFamily="@font/opensansregular"
             android:text="Book Number"
@@ -37,10 +37,10 @@
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/bookTitle"
+            android:id="@+id/classIdent"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_below="@+id/imageView5"
+            android:layout_below="@+id/bookImage"
             android:layout_gravity="center"
             android:layout_toLeftOf="@+id/date"
             android:layout_toRightOf="@+id/text"
@@ -52,11 +52,11 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/bookAuthor"
+            android:id="@+id/classDescription"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/imageView5"
+            android:layout_below="@+id/bookImage"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/opensansitalic"
@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/imageView5"
+            android:layout_below="@+id/bookImage"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/opensansitalic"
@@ -83,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/imageView5"
+            android:layout_below="@+id/bookImage"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/opensansitalic"

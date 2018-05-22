@@ -1,12 +1,14 @@
 package com.project.adrianangub.project_adesua;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +17,25 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
-import static android.widget.LinearLayout.VERTICAL;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ItemTwoFragment extends Fragment {
     public static ItemTwoFragment newInstance() {
@@ -28,11 +46,15 @@ public class ItemTwoFragment extends Fragment {
     private ProgressBar mProgressBarLoading;
     private RecyclerView mRecyclerView;
     private ListAdapter mListadapter;
+    private static final String URL_CLASSROOMS = "http://adesuaapi.spottyus.com/student/classrooms?uid=4007";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
+    //Settling the Model
+    ArrayList<ItemOneFragmentDataModel> classroomList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -46,29 +68,109 @@ public class ItemTwoFragment extends Fragment {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
 
+        //Divider Erase it later
+        /*
         mRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(
                 getContext()
         ));
+        */
 
-        ArrayList data = new ArrayList<ItemTwoFragmentDataInformation>();
-        for (int i = 0; i < ItemTwoFragmentDataInformation.bookNumber.length; i++)
-        {
-            data.add(
-                    new ItemTwoFragmentDataModel
-                            (
-                                    ItemTwoFragmentDataInformation.bookNumber[i],
-                                    ItemTwoFragmentDataInformation.bookTitleArray[i],
-                                    ItemTwoFragmentDataInformation.bookAuthorArray[i],
-                                    ItemTwoFragmentDataInformation.bookSynopsisArray[i],
-                                    ItemTwoFragmentDataInformation.bookRatingArray[i]
-                            ));
-        }
-
-        mListadapter = new ListAdapter(data);
-        mRecyclerView.setAdapter(mListadapter);
+        // Calling Volley functions to retrieve data from database
+        loadClassrooms();
 
         return view;
     }
+
+    // VOLLEY  =====================================================================================
+    private void loadClassrooms() {
+        /*
+        * Creating a String Request
+        * The request type is GET defined by first parameter
+        * The URL is defined in the second parameter
+        * Then we have a Response Listener and a Error Listener
+        * In response listener we will get the JSON response as a String
+        * */
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_CLASSROOMS, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                try {
+                    //converting the string to json array object
+                    JSONArray array = new JSONArray(response);
+
+                    //adding the product to product list
+                    classroomList = new ArrayList<>();
+                    ArrayList classroomList = new ArrayList<ItemTwoFragmentDataModel>();
+
+                    //traversing through all the object
+                    for (int i = 0; i < array.length(); i++)
+                    {
+                        //getting product object from json array
+                        JSONObject classroom = array.getJSONObject(i);
+                        JSONObject teacher = classroom.getJSONObject("teacher");
+
+                        //Debugging Purposes
+                        Log.d("Response", response);
+                        //Log.d("debug", " =======================================================");
+                        //Log.d("debug", " ");
+                        //Log.d("debug", "Title : " + classroom.getString("vclass_name"));
+                        //Log.d("debug", "Title : " + classroom.getString("vclass_grade"));
+                        //Log.d("debug", "Title : " + classroom.getString("vclass_desc"));
+                        //Log.d("debug", "Title : " + classroom.getString("vclass_numstud"));
+                        //Log.d("debug", " ");
+                        //Log.d("debug", " =======================================================");
+
+                        classroomList.add(
+                                new ItemTwoFragmentDataModel
+                                        (
+                                                classroom.getString("vcstud_id"),
+                                                classroom.getString("stud_id_fk"),
+                                                classroom.getString("vcstud_status"),
+                                                classroom.getString("vclass_id_fk"),
+                                                classroom.getString("vclass_id"),
+                                                classroom.getString("vclass_pubid"),
+                                                classroom.getString("vclass_name"),
+                                                classroom.getString("vclass_grade"),
+                                                classroom.getString("vclass_desc"),
+                                                classroom.getString("vclass_numstud"),
+                                                classroom.getString("vlcass_numbook"),
+                                                classroom.getString("vclass_teach_fk"),
+                                                classroom.getString("school_id_fk"),
+                                                teacher.getString("fulname"),
+                                                teacher.getString("username"),
+                                                teacher.getString("email"),
+                                                teacher.getString("ini")
+                                        ));
+
+                        mListadapter = new ItemTwoFragment.ListAdapter(classroomList);
+                        mRecyclerView.setAdapter(mListadapter);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Do Something
+                    }
+                }) {
+            //Header Responses
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                String credentials = "admin:12345";
+                String auth = "Basic "
+                        + Base64.encodeToString(credentials.getBytes(), Base64.NO_WRAP);
+                headers.put("Content-Type", "application/json");
+                headers.put("Authorization", auth);
+                return headers;
+            }};
+        //adding our stringrequest to queue
+        Volley.newRequestQueue(getContext()).add(stringRequest);
+    }
+    // VOLLEY  =====================================================================================
 
     public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
     {
@@ -81,20 +183,24 @@ public class ItemTwoFragment extends Fragment {
 
         public class ViewHolder extends RecyclerView.ViewHolder
         {
-            TextView textViewBookNumber;
-            TextView textViewBookTitle;
-            TextView textViewBookAuthor;
-            TextView textViewBookSynopsis;
-            TextView textViewBookRating;
+            TextView className;
+            TextView classGrade;
+            TextView classDescription;
+            TextView classStudents;
+            TextView classBooks;
+            TextView classTeacher;
+            //ImageView classroomImage;
 
             public ViewHolder(View itemView)
             {
                 super(itemView);
-                this.textViewBookNumber = (TextView) itemView.findViewById(R.id.bookNumber);
-                this.textViewBookTitle = (TextView) itemView.findViewById(R.id.bookTitle);
-                this.textViewBookAuthor = (TextView) itemView.findViewById(R.id.bookAuthor);
-                this.textViewBookSynopsis = (TextView) itemView.findViewById(R.id.bookSynopsis);
-                this.textViewBookRating = (TextView) itemView.findViewById(R.id.bookRating);
+                this.className = (TextView) itemView.findViewById(R.id.className);
+                this.classGrade = (TextView) itemView.findViewById(R.id.classGrade);
+                this.classDescription = (TextView) itemView.findViewById(R.id.classDescription);
+                this.classStudents = (TextView) itemView.findViewById(R.id.classStudents);
+                this.classBooks = (TextView) itemView.findViewById(R.id.classBooks);
+                this.classTeacher = (TextView) itemView.findViewById(R.id.classTeacher);
+                //this.classroomImage = (ImageView) itemView.findViewById(R.id.classIdent);
             }
         }
 
@@ -110,11 +216,34 @@ public class ItemTwoFragment extends Fragment {
         @Override
         public void onBindViewHolder(ListAdapter.ViewHolder holder, final int position)
         {
-            holder.textViewBookNumber.setText(dataList.get(position).getBookNumber());
-            holder.textViewBookTitle.setText(dataList.get(position).getBookTitle());
-            holder.textViewBookAuthor.setText(dataList.get(position).getBookAuthor());
-            holder.textViewBookSynopsis.setText(dataList.get(position).getBookSynopsis());
-            holder.textViewBookRating.setText(dataList.get(position).getBookRating());
+            holder.className.setText(dataList.get(position).getVclassName());
+            holder.classGrade.setText(dataList.get(position).getVclassGrade());
+            holder.classDescription.setText(dataList.get(position).getVclassDesc());
+            holder.classStudents.setText(dataList.get(position).getVclassNumStud());
+            holder.classBooks.setText(dataList.get(position).getVclassNumBook());
+            holder.classTeacher.setText(dataList.get(position).getTeacherFulname());
+
+            // Image Holder Using Glide
+            /*
+            String url = dataList.get(position).getCover();
+            Glide.with(getContext())
+                    .load(url)
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            mProgressBarLoading.setVisibility(View.GONE);
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            mProgressBarLoading.setVisibility(View.GONE);
+                            return false;
+                        }
+                    })
+                    .into(holder.bookCover);
+            */
+
 
             holder.itemView.setOnClickListener(new View.OnClickListener()
             {
@@ -122,12 +251,15 @@ public class ItemTwoFragment extends Fragment {
                 public void onClick(View v)
                 {
                     Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getContext(), bookInfoPage_v2.class);
-                    intent.putExtra("bookSynopsis", dataList.get(position).getBookSynopsis());
+                    Intent intent = new Intent(getContext(), home.class);
+                    //intent.putExtra("bookSynopsis", dataList.get(position).getBookSynopsis());
                     getContext().startActivity(intent);
                 }
             });
+
+
         }
+
 
         @Override
         public int getItemCount()

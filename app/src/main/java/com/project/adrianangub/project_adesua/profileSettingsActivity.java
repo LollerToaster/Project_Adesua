@@ -69,24 +69,27 @@ public class profileSettingsActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            startActivity(new Intent(profileSettingsActivity.this, home.class));
+            startActivity(new Intent(this, home.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Returning to home worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();;
             return true;
-        } else if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_manage) {
-            startActivity(new Intent(profileSettingsActivity.this, profileSettingsActivity.class));
+        } else if (id == R.id.nav_profile_settings) {
+            startActivity(new Intent(this, profileSettingsActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_search) {
-            startActivity(new Intent(profileSettingsActivity.this, SearchActivity.class));
+            startActivity(new Intent(this, SearchActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();
+        } else if (id == R.id.logout) {
+            finish();
+            SharedPrefManager.getInstance(getApplicationContext()).logout();
+            //startActivity(new Intent(home.this, SearchActivity.class));
+            //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();
         }

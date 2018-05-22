@@ -28,7 +28,7 @@ public class LoginPage extends AppCompatActivity {
 
     EditText editTextUsername, editTextPassword;
     //ProgressBar progressBar;
-    private static final String URL_LOGIN = "https://adesuaapi.spottyus.com/student/login?username=kobby.kareem&password=student";
+    private static final String URL_LOGIN = "https://adesuaapi.spottyus.com/student/login?username=user&password=pass";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,16 +76,7 @@ public class LoginPage extends AppCompatActivity {
                             JSONObject userJson = new JSONObject(response);
                             JSONObject schoolJson = userJson.getJSONObject("school");
 
-                            Log.d("debug", "SchoolID : " + schoolJson.getString("uid"));
-                            Log.d("debug", "SchoolID : " + schoolJson.getString("desc"));
-                            Log.d("debug", "SchoolID : " + schoolJson.getString("meta"));
-                            Log.d("debug", "SchoolID : " + schoolJson.getString("stat"));
-                            Log.d("debug", "SchoolID : " + schoolJson.getString("schoolID"));
-                            Log.d("debug", "schoolName : " + schoolJson.getString("schoolName"));
-                            Log.d("debug", "schoolAddress : " + schoolJson.getString("schoolAddress"));
-                            Log.d("debug", "schoolAcryn : " + schoolJson.getString("schoolAcryn"));
-                            Log.d("debug", "schoolNum : " + schoolJson.getString("schoolNum"));
-
+                            //Log.d(response, "onResponse: ");
                             //creating a new user object
                             Users user = new Users(
                                     //userJson.getInt("id"),
@@ -97,7 +88,8 @@ public class LoginPage extends AppCompatActivity {
                                     schoolJson.getString("schoolName"),
                                     schoolJson.getString("schoolAddress"),
                                     schoolJson.getString("schoolAcryn"),
-                                    schoolJson.getString("schoolNum")
+                                    schoolJson.getString("schoolNum"),
+                                    userJson.getString("fullname")
                             );
                             //storing the user in shared preferences
                             SharedPrefManager.getInstance(getApplicationContext()).sharedResponse(user);
@@ -118,7 +110,7 @@ public class LoginPage extends AppCompatActivity {
                     public void onErrorResponse(VolleyError response)
                     {
                         // error
-                        Toast.makeText(getApplicationContext(), "my name jeff 1234", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "volley borkken ;(", Toast.LENGTH_SHORT).show();
                     }
                 }
         )

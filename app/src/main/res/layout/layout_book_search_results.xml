@@ -64,7 +64,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/bookTitle"
+                            android:id="@+id/classIdent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
@@ -89,10 +89,10 @@
                             android:visibility="gone" />
 
                         <TextView
-                            android:id="@+id/bookAuthor"
+                            android:id="@+id/classDescription"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/bookTitle"
+                            android:layout_below="@id/classIdent"
                             android:layout_toRightOf="@id/bookImage"
                             android:fontFamily="freeroadlight"
                             android:maxLines="1"
@@ -103,7 +103,7 @@
                             android:id="@+id/bookRating"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/bookTitle"
+                            android:layout_below="@id/classIdent"
                             android:layout_toRightOf="@id/bookImage"
                             android:fontFamily="freeroadlight"
                             android:maxLines="1"
@@ -167,7 +167,7 @@
                             android:id="@+id/textViewPrice"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_below="@id/bookAuthor"
+                            android:layout_below="@id/classDescription"
                             android:layout_marginTop="8dp"
                             android:layout_toRightOf="@id/bookImage"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"

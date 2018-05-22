@@ -9,15 +9,7 @@
             android:icon="@drawable/ic_home_black_24dp"
             android:title="Home" />
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Placeholder" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Placeholder" />
-        <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_profile_settings"
             android:icon="@drawable/ic_account_box_black_24px"
             android:title="Profile Settings" />
     </group>
@@ -37,10 +29,6 @@
 
     <item android:title="Account">
         <menu>
-            <item
-                android:id="@+id/profile_settings"
-                android:icon="@android:drawable/ic_menu_gallery"
-                android:title="Profile Settings" />
             <item
                 android:id="@+id/logout"
                 android:icon="@android:drawable/ic_menu_gallery"

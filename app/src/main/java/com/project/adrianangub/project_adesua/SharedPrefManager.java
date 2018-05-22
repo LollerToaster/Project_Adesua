@@ -18,6 +18,7 @@ public class SharedPrefManager {
     private static final String KEY_DESC = "keyDesc";
     private static final String KEY_META = "keyMeta";
     private static final String KEY_STAT = "keyDesc";
+    private static final String KEY_FULLNAME = "keyFullName";
     private static final String KEY_SCHOOLID = "keySchoolId";
     private static final String KEY_SCHOOLNAME = "keySchoolName";
     private static final String KEY_SCHOOLADDRESS = "keySchoolAddress";
@@ -50,6 +51,7 @@ public class SharedPrefManager {
         editor.putString(KEY_SCHOOLADDRESS, user.getSchooladdress());
         editor.putString(KEY_SCHOOLACRYN, user.getSchoolacryn());
         editor.putString(KEY_SCHOOLNUM, user.getSchoolnum());
+        editor.putString(KEY_FULLNAME, user.getFullname());
         //editor.putString("imagepath","/sdcard/imh.jpeg");
         editor.apply();
     }
@@ -69,6 +71,7 @@ public class SharedPrefManager {
                 sharedPreferences.getString(KEY_DESC, null),
                 sharedPreferences.getString(KEY_META, null),
                 sharedPreferences.getString(KEY_STAT, null),
+                sharedPreferences.getString(KEY_FULLNAME, null),
                 sharedPreferences.getString(KEY_SCHOOLID, null),
                 sharedPreferences.getString(KEY_SCHOOLNAME, null),
                 sharedPreferences.getString(KEY_SCHOOLADDRESS, null),

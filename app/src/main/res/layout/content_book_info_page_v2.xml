@@ -35,8 +35,8 @@
                 <!-- Book Cover -->
                 <ImageView
                     android:id="@+id/bookImage"
-                    android:layout_width="300dp"
-                    android:layout_height="480dp"
+                    android:layout_width="187.5dp"
+                    android:layout_height="300dp"
                     android:adjustViewBounds="true"
                     android:background="@null"
                     android:cropToPadding="false"
@@ -58,42 +58,46 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/classIdent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/opensansregular"
                             android:text="The Smoke is Rising"
                             android:textAlignment="viewStart"
                             android:textColor="@color/primaryDark"
-                            android:textSize="24sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/classDescription"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/freeroadlight"
                             android:text="Mahesh Rao"
                             android:textAlignment="viewStart"
                             android:textColor="@color/primaryDark"
-                            android:textSize="18sp"
+                            android:textSize="12sp"
                             android:textStyle="italic" />
 
                         <TextView
+                            android:id="@+id/book"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/freeroadlight"
                             android:text="Literary Fiction"
                             android:textAlignment="viewStart"
                             android:textColor="@color/primaryDark"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/bookHasPdf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/opensanslight"
                             android:text="Number of Times Downloaded: #"
                             android:textAlignment="viewStart"
                             android:textColor="@color/primaryDark"
-                            android:textSize="14sp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -102,14 +106,13 @@
                             android:text="Number of Times Borrowed: #"
                             android:textAlignment="viewStart"
                             android:textColor="@color/primaryDark"
-                            android:textSize="14sp" />
+                            android:textSize="12sp" />
 
                         <RatingBar
                             android:id="@+id/bookRatingStars2"
-                            style="@style/Widget.AppCompat.RatingBar.Indicator"
+                            style="@style/Widget.AppCompat.RatingBar.Small"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
                             android:isIndicator="true"
                             android:numStars="5" />
                     </LinearLayout>
@@ -124,16 +127,14 @@
                             android:id="@+id/BookmarkButton"
                             style="@style/AppTheme.RoundedCornerMaterialButton"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="36dp"
                             android:layout_below="@+id/editText5"
-                            android:layout_marginBottom="8dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginRight="0dp"
                             android:background="@color/primaryLight"
                             android:bottomLeftRadius="1dp"
                             android:bottomRightRadius="3dp"
                             android:enabled="true"
-                            android:padding="8dp"
                             android:text="Bookmark"
                             android:topLeftRadius="3dp"
                             android:topRightRadius="1dp" />
@@ -142,16 +143,14 @@
                             android:id="@+id/GoogleMapsButton"
                             style="@style/AppTheme.RoundedCornerMaterialButton"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="36dp"
                             android:layout_below="@+id/editText5"
-                            android:layout_marginBottom="8dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginRight="0dp"
                             android:background="@color/primaryLight"
                             android:bottomLeftRadius="1dp"
                             android:bottomRightRadius="3dp"
                             android:enabled="true"
-                            android:padding="8dp"
                             android:text="Where Can I find this book?"
                             android:topLeftRadius="3dp"
                             android:topRightRadius="1dp" />
@@ -160,16 +159,14 @@
                             android:id="@+id/DownloadPDFButton"
                             style="@style/AppTheme.RoundedCornerMaterialButton"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="36dp"
                             android:layout_below="@+id/editText5"
                             android:layout_marginBottom="8dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
+                            android:layout_marginRight="0dp"
                             android:background="@color/primaryLight"
                             android:bottomLeftRadius="1dp"
                             android:bottomRightRadius="3dp"
                             android:enabled="true"
-                            android:padding="8dp"
                             android:text="Download PDF"
                             android:topLeftRadius="3dp"
                             android:topRightRadius="1dp" />

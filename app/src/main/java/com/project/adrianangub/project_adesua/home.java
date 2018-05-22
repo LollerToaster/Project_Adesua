@@ -62,7 +62,7 @@ public class home extends AppCompatActivity
         TextView drawerUsername = (TextView) headerView.findViewById(R.id.name);
         TextView drawerAccount = (TextView) headerView.findViewById(R.id.email);
         //drawerImage.setImageDrawable(R.drawable.ic);
-        drawerUsername.setText("<no name in database yet>");
+        drawerUsername.setText(user.getFullname());
         drawerAccount.setText(user.getSchoolname());
         // NAVIGATION DRAWER =======================================================================
 
@@ -188,28 +188,19 @@ public class home extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            startActivity(new Intent(home.this, home.class));
+            startActivity(new Intent(this, home.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Returning to home worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();;
             return true;
-        } else if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_manage) {
-            startActivity(new Intent(home.this, profileSettingsActivity.class));
+        } else if (id == R.id.nav_profile_settings) {
+            startActivity(new Intent(this, profileSettingsActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_search) {
-            startActivity(new Intent(home.this, SearchActivity.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
-            //        .setAction("Action", null).show();
-        } else if (id == R.id.profile_settings) {
-            startActivity(new Intent(home.this, SearchActivity.class));
+            startActivity(new Intent(this, SearchActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();
@@ -221,7 +212,6 @@ public class home extends AppCompatActivity
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

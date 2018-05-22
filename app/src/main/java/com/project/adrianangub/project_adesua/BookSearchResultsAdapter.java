@@ -11,7 +11,6 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -84,8 +83,8 @@ public class BookSearchResultsAdapter extends RecyclerView.Adapter<BookSearchRes
             super(itemView);
 
             this.textViewBookNumber = (TextView) itemView.findViewById(R.id.bookNumber);
-            this.textViewBookTitle = (TextView) itemView.findViewById(R.id.bookTitle);
-            this.textViewBookAuthor = (TextView) itemView.findViewById(R.id.bookAuthor);
+            this.textViewBookTitle = (TextView) itemView.findViewById(R.id.classIdent);
+            this.textViewBookAuthor = (TextView) itemView.findViewById(R.id.classDescription);
             this.textViewBookSynopsis = (TextView) itemView.findViewById(R.id.bookSynopsis);
             this.textViewBookRating = (TextView) itemView.findViewById(R.id.bookRating);
             buttonCheck = (Button) itemView.findViewById(R.id.Check);

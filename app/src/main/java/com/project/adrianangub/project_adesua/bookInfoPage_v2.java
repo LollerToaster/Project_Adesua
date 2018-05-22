@@ -14,7 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 public class bookInfoPage_v2 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,8 +29,15 @@ public class bookInfoPage_v2 extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //SETTING TEXTVIEWS
+        TextView bookTitleTextView = (TextView)findViewById(R.id.classIdent);
+        TextView bookAuthorTextView = (TextView)findViewById(R.id.classDescription);
+        ImageView bookCoverTextView = (ImageView)findViewById(R.id.bookImage);
+
         //INTENT PASSED BY ANOTHER ACTIVITY TEST
-        final String bookSynopsis = getIntent().getExtras().getString("bookSynopsis");
+        final String bookTitle = getIntent().getExtras().getString("bookTitle");
+        final String bookAuthor = getIntent().getExtras().getString("bookAuthor");
+        final String bookImage = getIntent().getExtras().getString("bookImage");
         //INTENT PASSED BY ANOTHER ACTIVITY TEST
 
         // ACTION BAR CUSTOMIZATION
@@ -43,6 +53,22 @@ public class bookInfoPage_v2 extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //Log.d("debug", "Title : " + bookTitle);
+        //Log.d("debug", "Author : " + bookAuthor);
+        //Log.d("debug", "Image : " + bookImage);
+
+        //Toast.makeText(getApplicationContext(), bookTitle ,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), bookAuthor ,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), bookImage ,Toast.LENGTH_SHORT).show();
+
+        //SETTING INTENT
+        //String url = dataList.get(position).getCover();
+        Glide.with(this)
+                .load(bookImage)
+                .into(bookCoverTextView);
+
+        bookTitleTextView.setText(bookTitle);
+        bookAuthorTextView.setText(bookAuthor);
 
         //BUTTONS =========================================================================================================
 
@@ -71,7 +97,9 @@ public class bookInfoPage_v2 extends AppCompatActivity
 
 
                 //RECIEVING THE INTENT TEST
-                //Toast.makeText(getApplicationContext(), bookSynopsis ,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), bookTitle ,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), bookAuthor ,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), bookImage ,Toast.LENGTH_SHORT).show();
                 //RECIEVING THE INTENT TEST
 
                 /*
@@ -105,7 +133,6 @@ public class bookInfoPage_v2 extends AppCompatActivity
         });
 
         //BUTTONS =========================================================================================================
-
     }
 
 
@@ -146,24 +173,27 @@ public class bookInfoPage_v2 extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            startActivity(new Intent(bookInfoPage_v2.this, home.class));
+            startActivity(new Intent(this, home.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Returning to home worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();;
             return true;
-        } else if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_manage) {
-            startActivity(new Intent(bookInfoPage_v2.this, profileSettingsActivity.class));
+        } else if (id == R.id.nav_profile_settings) {
+            startActivity(new Intent(this, profileSettingsActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_search) {
-            startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class));
+            startActivity(new Intent(this, SearchActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();
+        } else if (id == R.id.logout) {
+            finish();
+            SharedPrefManager.getInstance(getApplicationContext()).logout();
+            //startActivity(new Intent(home.this, SearchActivity.class));
+            //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();
         }
