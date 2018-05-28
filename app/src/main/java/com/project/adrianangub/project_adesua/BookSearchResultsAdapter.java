@@ -35,7 +35,7 @@ public class BookSearchResultsAdapter extends RecyclerView.Adapter<BookSearchRes
     public dataListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflating and returning our view holder
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.layout_book_search_results, null);
+        View view = inflater.inflate(R.layout.activity_book_search_results, null);
         return new dataListViewHolder(view);
     }
 
@@ -57,7 +57,7 @@ public class BookSearchResultsAdapter extends RecyclerView.Adapter<BookSearchRes
             @Override
             public void onClick(View v){
                 Toast.makeText(mCtx,"ENTRY NUMBER " + position ,Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(mCtx, bookInfoPage_v2.class);
+                Intent intent = new Intent(mCtx, BookInformationActivity.class);
                 intent.putExtra("bookSynopsis", dataList.get(position).getBookSynopsis());
                 mCtx.startActivity(intent);
             }

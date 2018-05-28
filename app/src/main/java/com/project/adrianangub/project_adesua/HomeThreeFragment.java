@@ -6,9 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ItemThreeFragment extends Fragment {
-    public static ItemThreeFragment newInstance() {
-        ItemThreeFragment fragment = new ItemThreeFragment();
+public class HomeThreeFragment extends Fragment {
+    public static HomeThreeFragment newInstance() {
+        HomeThreeFragment fragment = new HomeThreeFragment();
         return fragment;
     }
 
@@ -20,7 +20,7 @@ public class ItemThreeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_item_three, container, false);
+        return inflater.inflate(R.layout.home_fragment_three, container, false);
     }
 }
 

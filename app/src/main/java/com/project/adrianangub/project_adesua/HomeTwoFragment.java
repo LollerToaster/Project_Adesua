@@ -1,9 +1,7 @@
 package com.project.adrianangub.project_adesua;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,11 +20,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,9 +29,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ItemTwoFragment extends Fragment {
-    public static ItemTwoFragment newInstance() {
-        ItemTwoFragment fragment = new ItemTwoFragment();
+public class HomeTwoFragment extends Fragment {
+    public static HomeTwoFragment newInstance() {
+        HomeTwoFragment fragment = new HomeTwoFragment();
         return fragment;
     }
 
@@ -54,12 +46,12 @@ public class ItemTwoFragment extends Fragment {
     }
 
     //Settling the Model
-    ArrayList<ItemOneFragmentDataModel> classroomList;
+    ArrayList<HomeOneFragmentDataModel> classroomList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_item_two, container, false);
+        View view = inflater.inflate(R.layout.home_fragment_two, container, false);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         mProgressBarLoading = (ProgressBar)view.findViewById(R.id.progressBarLoading);
@@ -100,7 +92,7 @@ public class ItemTwoFragment extends Fragment {
 
                     //adding the product to product list
                     classroomList = new ArrayList<>();
-                    ArrayList classroomList = new ArrayList<ItemTwoFragmentDataModel>();
+                    ArrayList classroomList = new ArrayList<HomeTwoFragmentDataModel>();
 
                     //traversing through all the object
                     for (int i = 0; i < array.length(); i++)
@@ -121,7 +113,7 @@ public class ItemTwoFragment extends Fragment {
                         //Log.d("debug", " =======================================================");
 
                         classroomList.add(
-                                new ItemTwoFragmentDataModel
+                                new HomeTwoFragmentDataModel
                                         (
                                                 classroom.getString("vcstud_id"),
                                                 classroom.getString("stud_id_fk"),
@@ -142,7 +134,7 @@ public class ItemTwoFragment extends Fragment {
                                                 teacher.getString("ini")
                                         ));
 
-                        mListadapter = new ItemTwoFragment.ListAdapter(classroomList);
+                        mListadapter = new HomeTwoFragment.ListAdapter(classroomList);
                         mRecyclerView.setAdapter(mListadapter);
                     }
                 } catch (JSONException e) {
@@ -174,9 +166,9 @@ public class ItemTwoFragment extends Fragment {
 
     public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
     {
-        private ArrayList<ItemTwoFragmentDataModel> dataList;
+        private ArrayList<HomeTwoFragmentDataModel> dataList;
 
-        public ListAdapter(ArrayList<ItemTwoFragmentDataModel> data)
+        public ListAdapter(ArrayList<HomeTwoFragmentDataModel> data)
         {
             this.dataList = data;
         }
@@ -207,7 +199,7 @@ public class ItemTwoFragment extends Fragment {
         @Override
         public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
         {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_item_two_recycler_item, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_fragment_two_recycler_item, parent, false);
 
             ViewHolder viewHolder = new ViewHolder(view);
             return viewHolder;
@@ -251,7 +243,14 @@ public class ItemTwoFragment extends Fragment {
                 public void onClick(View v)
                 {
                     Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getContext(), home.class);
+                    Intent intent = new Intent(getContext(), VirtualClassroomActivity.class);
+
+                    //PASSING VALUES TO INTENT SECTION
+                    //intent.putExtra("virtualClassName", dataList.get(position).getVclassName());
+                    //intent.putExtra("virtualClassGrade", dataList.get(position).getVclassGrade());
+                    //intent.putExtra("virtualClassroomDesc", dataList.get(position).getVclassDesc());
+                    //PASSING VALUES TO INTENT SECTION
+
                     //intent.putExtra("bookSynopsis", dataList.get(position).getBookSynopsis());
                     getContext().startActivity(intent);
                 }

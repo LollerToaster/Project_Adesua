@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".LoginPage"
+            android:name=".LoginActivity"
             android:windowSoftInputMode="stateHidden">
 
             <intent-filter>
@@ -29,10 +29,10 @@
 
         </activity>
         <activity
-            android:name=".home"
+            android:name=".HomeActivity"
             android:label="@string/title_activity_home" />
         <activity
-            android:name=".bookInfoPage_v2"
+            android:name=".BookInformationActivity"
             android:label="@string/title_activity_book_info_page_v2"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
@@ -57,22 +57,18 @@
 
         <!-- META DATA -->
 
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
+        <activity android:name=".MapsActivity" />
         <activity
             android:name=".SearchResults"
-            android:label="@string/title_activity_search_results"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".profileSettingsActivity"
-            android:label="@string/title_activity_profile_settings"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="stateHidden">
-
-        </activity>
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".VirtualClassroomActivity"
+            android:label="@string/title_activity_virtual_classroom"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>

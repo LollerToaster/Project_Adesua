@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.project.adrianangub.project_adesua.HomeActivity"
-    tools:showIn="@layout/app_bar_home">
+    tools:context="com.project.adrianangub.project_adesua.VirtualClassroomActivity"
+    tools:showIn="@layout/app_bar_virtual_classroom">
 
 </android.support.constraint.ConstraintLayout>

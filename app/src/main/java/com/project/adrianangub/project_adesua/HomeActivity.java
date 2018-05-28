@@ -1,13 +1,9 @@
 package com.project.adrianangub.project_adesua;
 
-import android.app.Activity;
-import android.graphics.Color;
-import android.support.design.widget.CoordinatorLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
@@ -16,17 +12,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.telecom.Call;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class home extends AppCompatActivity
+public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private WebView mWebView;
@@ -40,7 +33,6 @@ public class home extends AppCompatActivity
 
         // ACTION BAR CUSTOMIZATION
         setTitle("Home");
-        // ACTION BAR CUSTOMIZATION
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -52,9 +44,7 @@ public class home extends AppCompatActivity
         // CALLING SHARED PREFERENCES
         Users user = SharedPrefManager.getInstance(this).getUser();
 
-        // LOG IN PART =============================================================================
-
-        // NAVIGATION DRAWER =======================================================================
+        // NAVIGATION DRAWER
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View headerView = navigationView.getHeaderView(0);
@@ -64,25 +54,13 @@ public class home extends AppCompatActivity
         //drawerImage.setImageDrawable(R.drawable.ic);
         drawerUsername.setText(user.getFullname());
         drawerAccount.setText(user.getSchoolname());
-        // NAVIGATION DRAWER =======================================================================
 
         // SHARED PREFERENCE, IF USER IS NOT SAVED IN PHONE, AUTO INTENT TO LOGIN PAGE
         if (!SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
-            startActivity(new Intent(this, home.class));
+            startActivity(new Intent(this, HomeActivity.class));
         }
 
-        /*
-        Toast.makeText(getApplicationContext(), user.getUid(), Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), user.getDesc(), Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), user.getMeta(), Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), user.getStat(), Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), user.getSchoolid(), Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), user.getSchoolname(), Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), user.getSchooladdress(), Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), user.getSchoolacryn(), Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), user.getSchoolnum(), Toast.LENGTH_LONG).show();
-        */
 
         // BOTTOM NAV ==============================================================================
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
@@ -95,16 +73,16 @@ public class home extends AppCompatActivity
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.action_item1:
-                                selectedFragment = ItemOneFragment.newInstance();
+                                selectedFragment = HomeOneFragment.newInstance();
                                 break;
                             case R.id.action_item2:
-                                selectedFragment = ItemTwoFragment.newInstance();
+                                selectedFragment = HomeTwoFragment.newInstance();
                                 break;
                             case R.id.action_item3:
-                                selectedFragment = ItemThreeFragment.newInstance();
+                                selectedFragment = HomeThreeFragment.newInstance();
                                 break;
                             case R.id.action_item4:
-                                selectedFragment = ItemThreeFragment.newInstance();
+                                selectedFragment = HomeThreeFragment.newInstance();
                                 break;
                         }
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -120,7 +98,7 @@ public class home extends AppCompatActivity
         //https://stackoverflow.com/questions/8474104/android-fragment-lifecycle-over-orientation-changes
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_layout, ItemOneFragment.newInstance());
+            transaction.replace(R.id.frame_layout, HomeOneFragment.newInstance());
             transaction.commit();
         }
         else {
@@ -155,13 +133,9 @@ public class home extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.search_button) {
-
-            startActivity(new Intent(home.this, SearchActivity.class));
+            startActivity(new Intent(HomeActivity.this, SearchActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
-            //        .setAction("Action", null).show();;
             return true;
         }
         /* REFRESH  ==========================================================================
@@ -174,7 +148,6 @@ public class home extends AppCompatActivity
             return true;
         }
          REFRESH  ============================================================================*/
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -184,13 +157,13 @@ public class home extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // Handle bottom_navigator_menu view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            startActivity(new Intent(this, home.class));
+            startActivity(new Intent(this, HomeActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            //Snackbar.make(findViewById(R.id.placeSnackBar), "Returning to home worked", Snackbar.LENGTH_LONG)
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Returning to HomeActivity worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();;
             return true;
         } else if (id == R.id.nav_profile_settings) {
@@ -207,8 +180,8 @@ public class home extends AppCompatActivity
         } else if (id == R.id.logout) {
             finish();
             SharedPrefManager.getInstance(getApplicationContext()).logout();
-            //startActivity(new Intent(home.this, SearchActivity.class));
-            //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            //startActivity(new Intent(HomeActivity.this, SearchActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();
         }

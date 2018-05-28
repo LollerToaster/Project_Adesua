@@ -4,7 +4,7 @@ package com.project.adrianangub.project_adesua;
  * Created by adrian angub on 19/05/2018.
  */
 
-public class ItemTwoFragmentDataModel {
+public class HomeTwoFragmentDataModel {
 
     //virtual classroom
 
@@ -29,7 +29,7 @@ public class ItemTwoFragmentDataModel {
     private String teacherEmail;
     private String teacherIni;
 
-    public ItemTwoFragmentDataModel(String vcStudId, String vcStudIdFk, String vcStudStatus, String vclassIdFk, String vclassId, String vclassPubId, String vclassName, String vclassGrade, String vclassDesc, String vclassNumStud, String vclassNumBook, String vclassTeachFk, String schoolIdFk, String teacherFulname, String teacherUsername, String teacherEmail, String teacherIni) {
+    public HomeTwoFragmentDataModel(String vcStudId, String vcStudIdFk, String vcStudStatus, String vclassIdFk, String vclassId, String vclassPubId, String vclassName, String vclassGrade, String vclassDesc, String vclassNumStud, String vclassNumBook, String vclassTeachFk, String schoolIdFk, String teacherFulname, String teacherUsername, String teacherEmail, String teacherIni) {
         this.vcStudId = vcStudId;
         this.vcStudIdFk = vcStudIdFk;
         this.vcStudStatus = vcStudStatus;

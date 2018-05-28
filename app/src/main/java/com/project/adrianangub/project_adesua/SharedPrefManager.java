@@ -7,7 +7,6 @@ package com.project.adrianangub.project_adesua;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 //here for this class we are using a singleton pattern
 public class SharedPrefManager {
@@ -18,12 +17,12 @@ public class SharedPrefManager {
     private static final String KEY_DESC = "keyDesc";
     private static final String KEY_META = "keyMeta";
     private static final String KEY_STAT = "keyDesc";
-    private static final String KEY_FULLNAME = "keyFullName";
     private static final String KEY_SCHOOLID = "keySchoolId";
     private static final String KEY_SCHOOLNAME = "keySchoolName";
     private static final String KEY_SCHOOLADDRESS = "keySchoolAddress";
     private static final String KEY_SCHOOLACRYN = "keySchoolAcryn";
     private static final String KEY_SCHOOLNUM = "keySchoolNum";
+    private static final String KEY_FULLNAME = "keyFullName";
 
     private static SharedPrefManager mInstance;
     private static Context mCtx;
@@ -71,12 +70,12 @@ public class SharedPrefManager {
                 sharedPreferences.getString(KEY_DESC, null),
                 sharedPreferences.getString(KEY_META, null),
                 sharedPreferences.getString(KEY_STAT, null),
-                sharedPreferences.getString(KEY_FULLNAME, null),
                 sharedPreferences.getString(KEY_SCHOOLID, null),
                 sharedPreferences.getString(KEY_SCHOOLNAME, null),
                 sharedPreferences.getString(KEY_SCHOOLADDRESS, null),
                 sharedPreferences.getString(KEY_SCHOOLACRYN, null),
-                sharedPreferences.getString(KEY_SCHOOLNUM, null)
+                sharedPreferences.getString(KEY_SCHOOLNUM, null),
+                sharedPreferences.getString(KEY_FULLNAME, null)
         );
     }
 
@@ -86,6 +85,6 @@ public class SharedPrefManager {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
-        mCtx.startActivity(new Intent(mCtx, LoginPage.class));
+        mCtx.startActivity(new Intent(mCtx, LoginActivity.class));
     }
 }

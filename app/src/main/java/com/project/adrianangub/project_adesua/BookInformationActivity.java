@@ -19,13 +19,13 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-public class bookInfoPage_v2 extends AppCompatActivity
+public class BookInformationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book_info_page_v2);
+        setContentView(R.layout.activity_book_information_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -126,7 +126,7 @@ public class bookInfoPage_v2 extends AppCompatActivity
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(bookInfoPage_v2.this, MapsActivity.class));
+                startActivity(new Intent(BookInformationActivity.this, MapsActivity.class));
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
 
@@ -159,7 +159,7 @@ public class bookInfoPage_v2 extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.search_button) {
 
-            startActivity(new Intent(bookInfoPage_v2.this, SearchActivity.class));
+            startActivity(new Intent(BookInformationActivity.this, SearchActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             return true;
         }
@@ -169,13 +169,13 @@ public class bookInfoPage_v2 extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // Handle bottom_navigator_menu view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            startActivity(new Intent(this, home.class));
+            startActivity(new Intent(this, HomeActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            //Snackbar.make(findViewById(R.id.placeSnackBar), "Returning to home worked", Snackbar.LENGTH_LONG)
+            //Snackbar.make(findViewById(R.id.placeSnackBar), "Returning to HomeActivity worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();;
             return true;
         } else if (id == R.id.nav_profile_settings) {
@@ -192,7 +192,7 @@ public class bookInfoPage_v2 extends AppCompatActivity
         } else if (id == R.id.logout) {
             finish();
             SharedPrefManager.getInstance(getApplicationContext()).logout();
-            //startActivity(new Intent(home.this, SearchActivity.class));
+            //startActivity(new Intent(HomeActivity.this, SearchActivity.class));
             //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();

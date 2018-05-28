@@ -3,13 +3,10 @@ package com.project.adrianangub.project_adesua;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -24,7 +21,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginPage extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     EditText editTextUsername, editTextPassword;
     //ProgressBar progressBar;
@@ -33,7 +30,7 @@ public class LoginPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_page);
+        setContentView(R.layout.activity_login);
 
         //progressBar = (ProgressBar) findViewById(R.id.progressBar);
         editTextUsername = (EditText) findViewById(R.id.usernameLogin);
@@ -51,11 +48,9 @@ public class LoginPage extends AppCompatActivity {
         if (SharedPrefManager.getInstance(this).isLoggedIn())
         {
             finish();
-            startActivity(new Intent(this, home.class));
+            startActivity(new Intent(this, HomeActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-
         }
-
     }
 
     private void userLogin() {
@@ -76,7 +71,7 @@ public class LoginPage extends AppCompatActivity {
                             JSONObject userJson = new JSONObject(response);
                             JSONObject schoolJson = userJson.getJSONObject("school");
 
-                            //Log.d(response, "onResponse: ");
+                            Log.d(response, "onResponse: ");
                             //creating a new user object
                             Users user = new Users(
                                     //userJson.getInt("id"),
@@ -96,8 +91,8 @@ public class LoginPage extends AppCompatActivity {
 
                             //starting the profile activity
                             finish();
-                            startActivity(new Intent(getApplicationContext(), home.class));
-                            //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -133,7 +128,6 @@ public class LoginPage extends AppCompatActivity {
                 Map<String, String>  params = new HashMap<String, String>();
                 params.put("username", username);
                 params.put("password", password);
-
                 return params;
             }
         };

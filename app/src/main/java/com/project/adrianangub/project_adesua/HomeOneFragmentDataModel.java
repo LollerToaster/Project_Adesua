@@ -4,7 +4,7 @@ package com.project.adrianangub.project_adesua;
  * Created by adrian angub on 21/04/2018.
  */
 
-public class ItemOneFragmentDataModel
+public class HomeOneFragmentDataModel
 {
     private String t;
     private String cover;
@@ -19,7 +19,7 @@ public class ItemOneFragmentDataModel
     private String issn;
     private String lbs;
 
-    public ItemOneFragmentDataModel(String t, String cover, String id, String auth, String callcrd, String haspdf, String totalbooks, String pubname, String pubdate, String isbn, String issn,  String lbs)
+    public HomeOneFragmentDataModel(String t, String cover, String id, String auth, String callcrd, String haspdf, String totalbooks, String pubname, String pubdate, String isbn, String issn, String lbs)
     {
         this.t = t;
         this.cover = cover;

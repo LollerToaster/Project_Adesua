@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,9 +37,10 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
-public class ItemOneFragment extends Fragment {
-    public static ItemOneFragment newInstance() {
-        ItemOneFragment fragment = new ItemOneFragment();
+public class HomeOneFragment extends Fragment {
+
+    public static HomeOneFragment newInstance() {
+        HomeOneFragment fragment = new HomeOneFragment();
         return fragment;
     }
 
@@ -59,12 +59,12 @@ public class ItemOneFragment extends Fragment {
     //https://medium.com/@Pang_Yao/android-fragment-use-recyclerview-cardview-4bc10beac446
 
     //Settling the Model
-    ArrayList<ItemOneFragmentDataModel> bookList;
+    ArrayList<HomeOneFragmentDataModel> bookList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_item_one, container, false);
+        View view = inflater.inflate(R.layout.home_fragment_one, container, false);
         mProgressBarLoading = (ProgressBar)view.findViewById(R.id.progressBarLoading);
 
         // ROW 1
@@ -131,7 +131,7 @@ public class ItemOneFragment extends Fragment {
 
                     //adding the product to product list
                     bookList = new ArrayList<>();
-                    ArrayList bookList = new ArrayList<ItemOneFragmentDataModel>();
+                    ArrayList bookList = new ArrayList<HomeOneFragmentDataModel>();
 
                     //traversing through all the object
                     for (int i = 0; i < array.length(); i++)
@@ -150,7 +150,7 @@ public class ItemOneFragment extends Fragment {
                         */
 
                         bookList.add(
-                                new ItemOneFragmentDataModel
+                                new HomeOneFragmentDataModel
                                         (
                                             product.getString("t"),
                                             product.getString("cover"),
@@ -199,14 +199,14 @@ public class ItemOneFragment extends Fragment {
     // ADAPTER SECTION =============================================================================
     public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
     {
-        private ArrayList<ItemOneFragmentDataModel> dataList;
-        public ListAdapter(ArrayList<ItemOneFragmentDataModel> data)
+        private ArrayList<HomeOneFragmentDataModel> dataList;
+        public ListAdapter(ArrayList<HomeOneFragmentDataModel> data)
         {
             this.dataList = data;
         }
         public class ViewHolder extends RecyclerView.ViewHolder
         {
-            TextView textViewBookNumber;
+            TextView textViewBookTitle;
             ImageView bookCover;
             TextView textViewBookAuthor;
             TextView textViewBookSynopsis;
@@ -215,7 +215,7 @@ public class ItemOneFragment extends Fragment {
             public ViewHolder(View itemView)
             {
                 super(itemView);
-                this.textViewBookNumber = (TextView) itemView.findViewById(R.id.bookNumber);
+                this.textViewBookTitle = (TextView) itemView.findViewById(R.id.bookTitle);
                 this.bookCover = itemView.findViewById(R.id.bookImage);
                 this.textViewBookAuthor = (TextView) itemView.findViewById(R.id.classDescription);
                 this.textViewBookSynopsis = (TextView) itemView.findViewById(R.id.bookSynopsis);
@@ -227,7 +227,7 @@ public class ItemOneFragment extends Fragment {
         @Override
         public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
         {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_item_one_recycler_item, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_fragment_one_recycler_item, parent, false);
             ViewHolder viewHolder = new ViewHolder(view);
             return viewHolder;
         }
@@ -235,7 +235,7 @@ public class ItemOneFragment extends Fragment {
         @Override
         public void onBindViewHolder(ListAdapter.ViewHolder holder, final int position)
         {
-            holder.textViewBookNumber.setText(dataList.get(position).getT());
+            holder.textViewBookTitle.setText(dataList.get(position).getT());
 
             // Image Holder Using Glide
             String url = dataList.get(position).getCover();
@@ -267,7 +267,7 @@ public class ItemOneFragment extends Fragment {
                 {
                     Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(getActivity(), "Item  is clicked.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getContext(), bookInfoPage_v2.class);
+                    Intent intent = new Intent(getContext(), BookInformationActivity.class);
 
                     //PASSING VALUES TO INTENT SECTION
                     intent.putExtra("bookTitle", dataList.get(position).getT());

@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.project.adrianangub.project_adesua.bookInfoPage_v2"
-    tools:showIn="@layout/app_bar_book_info_page_v2">
+    tools:context="com.project.adrianangub.project_adesua.BookInformationActivity"
+    tools:showIn="@layout/app_bar_book_information_page">
 
     <!-- CONTENT -->
     <android.support.v4.widget.NestedScrollView
