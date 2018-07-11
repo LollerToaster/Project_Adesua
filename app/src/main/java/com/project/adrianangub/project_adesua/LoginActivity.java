@@ -1,6 +1,13 @@
 package com.project.adrianangub.project_adesua;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.CountDownTimer;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -21,7 +28,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity{
 
     EditText editTextUsername, editTextPassword;
     //ProgressBar progressBar;
@@ -35,6 +42,35 @@ public class LoginActivity extends AppCompatActivity {
         //progressBar = (ProgressBar) findViewById(R.id.progressBar);
         editTextUsername = (EditText) findViewById(R.id.usernameLogin);
         editTextPassword = (EditText) findViewById(R.id.passwordLogin);
+
+        //CountDownTimer / Notification Block ======================================================
+        new CountDownTimer(5000, 1000) {
+
+            public int testes = 0; //test counter
+
+            public void onTick(long millisUntilFinished) {
+                //every second or every countDownInterval happens on onTick
+                //mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                //PUT API HERE
+
+                //PUT API HERE
+
+                //REMOVE ON REAL STUFF
+                testes++;
+                //REMOVE ON REAL STUFF
+
+                if (testes == 2 || testes == 4) {
+                    sendNotification(testes);
+                    testes++;
+                }
+                //loops the whole countdown
+                this.start();
+            }
+        }.start();
+        //==========================================================================================
 
         findViewById(R.id.loginButton).setOnClickListener(new View.OnClickListener()
         {
@@ -52,6 +88,44 @@ public class LoginActivity extends AppCompatActivity {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
     }
+
+    //CountDownTimer / Notification Block ==========================================================
+    public void sendNotification(int testes) {
+
+        //Get an instance of NotificationManager//
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this, "1")
+                        .setSmallIcon(R.drawable.ic_launcher_background)
+                        .setContentTitle("My notification")
+                        .setContentText("Hello ! loop counter: " + testes)
+                        .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 });
+
+        //Plays a sound on Notification
+        try {
+            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+            r.play();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Gets an instance of the NotificationManager service//
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // When you issue multiple notifications about the same type of event,
+        // it’s best practice for your app to try to update an existing notification
+        // with this new information, rather than immediately creating a new notification.
+        // If you want to update this notification at a later date, you need to assign it an ID.
+        // You can then use this ID whenever you issue a subsequent notification.
+        // If the previous notification is still visible, the system will update this existing notification,
+        // rather than create a new one. In this example, the notification’s ID is 001
+
+        //NotificationManager.notify().
+
+        mNotificationManager.notify(1, mBuilder.build());
+    }
+    //==============================================================================================
 
     private void userLogin() {
         //first getting the values

@@ -182,7 +182,20 @@ public class BookInformationActivity extends AppCompatActivity
             startActivity(new Intent(this, profileSettingsActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
+        } else if (id == R.id.nav_virtual_classroom) {
+
+            //https://stackoverflow.com/questions/36063704/how-to-launch-activity-and-show-specific-fragment
+            Intent i = new Intent(this, HomeActivity.class);
+            String Fragment = "2";
+            i.putExtra("fragmentCall", Fragment);
+
+            // Now start your activity
+            startActivity(i);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
         } else if (id == R.id.nav_share) {
+            startActivity(new Intent(this, profileSettingsActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         } else if (id == R.id.nav_search) {
             startActivity(new Intent(this, SearchActivity.class));
@@ -193,7 +206,7 @@ public class BookInformationActivity extends AppCompatActivity
             finish();
             SharedPrefManager.getInstance(getApplicationContext()).logout();
             //startActivity(new Intent(HomeActivity.this, SearchActivity.class));
-            //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();
         }

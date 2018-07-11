@@ -12,6 +12,10 @@
             android:id="@+id/nav_profile_settings"
             android:icon="@drawable/ic_account_box_black_24px"
             android:title="Profile Settings" />
+        <item
+            android:id="@+id/nav_virtual_classroom"
+            android:icon="@drawable/ic_virtual_classroom"
+            android:title="Virtual Classrooms" />
     </group>
 
     <item android:title="E-Books">

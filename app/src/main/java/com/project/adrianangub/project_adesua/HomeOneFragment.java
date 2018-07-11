@@ -1,13 +1,17 @@
 package com.project.adrianangub.project_adesua;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,11 +35,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.bumptech.glide.Glide;
+import com.bumptech.glide.*;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class HomeOneFragment extends Fragment {
 
@@ -45,7 +52,7 @@ public class HomeOneFragment extends Fragment {
     }
 
     private TextView seeMore, seeMore2;
-    private ProgressBar mProgressBarLoading;
+    public ProgressBar mProgressBar;
     private RecyclerView mRecyclerView, mRecyclerView2;
     private ListAdapter mListadapter;
     private static final String URL_PRODUCTS = "http://adesuaapi.spottyus.com/book/search?uid=4007";
@@ -65,7 +72,11 @@ public class HomeOneFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.home_fragment_one, container, false);
-        mProgressBarLoading = (ProgressBar)view.findViewById(R.id.progressBarLoading);
+        View view2 = inflater.inflate(R.layout.home_fragment_one_recycler_item, container, false);
+        //mProgressBar = (ProgressBar) view2.findViewById(R.id.progressBar);
+        //mProgressBar.setVisibility(View.GONE);
+
+        //Toast.makeText(getActivity(), mProgressBar + "", Toast.LENGTH_SHORT).show();
 
         // ROW 1
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
@@ -78,6 +89,8 @@ public class HomeOneFragment extends Fragment {
         //final LinearLayoutManager layoutManager2 = new LinearLayoutManager(getActivity());
         //layoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
         //mRecyclerView2.setLayoutManager(layoutManager2);
+
+
 
         // Calling Volley functions to retrieve data from database
         loadRow1();
@@ -206,6 +219,7 @@ public class HomeOneFragment extends Fragment {
         }
         public class ViewHolder extends RecyclerView.ViewHolder
         {
+            //ProgressBar Progress;
             TextView textViewBookTitle;
             ImageView bookCover;
             TextView textViewBookAuthor;
@@ -215,8 +229,9 @@ public class HomeOneFragment extends Fragment {
             public ViewHolder(View itemView)
             {
                 super(itemView);
+                //this.Progress = (ProgressBar)itemView.findViewById(R.id.progress);
                 this.textViewBookTitle = (TextView) itemView.findViewById(R.id.bookTitle);
-                this.bookCover = itemView.findViewById(R.id.bookImage);
+                this.bookCover = itemView.findViewById(R.id.bookCover);
                 this.textViewBookAuthor = (TextView) itemView.findViewById(R.id.classDescription);
                 this.textViewBookSynopsis = (TextView) itemView.findViewById(R.id.bookSynopsis);
                 this.textViewBookRating = (TextView) itemView.findViewById(R.id.bookRating);
@@ -241,19 +256,13 @@ public class HomeOneFragment extends Fragment {
             String url = dataList.get(position).getCover();
             Glide.with(getContext())
                     .load(url)
-                    .listener(new RequestListener<Drawable>() {
-                        @Override
-                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                            mProgressBarLoading.setVisibility(View.GONE);
-                            return false;
-                        }
-
-                        @Override
-                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                            mProgressBarLoading.setVisibility(View.GONE);
-                            return false;
-                        }
-                    })
+                    .apply(
+                            new RequestOptions()
+                                    .centerCrop()
+                                    .error(R.drawable.spung)
+                                    .placeholder(new ColorDrawable(ContextCompat.getColor(getContext(), R.color.primary)))
+                                    /*.placeholder(R.drawable.process_image)*/)
+                    .transition(withCrossFade())
                     .into(holder.bookCover);
 
             holder.textViewBookAuthor.setText(dataList.get(position).getAuth());
