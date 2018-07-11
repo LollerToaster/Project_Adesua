@@ -1,13 +1,18 @@
 package com.project.adrianangub.project_adesua;
 
+import android.Manifest;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.CountDownTimer;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -21,11 +26,17 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity{
@@ -42,6 +53,18 @@ public class LoginActivity extends AppCompatActivity{
         //progressBar = (ProgressBar) findViewById(R.id.progressBar);
         editTextUsername = (EditText) findViewById(R.id.usernameLogin);
         editTextPassword = (EditText) findViewById(R.id.passwordLogin);
+
+        //ASKING FOR PERMISSIONS
+        Dexter.withActivity(this)
+                .withPermissions(
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.ACCESS_NOTIFICATION_POLICY
+                ).withListener(new MultiplePermissionsListener() {
+            @Override public void onPermissionsChecked(MultiplePermissionsReport report) {/* ... */}
+            @Override public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {/* ... */}
+        }).check();
+
 
         //CountDownTimer / Notification Block ======================================================
         new CountDownTimer(5000, 1000) {
@@ -88,17 +111,20 @@ public class LoginActivity extends AppCompatActivity{
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
     }
+    //Asking for Permissions Block
+
 
     //CountDownTimer / Notification Block ==========================================================
     public void sendNotification(int testes) {
 
         //Get an instance of NotificationManager//
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this, "1")
-                        .setSmallIcon(R.drawable.ic_launcher_background)
-                        .setContentTitle("My notification")
-                        .setContentText("Hello ! loop counter: " + testes)
-                        .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 });
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "1")
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentTitle("My notification")
+                .setContentText("Hello ! loop counter: " + testes)
+                //.setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setPriority(NotificationManager.IMPORTANCE_HIGH);
 
         //Plays a sound on Notification
         try {
@@ -179,7 +205,9 @@ public class LoginActivity extends AppCompatActivity{
                     public void onErrorResponse(VolleyError response)
                     {
                         // error
-                        Toast.makeText(getApplicationContext(), "volley borkken ;(", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "volley borkken ;(", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Failed to Login. Call your website administration for further details.", Toast.LENGTH_LONG).show();
                     }
                 }
         )
