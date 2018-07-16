@@ -46,6 +46,9 @@ dependencies {
     //Ask Permissions Library
     implementation 'com.karumi:dexter:5.0.0'
 
+    //PDFViewer
+    compile 'com.github.barteksc:android-pdf-viewer:2.0.3'
+
     //compile 'com.android.support:appcompat-v7:25.1.0'
     //compile 'com.android.support:design:25.1.0'
     //compile 'com.android.support:support-v4:25.1.0'

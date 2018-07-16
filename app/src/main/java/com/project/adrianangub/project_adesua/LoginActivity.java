@@ -113,7 +113,6 @@ public class LoginActivity extends AppCompatActivity{
     }
     //Asking for Permissions Block
 
-
     //CountDownTimer / Notification Block ==========================================================
     public void sendNotification(int testes) {
 
@@ -127,6 +126,7 @@ public class LoginActivity extends AppCompatActivity{
                 .setPriority(NotificationManager.IMPORTANCE_HIGH);
 
         //Plays a sound on Notification
+        /*
         try {
             Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
@@ -134,6 +134,7 @@ public class LoginActivity extends AppCompatActivity{
         } catch (Exception e) {
             e.printStackTrace();
         }
+        */
 
         // Gets an instance of the NotificationManager service//
         NotificationManager mNotificationManager =
@@ -207,7 +208,7 @@ public class LoginActivity extends AppCompatActivity{
                         // error
                         //Toast.makeText(getApplicationContext(), response.getMessage(), Toast.LENGTH_SHORT).show();
                         //Toast.makeText(getApplicationContext(), "volley borkken ;(", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(), "Failed to Login. Call your website administration for further details.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Failed to Login. Check your Internet Connection.", Toast.LENGTH_LONG).show();
                     }
                 }
         )
