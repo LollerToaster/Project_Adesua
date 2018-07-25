@@ -21,7 +21,7 @@
     <item android:title="E-Books">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_downloaded"
                 android:icon="@android:drawable/stat_sys_download"
                 android:title="Downloaded" />
             <item
@@ -37,6 +37,10 @@
                 android:id="@+id/logout"
                 android:icon="@android:drawable/ic_menu_gallery"
                 android:title="Logout" />
+            <item
+                android:id="@+id/announcements"
+                android:icon="@android:drawable/ic_search_category_default"
+                android:title="Notifications" />
         </menu>
     </item>
 

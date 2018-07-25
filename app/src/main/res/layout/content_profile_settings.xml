@@ -80,55 +80,6 @@
 
         </com.rengwuxian.materialedittext.MaterialEditText>
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/previousProfileLastName"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:focusable="false"
-            android:fontFamily="sans-serif-condensed"
-            android:hint="Lorem S. Ipsum"
-            android:inputType="text"
-            android:textColor="@color/fontColor1"
-            android:textColorLink="@color/fontColor1"
-            android:textSize="20sp"
-            app:met_baseColor="@color/fontColor1"
-            app:met_clearButton="true"
-            app:met_floatingLabel="highlight"
-            app:met_floatingLabelAlwaysShown="true"
-            app:met_floatingLabelAnimating="true"
-            app:met_floatingLabelText="Previous Name"
-            app:met_floatingLabelTextSize="16dp"
-            app:met_iconPadding="16dp"
-            app:met_primaryColor="@android:color/white"
-            app:met_underlineColor="@color/common_google_signin_btn_text_dark_focused">
-
-        </com.rengwuxian.materialedittext.MaterialEditText>
-
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/changeProfileLastName"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-condensed"
-            android:hint="New Name"
-            android:inputType="text"
-            android:textColor="@color/fontColor1"
-            android:textColorLink="@color/fontColor1"
-            android:textSize="20sp"
-            app:met_baseColor="@color/fontColor1"
-            app:met_clearButton="true"
-            app:met_floatingLabel="highlight"
-            app:met_floatingLabelAlwaysShown="false"
-            app:met_floatingLabelAnimating="true"
-            app:met_floatingLabelText="Name"
-            app:met_floatingLabelTextSize="16dp"
-            app:met_iconPadding="16dp"
-            app:met_primaryColor="@android:color/white"
-            app:met_underlineColor="@color/common_google_signin_btn_text_dark_focused">
-
-        </com.rengwuxian.materialedittext.MaterialEditText>
-
         <Button
             android:id="@+id/button2"
             style="@style/AppTheme.RoundedCornerMaterialButton"

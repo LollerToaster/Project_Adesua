@@ -16,6 +16,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 
 public class VirtualClassroomActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -60,9 +63,9 @@ public class VirtualClassroomActivity extends AppCompatActivity
         //Tab Section
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("My name jeff"));
-        tabLayout.addTab(tabLayout.newTab().setText("Despacito 2"));
-        tabLayout.addTab(tabLayout.newTab().setText("ecks d"));
+        tabLayout.addTab(tabLayout.newTab().setText("Teachers"));
+        tabLayout.addTab(tabLayout.newTab().setText("Discussions"));
+        tabLayout.addTab(tabLayout.newTab().setText("Books Used"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
@@ -134,6 +137,7 @@ public class VirtualClassroomActivity extends AppCompatActivity
     //NAVIGATION DRAWER SELECTION ==================================================================
     //NAVIGATION DRAWER SELECTION ==================================================================
 
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -147,10 +151,30 @@ public class VirtualClassroomActivity extends AppCompatActivity
             //        .setAction("Action", null).show();;
             return true;
         } else if (id == R.id.nav_profile_settings) {
-            startActivity(new Intent(this, profileSettingsActivity.class));
+            //startActivity(new Intent(this, profileSettingsActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
-        } else if (id == R.id.nav_share) {
+            new MaterialDialog.Builder(this)
+                    .title("Whoops!")
+                    .content("Under development for dry run stage.")
+                    .positiveText("Understood")
+                    //.negativeText("no")
+                    .show();
+
+        } else if (id == R.id.nav_virtual_classroom) {
+
+            //https://stackoverflow.com/questions/36063704/how-to-launch-activity-and-show-specific-fragment
+            Intent i = new Intent(this, HomeActivity.class);
+            String Fragment = "2";
+            i.putExtra("fragmentCall", Fragment);
+
+            // Now start your activity
+            startActivity(i);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+        } else if (id == R.id.nav_downloaded) {
+            startActivity(new Intent(this, profileSettingsActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         } else if (id == R.id.nav_search) {
             startActivity(new Intent(this, SearchActivity.class));
@@ -163,6 +187,17 @@ public class VirtualClassroomActivity extends AppCompatActivity
             //startActivity(new Intent(HomeActivity.this, SearchActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();
+        } else if (id == R.id.announcements) {
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+            new MaterialDialog.Builder(this)
+                    .title("Whoops!")
+                    .content("Under development for dry run stage.")
+                    .positiveText("Understood")
+                    //.negativeText("no")
+                    .show();
+            //Toast.makeText(getApplicationContext(), "Still In Development! :)" ,Toast.LENGTH_SHORT).show();
             //        .setAction("Action", null).show();
         }
 

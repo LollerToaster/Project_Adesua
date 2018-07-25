@@ -28,8 +28,8 @@ public class HomeFourFragment extends Fragment {
     ListView lv_pdf;
     public static ArrayList<File> fileList = new ArrayList<File>();
     PDFAdapter obj_adapter;
-    public static int REQUEST_PERMISSIONS = 1;
-    boolean boolean_permission;
+    //public static int REQUEST_PERMISSIONS = 1;
+    //boolean boolean_permission;
     File dir;
 
     @Override
@@ -47,10 +47,7 @@ public class HomeFourFragment extends Fragment {
         lv_pdf = (ListView)view.findViewById(R.id.lv_pdf);
         //dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath());
 
-        //adds the new folder
-        dir = new File(Environment.getExternalStorageDirectory() + "/Adesua/");
-        dir.mkdirs(); // creates needed dirs
-
+        //Check The Directory
         dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Adesua/");
         getfile(dir);
 
@@ -106,6 +103,7 @@ public class HomeFourFragment extends Fragment {
         return fileList;
     }
 
+    /*
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -124,5 +122,6 @@ public class HomeFourFragment extends Fragment {
             }
         }
     }
+    */
 }
 

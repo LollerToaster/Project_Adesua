@@ -16,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -181,6 +183,7 @@ public class SearchResults extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -194,10 +197,30 @@ public class SearchResults extends AppCompatActivity
             //        .setAction("Action", null).show();;
             return true;
         } else if (id == R.id.nav_profile_settings) {
-            startActivity(new Intent(this, profileSettingsActivity.class));
+            //startActivity(new Intent(this, profileSettingsActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
-        } else if (id == R.id.nav_share) {
+            new MaterialDialog.Builder(this)
+                    .title("Whoops!")
+                    .content("Under development for dry run stage.")
+                    .positiveText("Understood")
+                    //.negativeText("no")
+                    .show();
+
+        } else if (id == R.id.nav_virtual_classroom) {
+
+            //https://stackoverflow.com/questions/36063704/how-to-launch-activity-and-show-specific-fragment
+            Intent i = new Intent(this, HomeActivity.class);
+            String Fragment = "2";
+            i.putExtra("fragmentCall", Fragment);
+
+            // Now start your activity
+            startActivity(i);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+        } else if (id == R.id.nav_downloaded) {
+            startActivity(new Intent(this, profileSettingsActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         } else if (id == R.id.nav_search) {
             startActivity(new Intent(this, SearchActivity.class));
@@ -208,8 +231,19 @@ public class SearchResults extends AppCompatActivity
             finish();
             SharedPrefManager.getInstance(getApplicationContext()).logout();
             //startActivity(new Intent(HomeActivity.this, SearchActivity.class));
-            //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Intent to search worked", Snackbar.LENGTH_LONG)
+            //        .setAction("Action", null).show();
+        } else if (id == R.id.announcements) {
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+            new MaterialDialog.Builder(this)
+                    .title("Whoops!")
+                    .content("Under development for dry run stage.")
+                    .positiveText("Understood")
+                    //.negativeText("no")
+                    .show();
+            //Toast.makeText(getApplicationContext(), "Still In Development! :)" ,Toast.LENGTH_SHORT).show();
             //        .setAction("Action", null).show();
         }
 

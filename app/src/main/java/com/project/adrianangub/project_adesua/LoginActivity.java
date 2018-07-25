@@ -10,6 +10,7 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.CountDownTimer;
+import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
@@ -35,6 +36,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,12 +49,15 @@ public class LoginActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         //progressBar = (ProgressBar) findViewById(R.id.progressBar);
         editTextUsername = (EditText) findViewById(R.id.usernameLogin);
         editTextPassword = (EditText) findViewById(R.id.passwordLogin);
+
+
 
         //ASKING FOR PERMISSIONS
         Dexter.withActivity(this)
@@ -64,36 +69,6 @@ public class LoginActivity extends AppCompatActivity{
             @Override public void onPermissionsChecked(MultiplePermissionsReport report) {/* ... */}
             @Override public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {/* ... */}
         }).check();
-
-
-        //CountDownTimer / Notification Block ======================================================
-        new CountDownTimer(5000, 1000) {
-
-            public int testes = 0; //test counter
-
-            public void onTick(long millisUntilFinished) {
-                //every second or every countDownInterval happens on onTick
-                //mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
-            }
-
-            public void onFinish() {
-                //PUT API HERE
-
-                //PUT API HERE
-
-                //REMOVE ON REAL STUFF
-                testes++;
-                //REMOVE ON REAL STUFF
-
-                if (testes == 2 || testes == 4) {
-                    sendNotification(testes);
-                    testes++;
-                }
-                //loops the whole countdown
-                this.start();
-            }
-        }.start();
-        //==========================================================================================
 
         findViewById(R.id.loginButton).setOnClickListener(new View.OnClickListener()
         {
@@ -111,48 +86,6 @@ public class LoginActivity extends AppCompatActivity{
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
     }
-    //Asking for Permissions Block
-
-    //CountDownTimer / Notification Block ==========================================================
-    public void sendNotification(int testes) {
-
-        //Get an instance of NotificationManager//
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "1")
-                .setSmallIcon(R.drawable.ic_launcher_background)
-                .setContentTitle("My notification")
-                .setContentText("Hello ! loop counter: " + testes)
-                //.setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
-                .setDefaults(Notification.DEFAULT_ALL)
-                .setPriority(NotificationManager.IMPORTANCE_HIGH);
-
-        //Plays a sound on Notification
-        /*
-        try {
-            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-            Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-            r.play();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        */
-
-        // Gets an instance of the NotificationManager service//
-        NotificationManager mNotificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-        // When you issue multiple notifications about the same type of event,
-        // it’s best practice for your app to try to update an existing notification
-        // with this new information, rather than immediately creating a new notification.
-        // If you want to update this notification at a later date, you need to assign it an ID.
-        // You can then use this ID whenever you issue a subsequent notification.
-        // If the previous notification is still visible, the system will update this existing notification,
-        // rather than create a new one. In this example, the notification’s ID is 001
-
-        //NotificationManager.notify().
-
-        mNotificationManager.notify(1, mBuilder.build());
-    }
-    //==============================================================================================
 
     private void userLogin() {
         //first getting the values

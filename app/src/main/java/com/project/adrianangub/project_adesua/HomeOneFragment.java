@@ -259,9 +259,9 @@ public class HomeOneFragment extends Fragment {
                     .apply(
                             new RequestOptions()
                                     .centerCrop()
-                                    .error(R.drawable.spung)
-                                    .placeholder(new ColorDrawable(ContextCompat.getColor(getContext(), R.color.primary)))
-                                    /*.placeholder(R.drawable.process_image)*/)
+                                    /*.error(R.drawable.spung)*/
+                                    .placeholder(new ColorDrawable(ContextCompat.getColor(getContext(), R.color.primary))))
+                                    //.placeholder(R.drawable.process_image))
                     .transition(withCrossFade())
                     .into(holder.bookCover);
 
@@ -274,7 +274,7 @@ public class HomeOneFragment extends Fragment {
                 @Override
                 public void onClick(View v)
                 {
-                    Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(getActivity(), "Item  is clicked.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getContext(), BookInformationActivity.class);
 
