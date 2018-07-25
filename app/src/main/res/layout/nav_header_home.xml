@@ -17,7 +17,7 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_gravity="left"
-        android:src="@drawable/spung" />
+        android:src="@drawable/user_outline_logo" />
 
     <TextView
         android:id="@+id/name"

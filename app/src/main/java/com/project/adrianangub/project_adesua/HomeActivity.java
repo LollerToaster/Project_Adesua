@@ -191,7 +191,7 @@ public class HomeActivity extends AppCompatActivity
                 .setSmallIcon(R.drawable.adesua)
                 .setContentTitle("This is a Notification Tester!")
                 //.setContentText("Hello ! loop counter: " + testes)
-                .setContentText("Hello ! Currently you have no unread notifications!")
+                .setContentText("Hello ! This Notification is for Dry Run Purposes Only!!")
                 //.setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setPriority(NotificationManager.IMPORTANCE_HIGH);
