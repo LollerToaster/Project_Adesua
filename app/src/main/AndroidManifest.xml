@@ -22,16 +22,12 @@
         <activity
             android:name=".LoginActivity"
             android:windowSoftInputMode="stateHidden">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
-            android:configChanges="keyboardHidden|orientation|screenSize"/>
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_home" />
         <activity
             android:name=".BookInformationActivity"
             android:label="@string/title_activity_book_info_page_v2"
@@ -70,10 +66,17 @@
             android:name=".VirtualClassroomActivity"
             android:label="@string/title_activity_virtual_classroom"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <!--<activity android:name=".PDFAdapter" />-->
+        <!-- <activity android:name=".PDFAdapter" /> -->
         <activity
             android:name=".PDFActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

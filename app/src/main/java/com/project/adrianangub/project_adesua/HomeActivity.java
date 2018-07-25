@@ -103,7 +103,7 @@ public class HomeActivity extends AppCompatActivity
                 }
                 */
 
-                if ( testes == 1) {
+                if ( testes == 4) {
                     sendNotification(testes);
                     testes++;
                 }

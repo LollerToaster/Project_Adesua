@@ -8,18 +8,9 @@
     </style>
     -->
 
-    <style name="AppTheme" parent="android:Theme.Holo.Light">
-        <item name="android:actionBarStyle">@style/ActionBarTheme</item>
-    </style>
-
-    <style name="ActionBarTheme" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:actionBarSize">16dp</item>
-        <item name="actionBarSize">16dp</item>
-        <item name="android:background">@color/action_bar</item>
-        <item name="displayOptions">useLogo|showHome</item>
-    </style>
-
     <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" />
 
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
