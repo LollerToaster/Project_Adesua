@@ -79,12 +79,14 @@ public class LoginActivity extends AppCompatActivity{
         });
 
         //If The user was already logged in and didnt logged out.
+
         if (SharedPrefManager.getInstance(this).isLoggedIn())
         {
             finish();
             startActivity(new Intent(this, HomeActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
+
     }
 
     private void userLogin() {

@@ -2,9 +2,11 @@ package com.project.adrianangub.project_adesua;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 public class BookInformationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -67,7 +70,14 @@ public class BookInformationActivity extends AppCompatActivity
         //String url = dataList.get(position).getCover();
         Glide.with(this)
                 .load(bookImage)
+                .apply(
+                        new RequestOptions()
+                                .centerCrop()
+                                    /*.error(R.drawable.spung)*/
+                                .placeholder(R.drawable.book_sample_1))
+                //.placeholder(R.drawable.process_image))
                 .into(bookCoverTextView);
+
 
         bookTitleTextView.setText(bookTitle);
         bookAuthorTextView.setText(bookAuthor);

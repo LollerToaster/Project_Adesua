@@ -242,7 +242,7 @@ public class HomeTwoFragment extends Fragment {
                 @Override
                 public void onClick(View v)
                 {
-                    Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getContext(), VirtualClassroomActivity.class);
 
                     //PASSING VALUES TO INTENT SECTION

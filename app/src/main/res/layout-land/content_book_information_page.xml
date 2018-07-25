@@ -57,6 +57,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/classIdent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/opensansregular"
@@ -67,6 +68,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/classDescription"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/freeroadlight"
@@ -77,6 +79,7 @@
                             android:textStyle="italic" />
 
                         <TextView
+                            android:id="@+id/book"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/freeroadlight"
@@ -86,6 +89,7 @@
                             android:textSize="18sp" />
 
                         <TextView
+                            android:id="@+id/bookHasPdf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/opensanslight"
@@ -104,7 +108,7 @@
                             android:textSize="14sp" />
 
                         <RatingBar
-                            android:id="@+id/bookRatingStars3"
+                            android:id="@+id/bookRatingStars2"
                             style="@style/Widget.AppCompat.RatingBar.Indicator"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

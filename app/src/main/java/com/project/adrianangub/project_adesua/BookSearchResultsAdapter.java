@@ -56,8 +56,11 @@ public class BookSearchResultsAdapter extends RecyclerView.Adapter<BookSearchRes
         holder.buttonCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Toast.makeText(mCtx,"ENTRY NUMBER " + position ,Toast.LENGTH_LONG).show();
+                //Toast.makeText(mCtx,"ENTRY NUMBER " + position ,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(mCtx, BookInformationActivity.class);
+                intent.putExtra("bookTitle", dataList.get(position).getBookTitle());
+                intent.putExtra("bookAuthor", dataList.get(position).getBookAuthor());
+                //intent.putExtra("bookImage", dataList.get(position).getCover());
                 intent.putExtra("bookSynopsis", dataList.get(position).getBookSynopsis());
                 mCtx.startActivity(intent);
             }

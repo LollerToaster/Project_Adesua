@@ -21,13 +21,15 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".LoginActivity"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="orientation|screenSize">
 
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_home" />
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity
             android:name=".BookInformationActivity"
             android:label="@string/title_activity_book_info_page_v2"
@@ -36,7 +38,8 @@
             android:name=".SearchActivity"
             android:label="@string/title_activity_search"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="orientation|screenSize"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -61,11 +64,13 @@
         <activity
             android:name=".profileSettingsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".VirtualClassroomActivity"
             android:label="@string/title_activity_virtual_classroom"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:configChanges="orientation|screenSize"/>
         <!-- <activity android:name=".PDFAdapter" /> -->
         <activity
             android:name=".PDFActivity"

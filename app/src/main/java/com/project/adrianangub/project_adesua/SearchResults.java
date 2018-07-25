@@ -145,7 +145,7 @@ public class SearchResults extends AppCompatActivity
     //Swipe Up to Refresh===========================================================================
     @Override
     public void onRefresh() {
-        Toast.makeText(this, "Refresh", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Refresh", Toast.LENGTH_SHORT).show();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

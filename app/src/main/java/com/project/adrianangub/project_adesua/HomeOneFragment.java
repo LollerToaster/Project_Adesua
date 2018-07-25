@@ -76,6 +76,8 @@ public class HomeOneFragment extends Fragment {
         //mProgressBar = (ProgressBar) view2.findViewById(R.id.progressBar);
         //mProgressBar.setVisibility(View.GONE);
 
+        setRetainInstance(true);
+
         //Toast.makeText(getActivity(), mProgressBar + "", Toast.LENGTH_SHORT).show();
 
         // ROW 1
@@ -122,6 +124,8 @@ public class HomeOneFragment extends Fragment {
         //SEE MORE SECTION =========================================================================
         return view;
     }
+
+
 
 
     // VOLLEY  =====================================================================================

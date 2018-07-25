@@ -105,7 +105,6 @@ public class SearchActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.search_button) {
-
             startActivity(new Intent(SearchActivity.this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
             //Snackbar.make(findViewById(R.id.placeSnackBar), "Snackbar worked as intended, brah", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show();;
