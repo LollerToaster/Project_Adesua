@@ -1,12 +1,14 @@
 package com.project.adrianangub.project_adesua;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,10 +17,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
@@ -36,7 +40,7 @@ public class BookInformationActivity extends AppCompatActivity
 
         //SETTING TEXTVIEWS
         TextView bookTitleTextView = (TextView)findViewById(R.id.classIdent);
-        TextView bookAuthorTextView = (TextView)findViewById(R.id.classDescription);
+        TextView bookAuthorTextView = (TextView)findViewById(R.id.bookAuthor);
         ImageView bookCoverTextView = (ImageView)findViewById(R.id.bookImage);
 
         //INTENT PASSED BY ANOTHER ACTIVITY TEST
@@ -77,8 +81,6 @@ public class BookInformationActivity extends AppCompatActivity
                                 .placeholder(R.drawable.book_sample_1))
                 //.placeholder(R.drawable.process_image))
                 .into(bookCoverTextView);
-
-
         bookTitleTextView.setText(bookTitle);
         bookAuthorTextView.setText(bookAuthor);
 
@@ -146,8 +148,6 @@ public class BookInformationActivity extends AppCompatActivity
 
         //BUTTONS =========================================================================================================
     }
-
-
 
     @Override
     public void onBackPressed() {

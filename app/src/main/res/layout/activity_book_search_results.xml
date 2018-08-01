@@ -89,7 +89,7 @@
                             android:visibility="gone" />
 
                         <TextView
-                            android:id="@+id/classDescription"
+                            android:id="@+id/bookAuthor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/classIdent"
@@ -167,7 +167,7 @@
                             android:id="@+id/textViewPrice"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_below="@id/classDescription"
+                            android:layout_below="@id/bookAuthor"
                             android:layout_marginTop="8dp"
                             android:layout_toRightOf="@id/bookImage"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"

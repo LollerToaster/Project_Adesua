@@ -45,14 +45,12 @@ import com.bumptech.glide.request.target.Target;
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class HomeOneFragment extends Fragment {
-
     public static HomeOneFragment newInstance() {
         HomeOneFragment fragment = new HomeOneFragment();
         return fragment;
     }
 
     private TextView seeMore, seeMore2;
-    public ProgressBar mProgressBar;
     private RecyclerView mRecyclerView, mRecyclerView2;
     private ListAdapter mListadapter;
     private static final String URL_PRODUCTS = "http://adesuaapi.spottyus.com/book/search?uid=4007";
@@ -62,9 +60,6 @@ public class HomeOneFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    //REFERENCE
-    //https://medium.com/@Pang_Yao/android-fragment-use-recyclerview-cardview-4bc10beac446
-
     //Settling the Model
     ArrayList<HomeOneFragmentDataModel> bookList;
 
@@ -72,27 +67,12 @@ public class HomeOneFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.home_fragment_one, container, false);
-        View view2 = inflater.inflate(R.layout.home_fragment_one_recycler_item, container, false);
-        //mProgressBar = (ProgressBar) view2.findViewById(R.id.progressBar);
-        //mProgressBar.setVisibility(View.GONE);
-
-        setRetainInstance(true);
-
-        //Toast.makeText(getActivity(), mProgressBar + "", Toast.LENGTH_SHORT).show();
 
         // ROW 1
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(layoutManager);
-
-        // ROW 2
-        //mRecyclerView2 = (RecyclerView) view.findViewById(R.id.recyclerView2);
-        //final LinearLayoutManager layoutManager2 = new LinearLayoutManager(getActivity());
-        //layoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
-        //mRecyclerView2.setLayoutManager(layoutManager2);
-
-
 
         // Calling Volley functions to retrieve data from database
         loadRow1();
@@ -105,32 +85,16 @@ public class HomeOneFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), SearchResults.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 getContext().startActivity(intent);
-                Toast.makeText(getActivity(), "See more was clicked", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "See more was clicked", Toast.LENGTH_SHORT).show();
             }
         });
 
-        /*
-        seeMore2 = (TextView)view.findViewById(R.id.seeMore2);
-        seeMore2.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), SearchResults.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                getContext().startActivity(intent);
-                Toast.makeText(getActivity(), "See more was clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-        */
-        //SEE MORE SECTION =========================================================================
         return view;
     }
 
-
-
-
     // VOLLEY  =====================================================================================
-    private void loadRow1() {
-
+    private void loadRow1()
+    {
         /*
         * Creating a String Request
         * The request type is GET defined by first parameter
@@ -157,30 +121,31 @@ public class HomeOneFragment extends Fragment {
                         JSONObject product = array.getJSONObject(i);
 
                         //Debugging Purposes
-                        /*
+                        Log.d("debug", " ");
                         Log.d("debug", "Title : " + product.getString("t"));
                         Log.d("debug", "Cover : " + product.getString("cover"));
                         Log.d("debug", "ID : " + product.getString("id"));
                         Log.d("debug", "Author : " + product.getString("auth"));
                         Log.d("debug", "Call Card : " + product.getString("callcrd"));
                         Log.d("debug", "Has Pdf : " + product.getString("haspdf"));
-                        */
+                        Log.d("debug", " ");
+                        Log.d("debug", " =======================================================");
 
                         bookList.add(
                                 new HomeOneFragmentDataModel
                                         (
-                                            product.getString("t"),
-                                            product.getString("cover"),
-                                            product.getString("id"),
-                                            product.getString("auth"),
-                                            product.getString("callcrd"),
-                                            product.getString("haspdf"),
-                                            product.getString("totalbooks"),
-                                            product.getString("pubname"),
-                                            product.getString("pubdate"),
-                                            product.getString("isbn"),
-                                            product.getString("issn"),
-                                            product.getString("lbs")
+                                                product.getString("t"),
+                                                product.getString("cover"),
+                                                product.getString("id"),
+                                                product.getString("auth"),
+                                                product.getString("callcrd"),
+                                                product.getString("haspdf"),
+                                                product.getString("totalbooks"),
+                                                product.getString("pubname"),
+                                                product.getString("pubdate"),
+                                                product.getString("isbn"),
+                                                product.getString("issn"),
+                                                product.getString("lbs")
                                         ));
 
                         mListadapter = new ListAdapter(bookList);
@@ -211,7 +176,6 @@ public class HomeOneFragment extends Fragment {
         //adding our stringrequest to queue
         Volley.newRequestQueue(getContext()).add(stringRequest);
     }
-    // VOLLEY  =====================================================================================
 
     // ADAPTER SECTION =============================================================================
     public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
@@ -223,7 +187,7 @@ public class HomeOneFragment extends Fragment {
         }
         public class ViewHolder extends RecyclerView.ViewHolder
         {
-            //ProgressBar Progress;
+            ProgressBar Progress;
             TextView textViewBookTitle;
             ImageView bookCover;
             TextView textViewBookAuthor;
@@ -233,13 +197,12 @@ public class HomeOneFragment extends Fragment {
             public ViewHolder(View itemView)
             {
                 super(itemView);
-                //this.Progress = (ProgressBar)itemView.findViewById(R.id.progress);
+                this.Progress = (ProgressBar)itemView.findViewById(R.id.progressBar);
                 this.textViewBookTitle = (TextView) itemView.findViewById(R.id.bookTitle);
                 this.bookCover = itemView.findViewById(R.id.bookCover);
-                this.textViewBookAuthor = (TextView) itemView.findViewById(R.id.classDescription);
+                this.textViewBookAuthor = (TextView) itemView.findViewById(R.id.bookAuthor);
                 this.textViewBookSynopsis = (TextView) itemView.findViewById(R.id.bookSynopsis);
                 this.textViewBookRating = (TextView) itemView.findViewById(R.id.bookRating);
-
             }
         }
 
@@ -264,8 +227,9 @@ public class HomeOneFragment extends Fragment {
                             new RequestOptions()
                                     .centerCrop()
                                     /*.error(R.drawable.spung)*/
+                                    //.placeholder(R.drawable.progress_animation))
                                     .placeholder(new ColorDrawable(ContextCompat.getColor(getContext(), R.color.primary))))
-                                    //.placeholder(R.drawable.process_image))
+                    //.placeholder(R.drawable.process_image))
                     .transition(withCrossFade())
                     .into(holder.bookCover);
 

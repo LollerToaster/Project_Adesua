@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -70,6 +71,11 @@ public class HomeActivity extends AppCompatActivity
         drawerUsername.setText(user.getFullname());
         drawerAccount.setText(user.getSchoolname());
 
+        //loading Initial Fragment
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, HomeOneFragment.newInstance());
+        transaction.commit();
+
         // SHARED PREFERENCE, IF USER IS NOT SAVED IN PHONE, AUTO INTENT TO LOGIN PAGE
         if (!SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
@@ -111,8 +117,6 @@ public class HomeActivity extends AppCompatActivity
                 this.start();
             }
         }.start();
-        //==========================================================================================
-
 
         // BOTTOM NAV ==============================================================================
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
@@ -144,17 +148,6 @@ public class HomeActivity extends AppCompatActivity
                     }
                 });
 
-        //You're layering your Fragments one on top of the other.
-        //When a config change occurs the old Fragment adds itself to the new Activity when it's recreated. This is a massive pain in the rear most of the time.
-        //You can stop errors occurring by using the same Fragment rather than recreating a new one. Simply add this code:
-        //https://stackoverflow.com/questions/8474104/android-fragment-lifecycle-over-orientation-changes
-        if (savedInstanceState == null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_layout, HomeOneFragment.newInstance());
-            transaction.commit();
-        }
-        else {
-        }
 
         /*
         if(getIntent().getExtras() != null)
@@ -164,19 +157,7 @@ public class HomeActivity extends AppCompatActivity
             switch (intentFragment) {
                 case "2": HomeTwoFragment.newInstance();
                     break;
-                case "3": HomeThreeFragment.newInstance();
-                    break;
-            }
-        }
-        */
-
-        /*
-        String intentFragment = "nvm";
-        if(intentFragment != "nvm") {
-
-            switch (intentFragment) {
-                case "2":
-                    HomeOneFragment.newInstance();
+                case "3: HomeThreeFragment.newInstance();
                     break;
             }
         }
@@ -188,24 +169,13 @@ public class HomeActivity extends AppCompatActivity
 
         //Get an instance of NotificationManager//
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "1")
-                .setSmallIcon(R.drawable.adesua)
+                .setSmallIcon(R.drawable.ic_error_outline_black_24dp)
                 .setContentTitle("This is a Notification Tester!")
                 //.setContentText("Hello ! loop counter: " + testes)
                 .setContentText("Hello ! This Notification is for Dry Run Purposes Only!!")
                 //.setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setPriority(NotificationManager.IMPORTANCE_HIGH);
-
-        //Plays a sound on Notification
-        /*
-        try {
-            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-            Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-            r.play();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        */
 
         // Gets an instance of the NotificationManager service//
         NotificationManager mNotificationManager =
@@ -225,6 +195,29 @@ public class HomeActivity extends AppCompatActivity
     }
     //==============================================================================================
 
+    //load Initial Fragment
+    //https://www.simplifiedcoding.net/bottom-navigation-android-example/
+    /*
+    private boolean loadFragment(Fragment fragment) {
+        //switching fragment
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, HomeOneFragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
+    */
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.action_bar_menu, menu);
+        return true;
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -236,16 +229,6 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
-
-    // OVERFLOW MENU, NOT NEEDED // OVERFLOW MENU, NOT NEEDED // OVERFLOW MENU, NOT NEEDED
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.action_bar_menu, menu);
-        return true;
-    }
-
     //ACTION BAR BUTTONS ===========================================================================
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -255,21 +238,11 @@ public class HomeActivity extends AppCompatActivity
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             return true;
         }
-        /* REFRESH  ==========================================================================
-        if(id == R.id.menu_refresh){
-            Intent intent = getIntent();
-            finish();
-            overridePendingTransition( 0, 0);
-            startActivity(intent);
-            overridePendingTransition( 0, 0);
-            return true;
-        }
-         REFRESH  ============================================================================*/
         return super.onOptionsItemSelected(item);
     }
 
-    //NAVIGATION DRAWER SELECTION ==================================================================
-    //NAVIGATION DRAWER SELECTION ==================================================================
+
+    //==============================================================================================
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

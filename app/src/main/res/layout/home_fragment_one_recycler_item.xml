@@ -27,6 +27,13 @@
                 android:visibility="visible" />
                 -->
 
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="162dp"
+                android:layout_height="216dp"
+                android:visibility="gone" />
+
             <ImageView
                 android:id="@+id/bookCover"
                 android:layout_width="162dp"
@@ -50,7 +57,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/classDescription"
+                android:id="@+id/bookAuthor"
                 android:layout_width="162dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

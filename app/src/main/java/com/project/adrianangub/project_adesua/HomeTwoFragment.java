@@ -3,6 +3,7 @@ package com.project.adrianangub.project_adesua;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
@@ -10,9 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -35,7 +34,6 @@ public class HomeTwoFragment extends Fragment {
         return fragment;
     }
 
-    private ProgressBar mProgressBarLoading;
     private RecyclerView mRecyclerView;
     private ListAdapter mListadapter;
     private static final String URL_CLASSROOMS = "http://adesuaapi.spottyus.com/student/classrooms?uid=4007";
@@ -54,18 +52,13 @@ public class HomeTwoFragment extends Fragment {
         View view = inflater.inflate(R.layout.home_fragment_two, container, false);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        mProgressBarLoading = (ProgressBar)view.findViewById(R.id.progressBarLoading);
-
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        //Divider Erase it later
-        /*
-        mRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(
-                getContext()
-        ));
-        */
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
+                layoutManager.getOrientation());
+        mRecyclerView.addItemDecoration(dividerItemDecoration);
 
         // Calling Volley functions to retrieve data from database
         loadClassrooms();
@@ -74,7 +67,8 @@ public class HomeTwoFragment extends Fragment {
     }
 
     // VOLLEY  =====================================================================================
-    private void loadClassrooms() {
+    private void loadClassrooms()
+    {
         /*
         * Creating a String Request
         * The request type is GET defined by first parameter
@@ -102,15 +96,13 @@ public class HomeTwoFragment extends Fragment {
                         JSONObject teacher = classroom.getJSONObject("teacher");
 
                         //Debugging Purposes
-                        Log.d("Response", response);
-                        //Log.d("debug", " =======================================================");
-                        //Log.d("debug", " ");
-                        //Log.d("debug", "Title : " + classroom.getString("vclass_name"));
-                        //Log.d("debug", "Title : " + classroom.getString("vclass_grade"));
-                        //Log.d("debug", "Title : " + classroom.getString("vclass_desc"));
-                        //Log.d("debug", "Title : " + classroom.getString("vclass_numstud"));
-                        //Log.d("debug", " ");
-                        //Log.d("debug", " =======================================================");
+                        Log.d("debug", " ");
+                        Log.d("debug", "Clasroom Name : " + classroom.getString("vclass_name"));
+                        Log.d("debug", "Class Grade : " + classroom.getString("vclass_grade"));
+                        Log.d("debug", "Class Description : " + classroom.getString("vclass_desc"));
+                        Log.d("debug", "Class Number of Students : " + classroom.getString("vclass_numstud"));
+                        Log.d("debug", " ");
+                        Log.d("debug", " =======================================================");
 
                         classroomList.add(
                                 new HomeTwoFragmentDataModel
@@ -162,17 +154,15 @@ public class HomeTwoFragment extends Fragment {
         //adding our stringrequest to queue
         Volley.newRequestQueue(getContext()).add(stringRequest);
     }
-    // VOLLEY  =====================================================================================
 
+    // ADAPTER  ====================================================================================
     public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
     {
         private ArrayList<HomeTwoFragmentDataModel> dataList;
-
         public ListAdapter(ArrayList<HomeTwoFragmentDataModel> data)
         {
             this.dataList = data;
         }
-
         public class ViewHolder extends RecyclerView.ViewHolder
         {
             TextView className;
@@ -188,7 +178,7 @@ public class HomeTwoFragment extends Fragment {
                 super(itemView);
                 this.className = (TextView) itemView.findViewById(R.id.className);
                 this.classGrade = (TextView) itemView.findViewById(R.id.classGrade);
-                this.classDescription = (TextView) itemView.findViewById(R.id.classDescription);
+                this.classDescription = (TextView) itemView.findViewById(R.id.bookAuthor);
                 this.classStudents = (TextView) itemView.findViewById(R.id.classStudents);
                 this.classBooks = (TextView) itemView.findViewById(R.id.classBooks);
                 this.classTeacher = (TextView) itemView.findViewById(R.id.classTeacher);
@@ -200,7 +190,6 @@ public class HomeTwoFragment extends Fragment {
         public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
         {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_fragment_two_recycler_item, parent, false);
-
             ViewHolder viewHolder = new ViewHolder(view);
             return viewHolder;
         }
