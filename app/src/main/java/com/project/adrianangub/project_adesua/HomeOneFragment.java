@@ -121,6 +121,7 @@ public class HomeOneFragment extends Fragment {
                         JSONObject product = array.getJSONObject(i);
 
                         //Debugging Purposes
+                        /*
                         Log.d("debug", " ");
                         Log.d("debug", "Title : " + product.getString("t"));
                         Log.d("debug", "Cover : " + product.getString("cover"));
@@ -130,6 +131,7 @@ public class HomeOneFragment extends Fragment {
                         Log.d("debug", "Has Pdf : " + product.getString("haspdf"));
                         Log.d("debug", " ");
                         Log.d("debug", " =======================================================");
+                        */
 
                         bookList.add(
                                 new HomeOneFragmentDataModel

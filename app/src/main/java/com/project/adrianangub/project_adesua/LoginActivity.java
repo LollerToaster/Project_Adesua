@@ -57,8 +57,6 @@ public class LoginActivity extends AppCompatActivity{
         editTextUsername = (EditText) findViewById(R.id.usernameLogin);
         editTextPassword = (EditText) findViewById(R.id.passwordLogin);
 
-
-
         //ASKING FOR PERMISSIONS
         Dexter.withActivity(this)
                 .withPermissions(

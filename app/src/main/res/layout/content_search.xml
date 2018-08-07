@@ -128,7 +128,7 @@
         </com.rengwuxian.materialedittext.MaterialEditText>
 
         <Button
-            android:id="@+id/Button1"
+            android:id="@+id/searchButton"
             style="@style/AppTheme.RoundedCornerMaterialButton"
             android:layout_width="256dp"
             android:layout_height="0dp"

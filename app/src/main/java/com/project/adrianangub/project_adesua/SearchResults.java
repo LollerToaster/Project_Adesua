@@ -12,24 +12,41 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SearchResults extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
-    //REFERENCE
-    //https://www.simplifiedcoding.net/android-recyclerview-cardview-tutorial/
-    //https://stackoverflow.com/questions/44454797/pull-to-refresh-recyclerview-android
+    //EditText editTextBookTitle;
+    private static final String BASE_URL_SEARCH = "http://adesuaapi.spottyus.com/book/search?uid=4007&keyword=";
+    //private static final String URL_SEARCH = "http://adesuaapi.spottyus.com/book/search?uid=4007&keyword=";
 
-    SwipeRefreshLayout mSwipeRefreshLayout;
-    List<BookSearchResultsDataModel> dataList;
+    //a list to store all the products
+    List<BookSearchResultsDataModel> bookList;
+
+    //the recyclerview
     RecyclerView recyclerView;
 
     @Override
@@ -45,115 +62,90 @@ public class SearchResults extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        // SwipeRefreshLayout ======================================================================
-        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
-        mSwipeRefreshLayout.setOnRefreshListener(this);
-        // SwipeRefreshLayout ======================================================================
+        // ACTION BAR CUSTOMIZATION
+        setTitle("Search Results");
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager (new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+        recyclerView.setLayoutManager (new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        dataList = new ArrayList<>();
-        dataList.add(
-                new BookSearchResultsDataModel(
-                        "1",
-                        "The Smoke is Rising",
-                        "Mashesh Rao",
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
-                        "5"));
-        dataList.add(
-                new BookSearchResultsDataModel(
-                        "1",
-                        "The Smoke is Rising",
-                        "Mashesh Rao",
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
-                        "5"));
-        dataList.add(
-                new BookSearchResultsDataModel(
-                        "1",
-                        "The Smoke is Rising",
-                        "Mashesh Rao",
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
-                        "5"));
-        dataList.add(
-                new BookSearchResultsDataModel(
-                        "1",
-                        "The Smoke is Rising",
-                        "Mashesh Rao",
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
-                        "5"));
-        dataList.add(
-                new BookSearchResultsDataModel(
-                        "1",
-                        "The Smoke is Rising",
-                        "Mashesh Rao",
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
-                        "5"));
-        dataList.add(
-                new BookSearchResultsDataModel(
-                        "1",
-                        "The Smoke is Rising",
-                        "Mashesh Rao",
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
-                        "5"));
-        dataList.add(
-                new BookSearchResultsDataModel(
-                        "1",
-                        "The Smoke is Rising",
-                        "Mashesh Rao",
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
-                        "5"));
-        dataList.add(
-                new BookSearchResultsDataModel(
-                        "1",
-                        "The Smoke is Rising",
-                        "Mashesh Rao",
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
-                        "5"));
-        dataList.add(
-                new BookSearchResultsDataModel(
-                        "1",
-                        "The Smoke is Rising",
-                        "Mashesh Rao",
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
-                        "5"));
-        dataList.add(
-                new BookSearchResultsDataModel(
-                        "1",
-                        "The Smoke is Rising",
-                        "Mashesh Rao",
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
-                        "5"));
-        dataList.add(
-                new BookSearchResultsDataModel(
-                        "1",
-                        "The Smoke is Rising",
-                        "Mashesh Rao",
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at consequat lectus. Donec in massa quis massa vulputate venenatis eu sed nisi. Mauris ut sollicitudin nulla. Sed et urna gravida, mollis nunc vel, accumsan tellus. Duis erat dolor, facilisis porttitor mollis quis, bibendum sit amet leo. Morbi accumsan purus euismod faucibus convallis. Donec urna est, vulputate sed mollis quis, pellentesque. asdasdasdasdasdasdasd",
-                        "5"));
+        //BookSearchResultsAdapter adapter = new BookSearchResultsAdapter(this, bookList);
+        //recyclerView.setAdapter(adapter);
 
-
-        BookSearchResultsAdapter adapter = new BookSearchResultsAdapter(this, dataList);
-        recyclerView.setAdapter(adapter);
+        bookList = new ArrayList<>();
+        loadBooks();
     }
 
-    //Swipe Up to Refresh===========================================================================
-    @Override
-    public void onRefresh() {
-        //Toast.makeText(this, "Refresh", Toast.LENGTH_SHORT).show();
-        new Handler().postDelayed(new Runnable() {
+    private void loadBooks() {
+
+        //Passing the value that needs to be searched===============================================
+        String bookTitlePassed = getIntent().getExtras().getString("searchTitle");
+        String FINAL_URL_SEARCH = BASE_URL_SEARCH+bookTitlePassed;
+        Toast.makeText(getApplicationContext(), FINAL_URL_SEARCH,Toast.LENGTH_LONG).show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, FINAL_URL_SEARCH, new Response.Listener<String>() {
             @Override
-            public void run() {
-                mSwipeRefreshLayout.setRefreshing(false);
+            public void onResponse(String response) {
+                try {
+                    //converting the string to json array object
+                    JSONArray array = new JSONArray(response);
+
+                    //traversing through all the object
+                    for (int i = 0; i < array.length(); i++) {
+
+                        //getting product object from json array
+                        JSONObject books = array.getJSONObject(i);
+
+                        //adding the product to product list
+                        bookList.add(new BookSearchResultsDataModel(
+                                books.getString("t"),
+                                books.getString("cover"),
+                                books.getString("id"),
+                                books.getString("auth"),
+                                books.getString("callcrd"),
+                                books.getString("haspdf"),
+                                books.getString("totalbooks"),
+                                books.getString("pubname"),
+                                books.getString("pubdate"),
+                                books.getString("isbn"),
+                                books.getString("issn"),
+                                books.getString("lbs")
+                        ));
+                    }
+
+                    //creating adapter object and setting it to recyclerview
+                    BookSearchResultsAdapter adapter = new BookSearchResultsAdapter(SearchResults.this, bookList);
+                    recyclerView.setAdapter(adapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
-        }, 2000);
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                String credentials = "admin:12345";
+                String auth = "Basic "
+                        + Base64.encodeToString(credentials.getBytes(), Base64.NO_WRAP);
+                headers.put("Content-Type", "application/json");
+                headers.put("Authorization", auth);
+                return headers;
+            }};
+
+        //adding our stringrequest to queue
+        Volley.newRequestQueue(this).add(stringRequest);
     }
-    //Swipe Up to Refresh===========================================================================
 
     @Override
     public void onBackPressed() {

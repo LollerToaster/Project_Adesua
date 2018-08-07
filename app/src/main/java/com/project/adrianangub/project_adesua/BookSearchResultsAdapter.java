@@ -5,51 +5,59 @@ package com.project.adrianangub.project_adesua;
  */
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
-public class BookSearchResultsAdapter extends RecyclerView.Adapter<BookSearchResultsAdapter.dataListViewHolder> {
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
-    //this context we will use to inflate the layout
+public class BookSearchResultsAdapter extends RecyclerView.Adapter<BookSearchResultsAdapter.ProductViewHolder> {
+
     private Context mCtx;
+    private List<BookSearchResultsDataModel> bookList;
 
-    //we are storing all the products in a list
-    private List<BookSearchResultsDataModel> dataList;
-
-    //getting the context and product list with constructor
-    public BookSearchResultsAdapter(Context mCtx, List<BookSearchResultsDataModel> dataList) {
+    public BookSearchResultsAdapter(Context mCtx, List<BookSearchResultsDataModel> bookList) {
         this.mCtx = mCtx;
-        this.dataList = dataList;
+        this.bookList = bookList;
     }
 
-
     @Override
-    public dataListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //inflating and returning our view holder
+    public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.activity_book_search_results, null);
-        return new dataListViewHolder(view);
+        return new ProductViewHolder(view);
     }
 
-
     @Override
-    public void onBindViewHolder(dataListViewHolder holder, final int position) {
-        //getting the product of the specified position
-        BookSearchResultsDataModel data = dataList.get(position);
+    public void onBindViewHolder(ProductViewHolder holder, final int position) {
+        BookSearchResultsDataModel book = bookList.get(position);
 
-        //binding the data with the viewholder views
-        holder.textViewBookNumber.setText(data.getBookNumber());
-        holder.textViewBookTitle.setText(data.getBookTitle());
-        holder.textViewBookAuthor.setText(data.getBookAuthor());
-        holder.textViewBookSynopsis.setText(data.getBookSynopsis());
-        holder.textViewBookRating.setText(data.getBookRating());
+        Glide.with(mCtx)
+                .load(book.getCover())
+                .apply(
+                        new RequestOptions()
+                                .centerCrop()
+                                    /*.error(R.drawable.spung)*/
+                                //.placeholder(R.drawable.progress_animation))
+                                .placeholder(new ColorDrawable(ContextCompat.getColor(mCtx, R.color.primary))))
+                //.placeholder(R.drawable.process_image))
+                .transition(withCrossFade())
+                .into(holder.bookCover);
+
+        holder.textViewTitle.setText(String.valueOf(book.getT()));
+        holder.textViewName.setText(String.valueOf(book.getAuth()));
 
         //ButtonClick to check the book
         holder.buttonCheck.setOnClickListener(new View.OnClickListener() {
@@ -57,38 +65,31 @@ public class BookSearchResultsAdapter extends RecyclerView.Adapter<BookSearchRes
             public void onClick(View v){
                 //Toast.makeText(mCtx,"ENTRY NUMBER " + position ,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(mCtx, BookInformationActivity.class);
-                intent.putExtra("bookTitle", dataList.get(position).getBookTitle());
-                intent.putExtra("bookAuthor", dataList.get(position).getBookAuthor());
-                //intent.putExtra("bookImage", dataList.get(position).getCover());
-                intent.putExtra("bookSynopsis", dataList.get(position).getBookSynopsis());
+                intent.putExtra("bookTitle", bookList.get(position).getT());
+                intent.putExtra("bookAuthor", bookList.get(position).getAuth());
                 mCtx.startActivity(intent);
             }
         });
     }
 
-
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return bookList.size();
     }
 
-    class dataListViewHolder extends RecyclerView.ViewHolder {
+    class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewBookNumber;
-        TextView textViewBookTitle;
-        TextView textViewBookAuthor;
-        TextView textViewBookSynopsis;
-        TextView textViewBookRating;
+        TextView textViewTitle;
+        TextView textViewName;
+        ImageView bookCover;
         Button buttonCheck;
 
-        public dataListViewHolder(View itemView) {
+        public ProductViewHolder(View itemView) {
             super(itemView);
 
-            this.textViewBookNumber = (TextView) itemView.findViewById(R.id.bookNumber);
-            this.textViewBookTitle = (TextView) itemView.findViewById(R.id.classIdent);
-            this.textViewBookAuthor = (TextView) itemView.findViewById(R.id.bookAuthor);
-            this.textViewBookSynopsis = (TextView) itemView.findViewById(R.id.bookSynopsis);
-            this.textViewBookRating = (TextView) itemView.findViewById(R.id.bookRating);
+            this.bookCover = itemView.findViewById(R.id.bookCover);
+            textViewTitle = itemView.findViewById(R.id.bookTitle);
+            textViewName = itemView.findViewById(R.id.bookAuthor);
             buttonCheck = (Button) itemView.findViewById(R.id.Check);
         }
     }

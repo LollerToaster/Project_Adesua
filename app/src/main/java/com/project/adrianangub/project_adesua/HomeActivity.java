@@ -1,11 +1,14 @@
 package com.project.adrianangub.project_adesua;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
@@ -39,10 +42,12 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         // ACTION BAR CUSTOMIZATION
         setTitle("Home");
@@ -70,6 +75,7 @@ public class HomeActivity extends AppCompatActivity
         //drawerImage.setImageDrawable(R.drawable.ic);
         drawerUsername.setText(user.getFullname());
         drawerAccount.setText(user.getSchoolname());
+
 
         //loading Initial Fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

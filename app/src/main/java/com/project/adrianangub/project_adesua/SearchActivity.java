@@ -2,6 +2,8 @@ package com.project.adrianangub.project_adesua;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,13 +14,30 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SearchActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    EditText editTextBookTitle;
+    //private static final String URL_SEARCH = "http://adesuaapi.spottyus.com/book/search?uid=4007&keyword=Phonics";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +47,18 @@ public class SearchActivity extends AppCompatActivity
         // ACTION BAR CUSTOMIZATION
         setTitle("Search A Book");
 
-        //Go to Search Results
-        Button btn = (Button)findViewById(R.id.Button1);
+        editTextBookTitle = (EditText) findViewById(R.id.bookTitleSearch);
+        Button btn = (Button)findViewById(R.id.searchButton);
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SearchActivity.this, SearchResults.class));
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                String BookTitle = editTextBookTitle.getText().toString();
+                Intent intent = new Intent(getApplicationContext(), SearchResults.class);
+                intent.putExtra("searchTitle", BookTitle);
+                startActivity(intent);
+                //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
@@ -50,34 +73,8 @@ public class SearchActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        //DANGER ===================================================================================
-
-        // MultiAutoCompleteTextView Essential
-
-        //Genres
-        //MultipleValuesholdGenre = (MaterialMultiAutoCompleteTextView)findViewById(R.id.genre);
-        //ArrayAdapter<String> Genre = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Genres);
-        //MultipleValuesholdGenre.setAdapter(Genre);
-        //MultipleValuesholdGenre.setThreshold(2);
-        //MultipleValuesholdGenre.setTokenizer(new MaterialMultiAutoCompleteTextView.CommaTokenizer());
-
-        //Title
-        //MultipleValuesholdTitle = (MaterialMultiAutoCompleteTextView)findViewById(R.id.genre);
-        //ArrayAdapter<String> Title = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, Titles);
-        //MultipleValuesholdTitle.setAdapter(Title);
-        //MultipleValuesholdTitle.setThreshold(2);
-        //MultipleValuesholdTitle.setTokenizer(new MaterialMultiAutoCompleteTextView.CommaTokenizer());
-
-        //Authors
-        //MultipleValuesholdAuthor = (MaterialMultiAutoCompleteTextView)findViewById(R.id.author);
-        //ArrayAdapter<String> Author = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Authors);
-        //MultipleValuesholdAuthor.setAdapter(Author);
-        //MultipleValuesholdAuthor.setThreshold(2);
-        //MultipleValuesholdAuthor.setTokenizer(new MaterialMultiAutoCompleteTextView.CommaTokenizer());
-
-        //DANGER ===================================================================================
     }
+
 
     @Override
     public void onBackPressed() {

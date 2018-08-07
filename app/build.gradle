@@ -53,6 +53,9 @@ dependencies {
     //Dialog
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
 
+    //
+    //compile 'com.github.chathuralakmal:AndroidImagePopup:1.2.0'
+
     //compile 'com.android.support:appcompat-v7:25.1.0'
     //compile 'com.android.support:design:25.1.0'
     //compile 'com.android.support:support-v4:25.1.0'
