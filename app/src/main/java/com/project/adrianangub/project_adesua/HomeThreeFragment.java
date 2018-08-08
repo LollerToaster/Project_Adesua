@@ -109,31 +109,43 @@ public class HomeThreeFragment extends Fragment {
                     for (int i = 0; i < array.length(); i++)
                     {
                         //getting product object from json array
-                        JSONObject product = array.getJSONObject(i);
+                        JSONObject books = array.getJSONObject(i);
 
                         //Debugging Purposes
+                        Log.d("debug", " =======================================================");
                         Log.d("debug", " ");
-                        Log.d("debug", "Title : " + product.getString("t"));
-                        Log.d("debug", "Cover : " + product.getString("cover"));
-                        Log.d("debug", "ID : " + product.getString("id"));
-                        Log.d("debug", "Author : " + product.getString("auth"));
+                        Log.d("debug", "Title : " + books.getString("t"));
+                        Log.d("debug", "Cover : " + books.getString("cover"));
+                        Log.d("debug", "ID : " + books.getString("id"));
+                        Log.d("debug", "Author : " + books.getString("auth"));
+                        Log.d("debug", "Call Card : " + books.getString("callcrd"));
+                        Log.d("debug", "Has Pdf : " + books.getString("haspdf"));
+                        Log.d("debug", "Total Books : " + books.getString("totalbooks"));
+                        Log.d("debug", "Pub Name : " + books.getString("pubname"));
+                        Log.d("debug", "Pub Date : " + books.getString("pubdate"));
+                        Log.d("debug", "ISBN : " + books.getString("isbn"));
+                        Log.d("debug", "ISSN : " + books.getString("issn"));
+                        Log.d("debug", "PDF URL : " + books.getString("pdfurl"));
+                        Log.d("debug", "LBS : " + books.getString("lbs"));
                         Log.d("debug", " ");
+                        Log.d("debug", " =======================================================");
 
                         bookList.add(
                                 new HomeThreeFragmentDataModel
                                         (
-                                                product.getString("t"),
-                                                product.getString("cover"),
-                                                product.getString("id"),
-                                                product.getString("auth"),
-                                                product.getString("callcrd"),
-                                                product.getString("haspdf"),
-                                                product.getString("totalbooks"),
-                                                product.getString("pubname"),
-                                                product.getString("pubdate"),
-                                                product.getString("isbn"),
-                                                product.getString("issn"),
-                                                product.getString("lbs")
+                                                books.getString("t"),
+                                                books.getString("cover"),
+                                                books.getString("id"),
+                                                books.getString("auth"),
+                                                books.getString("callcrd"),
+                                                books.getString("haspdf"),
+                                                books.getString("totalbooks"),
+                                                books.getString("pubname"),
+                                                books.getString("pubdate"),
+                                                books.getString("isbn"),
+                                                books.getString("issn"),
+                                                books.getString("pdfurl"),
+                                                books.getString("lbs")
                                         ));
 
                         mListadapter = new ListAdapter(bookList);
@@ -219,26 +231,31 @@ public class HomeThreeFragment extends Fragment {
             holder.textViewBookTitle.setText(dataList.get(position).getT());
             holder.textViewBookAuthor.setText(dataList.get(position).getAuth());
 
-            //to be added
-            //holder.textViewBookSynopsis.setText(dataList.get(position).getSynopsis());
+            //======================================================================================
 
             holder.itemView.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
-                    //Toast.makeText(getActivity(), "Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(getActivity(), "Item  is clicked.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(mCtx,"ENTRY NUMBER " + position ,Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getContext(), BookInformationActivity.class);
 
                     //PASSING VALUES TO INTENT SECTION
                     intent.putExtra("bookTitle", dataList.get(position).getT());
                     intent.putExtra("bookAuthor", dataList.get(position).getAuth());
                     intent.putExtra("bookImage", dataList.get(position).getCover());
-                    //PASSING VALUES TO INTENT SECTION
+                    intent.putExtra("bookId", dataList.get(position).getId());
+                    intent.putExtra("bookHasPdf", dataList.get(position).getHaspdf());
+                    intent.putExtra("bookTotalBooks", dataList.get(position).getTotalbooks());
+                    intent.putExtra("bookPubName", dataList.get(position).getPubname());
+                    intent.putExtra("bookPubDate", dataList.get(position).getPubdate());
+                    intent.putExtra("bookIsbn", dataList.get(position).getIsbn());
+                    intent.putExtra("bookIssn", dataList.get(position).getIssn());
+                    intent.putExtra("bookPdfUrl", dataList.get(position).getPdfurl());
+                    intent.putExtra("lbs", dataList.get(position).getLbs());
 
                     getContext().startActivity(intent);
-                    //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
                 }
             });

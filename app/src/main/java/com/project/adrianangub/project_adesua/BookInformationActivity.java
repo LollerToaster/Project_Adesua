@@ -10,12 +10,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
@@ -31,6 +33,8 @@ public class BookInformationActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         //SETTING TEXTVIEWS
         TextView bookTitleTextView = (TextView)findViewById(R.id.bookTitle);
         TextView bookAuthorTextView = (TextView)findViewById(R.id.bookAuthor);
@@ -40,6 +44,15 @@ public class BookInformationActivity extends AppCompatActivity
         final String bookTitle = getIntent().getExtras().getString("bookTitle");
         final String bookAuthor = getIntent().getExtras().getString("bookAuthor");
         final String bookImage = getIntent().getExtras().getString("bookImage");
+        final String bookId = getIntent().getExtras().getString("bookId");
+        final String bookHasPdf = getIntent().getExtras().getString("bookHasPdf");
+        final String bookTotalBooks = getIntent().getExtras().getString("bookTotalBooks");
+        final String bookPubName = getIntent().getExtras().getString("bookPubName");
+        final String bookPubDate = getIntent().getExtras().getString("bookPubDate");
+        final String bookIsbn = getIntent().getExtras().getString("bookIsbn");
+        final String bookIssn = getIntent().getExtras().getString("bookIssn");
+        final String bookPdfUrl = getIntent().getExtras().getString("bookPdfUrl");
+        final String lbs = getIntent().getExtras().getString("lbs");
         //INTENT PASSED BY ANOTHER ACTIVITY TEST
 
         // ACTION BAR CUSTOMIZATION
@@ -52,16 +65,33 @@ public class BookInformationActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        // CALLING SHARED PREFERENCES
+        Users user = SharedPrefManager.getInstance(this).getUser();
+
+        // NAVIGATION DRAWER
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+        //ImageView drawerImage = (ImageView) headerView.findViewById(R.id.profile_image);
+        TextView drawerUsername = (TextView) headerView.findViewById(R.id.name);
+        TextView drawerAccount = (TextView) headerView.findViewById(R.id.email);
+        //drawerImage.setImageDrawable(R.drawable.ic);
+        drawerUsername.setText(user.getFullname());
+        drawerAccount.setText(user.getSchoolname());
 
-        //Log.d("debug", "Title : " + bookTitle);
-        //Log.d("debug", "Author : " + bookAuthor);
-        //Log.d("debug", "Image : " + bookImage);
-
-        //Toast.makeText(getApplicationContext(), bookTitle ,Toast.LENGTH_SHORT).show();
-        //Toast.makeText(getApplicationContext(), bookAuthor ,Toast.LENGTH_SHORT).show();
-        //Toast.makeText(getApplicationContext(), bookImage ,Toast.LENGTH_SHORT).show();
+        Log.d("debug", "==============================================================");
+        Log.d("debug", "Title : " + bookTitle);
+        Log.d("debug", "Author : " + bookAuthor);
+        Log.d("debug", "Image : " + bookImage);
+        Log.d("debug", "ID : " + bookId);
+        Log.d("debug", "HasPdf : " + bookHasPdf);
+        Log.d("debug", "Total Books : " + bookTotalBooks);
+        Log.d("debug", "Pub Name : " + bookPubName);
+        Log.d("debug", "Pub Date : " + bookPubDate);
+        Log.d("debug", "Book ISBN : " + bookIsbn);
+        Log.d("debug", "Book ISSN : " + bookIssn);
+        Log.d("debug", "Book Pdf URL : " + bookPdfUrl);
+        Log.d("debug", "Libraries : " + lbs);
 
         //SETTING INTENT
         //String url = dataList.get(position).getCover();
@@ -77,19 +107,25 @@ public class BookInformationActivity extends AppCompatActivity
         bookTitleTextView.setText(bookTitle);
         bookAuthorTextView.setText(bookAuthor);
 
-        //BUTTONS =========================================================================================================
-
+        //BUTTONS ==================================================================================
         final Button buttonDownloadPDF = (Button)findViewById(R.id.DownloadPDFButton);
-        buttonDownloadPDF.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //buttonDownloadPDF.setText("Bookmarked!");
-                Snackbar.make(findViewById(android.R.id.content), "Feature not Available Yet!", Snackbar.LENGTH_LONG)
-                        .setActionTextColor(Color.RED)
-                        .show();
-            }
-        });
 
+        if(bookHasPdf.equals("NOT AVAILABLE")){
+            buttonDownloadPDF.setText("PDF Not Available");
+        }
+        else
+        {
+            buttonDownloadPDF.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getApplicationContext(), bookHasPdf ,Toast.LENGTH_SHORT).show();
+                    //buttonDownloadPDF.setText("Bookmarked!");
+                    //Snackbar.make(findViewById(android.R.id.content), "Feature not Available Yet!", Snackbar.LENGTH_LONG)
+                    //        .setActionTextColor(Color.RED)
+                    //        .show();
+                }
+            });
+        }
 
         final Button buttonBookmark = (Button)findViewById(R.id.BookmarkButton);
         buttonBookmark.setOnClickListener(new View.OnClickListener() {
@@ -98,10 +134,7 @@ public class BookInformationActivity extends AppCompatActivity
 
                 buttonBookmark.setText("Bookmarked!");
                 buttonBookmark.setTextColor(Color.BLACK);
-                //buttonBookmark.setBackgroundColor("#FFC536");
                 buttonBookmark.setBackgroundColor(Color.parseColor("#FFC536"));
-
-
 
                 //RECIEVING THE INTENT TEST
                 //Toast.makeText(getApplicationContext(), bookTitle ,Toast.LENGTH_SHORT).show();

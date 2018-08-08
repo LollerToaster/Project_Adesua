@@ -39,9 +39,7 @@ import java.util.Map;
 public class SearchResults extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    //EditText editTextBookTitle;
     private static final String BASE_URL_SEARCH = "http://adesuaapi.spottyus.com/book/search?uid=4007&keyword=";
-    //private static final String URL_SEARCH = "http://adesuaapi.spottyus.com/book/search?uid=4007&keyword=";
 
     //a list to store all the products
     List<BookSearchResultsDataModel> bookList;
@@ -73,15 +71,11 @@ public class SearchResults extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //BookSearchResultsAdapter adapter = new BookSearchResultsAdapter(this, bookList);
-        //recyclerView.setAdapter(adapter);
-
         bookList = new ArrayList<>();
         loadBooks();
     }
 
     private void loadBooks() {
-
         //Passing the value that needs to be searched===============================================
         String bookTitlePassed = getIntent().getExtras().getString("searchTitle");
         String FINAL_URL_SEARCH = BASE_URL_SEARCH+bookTitlePassed;
@@ -113,6 +107,7 @@ public class SearchResults extends AppCompatActivity
                                 books.getString("pubdate"),
                                 books.getString("isbn"),
                                 books.getString("issn"),
+                                books.getString("pdfurl"),
                                 books.getString("lbs")
                         ));
                     }
@@ -131,7 +126,6 @@ public class SearchResults extends AppCompatActivity
 
                     }
                 }) {
-
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
@@ -142,7 +136,6 @@ public class SearchResults extends AppCompatActivity
                 headers.put("Authorization", auth);
                 return headers;
             }};
-
         //adding our stringrequest to queue
         Volley.newRequestQueue(this).add(stringRequest);
     }

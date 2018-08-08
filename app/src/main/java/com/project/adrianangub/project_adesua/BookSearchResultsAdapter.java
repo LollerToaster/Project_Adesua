@@ -65,8 +65,21 @@ public class BookSearchResultsAdapter extends RecyclerView.Adapter<BookSearchRes
             public void onClick(View v){
                 //Toast.makeText(mCtx,"ENTRY NUMBER " + position ,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(mCtx, BookInformationActivity.class);
+
+                //PASSING VALUES TO INTENT SECTION
                 intent.putExtra("bookTitle", bookList.get(position).getT());
                 intent.putExtra("bookAuthor", bookList.get(position).getAuth());
+                intent.putExtra("bookImage", bookList.get(position).getCover());
+                intent.putExtra("bookId", bookList.get(position).getId());
+                intent.putExtra("bookHasPdf", bookList.get(position).getHaspdf());
+                intent.putExtra("bookTotalBooks", bookList.get(position).getTotalbooks());
+                intent.putExtra("bookPubName", bookList.get(position).getPubname());
+                intent.putExtra("bookPubDate", bookList.get(position).getPubdate());
+                intent.putExtra("bookIsbn", bookList.get(position).getIsbn());
+                intent.putExtra("bookIssn", bookList.get(position).getIssn());
+                intent.putExtra("bookPdfUrl", bookList.get(position).getPdfurl());
+                intent.putExtra("lbs", bookList.get(position).getLbs());
+
                 mCtx.startActivity(intent);
             }
         });

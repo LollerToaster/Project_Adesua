@@ -17,9 +17,10 @@ public class HomeOneFragmentDataModel
     private String pubdate;
     private String isbn;
     private String issn;
+    private String pdfurl;
     private String lbs;
 
-    public HomeOneFragmentDataModel(String t, String cover, String id, String auth, String callcrd, String haspdf, String totalbooks, String pubname, String pubdate, String isbn, String issn, String lbs)
+    public HomeOneFragmentDataModel(String t, String cover, String id, String auth, String callcrd, String haspdf, String totalbooks, String pubname, String pubdate, String isbn, String issn, String pdfurl, String lbs)
     {
         this.t = t;
         this.cover = cover;
@@ -32,6 +33,7 @@ public class HomeOneFragmentDataModel
         this.pubdate = pubdate;
         this.isbn = isbn;
         this.issn = issn;
+        this.pdfurl = pdfurl;
         this.lbs = lbs;
     }
 
@@ -67,6 +69,9 @@ public class HomeOneFragmentDataModel
     }
     public String getIssn() {
         return issn;
+    }
+    public String getPdfurl() {
+        return pdfurl;
     }
     public String getLbs() {
         return lbs;
